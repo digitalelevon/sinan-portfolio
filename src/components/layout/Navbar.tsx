@@ -17,7 +17,12 @@ const navLinks = [
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const [mounted, setMounted] = useState(false);
     const pathname = usePathname();
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -46,6 +51,19 @@ export default function Navbar() {
             document.body.style.overflow = "unset";
         };
     }, [isOpen]);
+
+    if (!mounted) return (
+        <header className="fixed top-0 left-0 right-0 z-50 flex justify-center px-0">
+            <nav className="container mx-auto bg-transparent py-6 px-6 lg:px-12 w-full flex items-center justify-between">
+                <div className="flex items-center">
+                    <div className="text-2xl font-black tracking-tighter flex items-center gap-1 hover:opacity-80 transition-opacity z-50 relative group">
+                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-white/70 uppercase">SINAN</span>
+                        <span className="text-primary italic">MC</span>
+                    </div>
+                </div>
+            </nav>
+        </header>
+    );
 
     return (
         <header
