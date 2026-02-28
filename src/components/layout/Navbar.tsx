@@ -52,33 +52,22 @@ export default function Navbar() {
         };
     }, [isOpen]);
 
-    if (!mounted) return (
-        <header className="fixed top-0 left-0 right-0 z-50 flex justify-center px-0">
-            <nav className="container mx-auto bg-transparent py-6 px-6 lg:px-12 w-full flex items-center justify-between">
-                <div className="flex items-center">
-                    <div className="text-2xl font-black tracking-tighter flex items-center gap-1 hover:opacity-80 transition-opacity z-50 relative group">
-                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-white/70 uppercase">SINAN</span>
-                        <span className="text-primary italic">MC</span>
-                    </div>
-                </div>
-            </nav>
-        </header>
-    );
-
     return (
         <header
+            suppressHydrationWarning
             className={cn(
                 "fixed left-0 right-0 z-50 transition-all duration-500 flex justify-center",
-                scrolled ? "top-4 px-4" : "top-0 px-0"
+                mounted && scrolled ? "top-4 px-4" : "top-0 px-0"
             )}
         >
             <nav
+                suppressHydrationWarning
                 aria-label="Main Navigation"
                 itemScope
                 itemType="https://schema.org/SiteNavigationElement"
                 className={cn(
                     "w-full transition-all duration-500 relative flex items-center justify-between",
-                    scrolled
+                    mounted && scrolled
                         ? "max-w-5xl bg-dark/60 backdrop-blur-2xl border border-white/10 rounded-full shadow-[0_8px_32px_0_rgba(0,0,0,0.5)] py-3 px-6"
                         : "container mx-auto bg-transparent py-6 px-6 lg:px-12"
                 )}
