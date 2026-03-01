@@ -91,8 +91,8 @@ export default function ContactClient() {
             icon: <Mail className="w-8 h-8 text-[#FFD700]" />,
             title: "Email",
             description: "Send me an email",
-            action: "hello@sinanmcmalappuram.in",
-            link: "mailto:hello@sinanmcmalappuram.in"
+            action: "sinanmc46@gmail.com",
+            link: "mailto:sinanmc46@gmail.com"
         },
         {
             icon: <MapPin className="w-8 h-8 text-[#FFD700]" />,

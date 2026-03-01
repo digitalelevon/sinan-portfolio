@@ -133,10 +133,12 @@ export async function POST(req: Request) {
         let response;
         try {
             response = await groq.chat.completions.create(completionParams);
-        } catch (error: any) {
+        } catch (error) {
             // Groq Llama 3 models sometimes return the raw function string which causes an API error.
             // We can gracefully handle it by parsing the failed generation if available.
-            const failedGen = error?.error?.error?.failed_generation || error?.error?.failed_generation || (error as any)?.failed_generation;
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            const err = error as any;
+            const failedGen = err?.error?.error?.failed_generation || err?.error?.failed_generation || err?.failed_generation;
 
             if (failedGen && failedGen.includes("<function=save_lead>")) {
                 try {

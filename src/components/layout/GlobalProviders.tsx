@@ -6,6 +6,10 @@ import dynamic from "next/dynamic";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
+const MouseFollower = dynamic(() => import("@/components/ui/MouseFollower"), {
+    ssr: false,
+});
+
 const Chatbot = dynamic(() => import("@/components/Chatbot"), {
     ssr: false, // Optional: disables server-side rendering for the chatbot to save initial load time
 });
@@ -24,6 +28,7 @@ export default function GlobalProviders({ children }: { children: React.ReactNod
         <>
             {/* Navbar/Footer always rendered — Navbar returns null before mount internally */}
             {!isAdminRoute && <Navbar />}
+            {!isAdminRoute && <MouseFollower />}
             {children}
             {!isAdminRoute && <Footer />}
             {loadChatbot && !isAdminRoute && <Chatbot />}

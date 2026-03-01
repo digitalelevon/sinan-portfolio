@@ -11,7 +11,7 @@ const jsonLd = {
     "image": "https://sinanmcmalappuram.in/logo.png",
     "description": "Best freelance web developer & SEO specialist in Malappuram, Kerala, helping businesses grow with modern websites, SEO, and AI automation solutions.",
     "telephone": "+917510477475",
-    "email": "hello@sinanmcmalappuram.in",
+    "email": "sinanmc46@gmail.com",
     "address": {
         "@type": "PostalAddress",
         "addressLocality": "Malappuram",
@@ -148,13 +148,13 @@ export default function Footer() {
                                 </a>
                             </li>
                             <li>
-                                <a href="mailto:hello@sinanmcmalappuram.in" className="flex items-center gap-4 text-gray-400 hover:text-white transition-all duration-300 text-sm group focus:outline-none p-3 rounded-xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.04] hover:border-[#FFD700]/30 hover:shadow-[0_4px_20px_rgba(255,215,0,0.05)]">
+                                <a href="mailto:sinanmc46@gmail.com" className="flex items-center gap-4 text-gray-400 hover:text-white transition-all duration-300 text-sm group focus:outline-none p-3 rounded-xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.04] hover:border-[#FFD700]/30 hover:shadow-[0_4px_20px_rgba(255,215,0,0.05)]">
                                     <span className="p-2.5 bg-[#141414] rounded-lg group-hover:bg-[#FFD700]/10 transition-colors border border-white/5 group-hover:border-[#FFD700]/30 shrink-0">
                                         <Mail size={16} className="text-[#FFD700]" />
                                     </span>
                                     <div className="flex flex-col justify-center">
                                         <span className="text-gray-500 text-[10px] uppercase tracking-wider font-semibold mb-0.5">Email</span>
-                                        <span className="font-medium group-hover:text-[#FFD700] transition-colors">hello@sinanmcmalappuram.in</span>
+                                        <span className="font-medium group-hover:text-[#FFD700] transition-colors">sinanmc46@gmail.com</span>
                                     </div>
                                 </a>
                             </li>

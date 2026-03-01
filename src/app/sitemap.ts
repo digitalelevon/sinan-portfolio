@@ -1,12 +1,57 @@
 import { MetadataRoute } from "next";
+import { portfolioProjects } from "@/data/portfolio";
+import { blogPosts } from "@/lib/blog/data";
+
+const baseUrl = "https://sinanmcmalappuram.in";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    return [
+    const staticRoutes: MetadataRoute.Sitemap = [
         {
-            url: "https://sinanmcmalappuram.in",
-            lastModified: "2025-01-01",
+            url: baseUrl,
+            lastModified: new Date(),
             changeFrequency: "weekly",
             priority: 1,
         },
+        {
+            url: `${baseUrl}/about`,
+            lastModified: new Date(),
+            changeFrequency: "monthly",
+            priority: 0.9,
+        },
+        {
+            url: `${baseUrl}/portfolio`,
+            lastModified: new Date(),
+            changeFrequency: "weekly",
+            priority: 0.9,
+        },
+        {
+            url: `${baseUrl}/blog`,
+            lastModified: new Date(),
+            changeFrequency: "weekly",
+            priority: 0.8,
+        },
+        {
+            url: `${baseUrl}/contact`,
+            lastModified: new Date(),
+            changeFrequency: "monthly",
+            priority: 0.8,
+        },
     ];
+
+    const portfolioRoutes: MetadataRoute.Sitemap = portfolioProjects.map((project) => ({
+        url: `${baseUrl}/portfolio/${project.id}`,
+        lastModified: new Date(),
+        changeFrequency: "monthly",
+        priority: 0.8,
+    }));
+
+    const blogRoutes: MetadataRoute.Sitemap = blogPosts.map((post) => ({
+        url: `${baseUrl}/blog/${post.slug}`,
+        // Use post date if valid, otherwise fallback to current date
+        lastModified: isNaN(new Date(post.date).getTime()) ? new Date() : new Date(post.date),
+        changeFrequency: "monthly",
+        priority: 0.8,
+    }));
+
+    return [...staticRoutes, ...portfolioRoutes, ...blogRoutes];
 }
