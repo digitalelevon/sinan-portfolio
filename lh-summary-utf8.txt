@@ -1,0 +1,45 @@
+--- SCORES ---
+Performance: 33
+Accessibility: 98
+Best Practices: 100
+SEO: 92
+
+--- ALL AUDITS < 100 ---
+[65] first-contentful-paint - First Contentful Paint
+   Value: 2.5 s
+[0] largest-contentful-paint - Largest Contentful Paint
+   Value: 10.1 s
+[6] speed-index - Speed Index
+   Value: 11.1 s
+[3] total-blocking-time - Total Blocking Time
+   Value: 2,890 ms
+[0] max-potential-fid - Max Potential First Input Delay
+   Value: 1,520 ms
+[0] server-response-time - Reduce initial server response time
+   Value: Root document took 2,260 ms
+[15] interactive - Time to Interactive
+   Value: 12.4 s
+[0] mainthread-work-breakdown - Minimize main-thread work
+   Value: 18.8 s
+[0] bootup-time - Reduce JavaScript execution time
+   Value: 8.9 s
+[50] unsized-images - Image elements do not have explicit `width` and `height`
+[0] valid-source-maps - Missing source maps for large first-party JavaScript
+[0] heading-order - Heading elements are not in a sequentially-descending order
+[0] label-content-name-mismatch - Elements with visible text labels do not have matching accessible names.
+[0] unminified-css - Minify CSS
+   Value: Est savings of 5 KiB
+[0] unminified-javascript - Minify JavaScript
+   Value: Est savings of 255 KiB
+[0] unused-javascript - Reduce unused JavaScript
+   Value: Est savings of 344 KiB
+[0] robots-txt - robots.txt is not valid
+[0] bf-cache - Page prevented back/forward cache restoration
+   Value: 3 failure reasons
+[0] document-latency-insight - Document request latency
+   Value: Est savings of 2,160 ms
+[0] lcp-breakdown-insight - LCP breakdown
+[0] legacy-javascript-insight - Legacy JavaScript
+   Value: Est savings of 8 KiB
+[0] network-dependency-tree-insight - Network dependency tree
+[50] render-blocking-insight - Render blocking requests

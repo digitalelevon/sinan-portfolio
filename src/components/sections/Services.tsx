@@ -70,7 +70,7 @@ const services = [
     }
 ];
 
-function ServiceCard({ service, index }: { service: typeof services[0], index: number }) {
+function ServiceCard({ service }: { service: typeof services[0] }) {
     return (
         <motion.div
             variants={fadeUpVariant}
@@ -170,7 +170,7 @@ export default function Services() {
                     className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10 xl:gap-12"
                 >
                     {services.map((service, index) => (
-                        <ServiceCard key={index} service={service} index={index} />
+                        <ServiceCard key={index} service={service} />
                     ))}
                 </motion.div>
 

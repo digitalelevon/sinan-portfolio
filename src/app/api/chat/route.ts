@@ -1,4 +1,4 @@
-export const runtime = "edge";
+
 
 import { NextResponse } from "next/server";
 import { Groq } from "groq-sdk";
@@ -57,15 +57,24 @@ WAIT.
 
 STEP 5 — AFTER EMAIL:
 
-You MUST ONLY call the function \`save_lead\` with the collected details (name, phone, email, and the service they mentioned). DO NOT output any text response, just trigger the function call. The system will handle sending the thank you message.
+You MUST ask EXACTLY:
+
+"Which service are you looking for? (Web Development, SEO, or Digital Marketing)"
+
+WAIT for the user to reply with their chosen service.
+
+STEP 6 — AFTER SERVICE:
+
+Once the user replies with the service (and ONLY then), you MUST call the function \`save_lead\` with the collected details (name, phone, email, and the specific service they requested). DO NOT output any text response, just trigger the function call. The system will handle sending the thank you message.
 
 IMPORTANT RULES:
 
-DO NOT skip steps
-DO NOT reject answers
-DO NOT ask unrelated questions
-DO NOT start normal conversation before collecting details
-ALWAYS follow lead capture flow first
+1. DO NOT skip Steps 1 through 5. You MUST ask each question one by one and WAIT for the user's reply.
+2. DO NOT call the \`save_lead\` function until the user has explicitly answered the service question in Step 5. Do not guess or assume the service.
+3. DO NOT output function call syntax like 'save_lead(...)' as normal text. Only use the provided tool.
+4. If you have already collected the details and the user is asking general questions, DO NOT try to call save_lead again.
+5. DO NOT start normal conversation before collecting details.
+6. ALWAYS follow the step-by-step lead capture flow first.
 
 After lead capture is complete, you may answer general questions.
 
@@ -93,7 +102,12 @@ export async function POST(req: Request) {
             ],
         };
 
-        if (!alreadySaved) {
+        // Check if the AI has asked the service question in the recent messages
+        const hasAskedService = messages.some(
+            (msg) => msg.role === "assistant" && msg.content && (msg.content.includes("Which service are you looking for") || msg.content.includes("Web Development, SEO, or Digital Marketing"))
+        );
+
+        if (!alreadySaved && hasAskedService) {
             completionParams.tools = [
                 {
                     type: "function",
@@ -116,7 +130,42 @@ export async function POST(req: Request) {
             completionParams.tool_choice = "auto";
         }
 
-        const response = await groq.chat.completions.create(completionParams);
+        let response;
+        try {
+            response = await groq.chat.completions.create(completionParams);
+        } catch (error: any) {
+            // Groq Llama 3 models sometimes return the raw function string which causes an API error.
+            // We can gracefully handle it by parsing the failed generation if available.
+            const failedGen = error?.error?.error?.failed_generation || error?.error?.failed_generation || (error as any)?.failed_generation;
+
+            if (failedGen && failedGen.includes("<function=save_lead>")) {
+                try {
+                    const jsonStr = failedGen.replace("<function=save_lead>", "").replace("</function>", "").trim();
+                    const leadData = JSON.parse(jsonStr);
+
+                    await addDoc(collection(db, "chat_leads"), {
+                        name: leadData.name || "Unknown",
+                        phone: leadData.phone || "Unknown",
+                        email: leadData.email || "Unknown",
+                        service: leadData.service || "Unknown",
+                        status: "new",
+                        source: "chatbot_ai",
+                        createdAt: serverTimestamp()
+                    });
+
+                    return NextResponse.json({
+                        message: {
+                            role: "assistant",
+                            content: "Thank you. sinan mc Malappuram will contact you soon.\n\nHere is how sinan mc Malappuram can help you:\n\nWeb Development:\nCustom business websites designed to generate leads.\n\nSEO:\nRank your website on Google and increase traffic.\n\nDigital Marketing:\nRun ads and marketing campaigns to generate customers."
+                        }
+                    });
+                } catch (parseError) {
+                    console.error("Failed to parse fallback generation:", parseError);
+                    throw error;
+                }
+            }
+            throw error;
+        }
 
         const choice = response.choices[0];
         const message = choice.message;

@@ -1,193 +1,294 @@
 "use client";
 
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
-import { Menu, X, ArrowRight } from "lucide-react";
-import { cn } from "@/lib/utils";
+import {
+    motion,
+    AnimatePresence,
+    useScroll,
+    useMotionValueEvent,
+} from "framer-motion";
+import { Menu, X, ArrowUpRight } from "lucide-react";
+import clsx from "clsx";
 
-const navLinks = [
+/**
+ * NAV LINKS
+ * SEO-friendly and localized for Sinan MC's brand
+ */
+type NavLink = { name: string; href: string; isNew?: boolean };
+
+const navLinks: NavLink[] = [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
-    { name: "Portfolio", href: "/portfolio" },
+    { name: "Portfolio", href: "/portfolio", isNew: true },
     { name: "Blog", href: "/blog" },
     { name: "Contact", href: "/contact" },
 ];
 
+/**
+ * LUXURY NAVBAR COMPONENT
+ * Hydration-safe: all dynamic/animated content is deferred until after mount.
+ * Static HTML is identical between server and client.
+ */
 export default function Navbar() {
-    const [isOpen, setIsOpen] = useState(false);
-    const [scrolled, setScrolled] = useState(false);
-    const [mounted, setMounted] = useState(false);
     const pathname = usePathname();
+    const [mounted, setMounted] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
+    const [hidden, setHidden] = useState(false);
+    const { scrollY } = useScroll();
 
+    // Defer all client-only logic until after hydration
     useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setMounted(true);
     }, []);
 
-    useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 20);
-        };
-        window.addEventListener("scroll", handleScroll);
-        // Trigger once on mount to handle initial scroll state
-        handleScroll();
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+    // Scroll Logic: Hide on scroll down, Show on scroll up
+    useMotionValueEvent(scrollY, "change", (latest) => {
+        const previous = scrollY.getPrevious() ?? 0;
+        if (latest > previous && latest > 150) {
+            setHidden(true);
+        } else {
+            setHidden(false);
+        }
+    });
 
-    // Close mobile menu when route changes
+    // Body Lock for Mobile Menu
     useEffect(() => {
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-        setIsOpen(false);
-    }, [pathname]);
-
-    // Prevent body scroll when mobile menu is open
-    useEffect(() => {
+        if (!mounted) return;
         if (isOpen) {
             document.body.style.overflow = "hidden";
         } else {
             document.body.style.overflow = "unset";
         }
-        return () => {
-            document.body.style.overflow = "unset";
-        };
-    }, [isOpen]);
+    }, [isOpen, mounted]);
+
+    // Close menu on route change
+    useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        setIsOpen(false);
+    }, [pathname]);
 
     return (
         <header
-            suppressHydrationWarning
-            className={cn(
-                "fixed left-0 right-0 z-50 transition-all duration-500 flex justify-center",
-                mounted && scrolled ? "top-4 px-4" : "top-0 px-0"
+            className={clsx(
+                "fixed left-0 right-0 top-0 z-50 flex justify-center pt-4 px-4 pointer-events-none transition-transform duration-500",
+                hidden ? "-translate-y-full" : "translate-y-0"
             )}
         >
             <nav
-                suppressHydrationWarning
                 aria-label="Main Navigation"
-                itemScope
-                itemType="https://schema.org/SiteNavigationElement"
-                className={cn(
-                    "w-full transition-all duration-500 relative flex items-center justify-between",
-                    mounted && scrolled
-                        ? "max-w-5xl bg-dark/60 backdrop-blur-2xl border border-white/10 rounded-full shadow-[0_8px_32px_0_rgba(0,0,0,0.5)] py-3 px-6"
-                        : "container mx-auto bg-transparent py-6 px-6 lg:px-12"
-                )}
+                className="pointer-events-auto w-full max-w-5xl flex items-center justify-between px-4 py-3 sm:px-6 bg-[#0a0a0a]/80 backdrop-blur-md border border-white/5 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-all duration-300"
             >
-                <div className="flex items-center">
-                    <Link
-                        href="/"
-                        aria-label="Sinan MC Home"
-                        className="text-2xl font-black tracking-tighter flex items-center gap-1 hover:opacity-80 transition-opacity z-50 relative group"
-                        onClick={() => setIsOpen(false)}
-                    >
-                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-white/70 uppercase">SINAN</span>
-                        <span className="text-primary group-hover:drop-shadow-[0_0_10px_rgba(255,215,0,0.6)] transition-all duration-300 italic">MC</span>
-                    </Link>
-                </div>
-
-                {/* Desktop Menu - Floating Pill */}
-                <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-                    <ul className="flex items-center gap-1 bg-white/5 border border-white/10 rounded-full p-1.5 backdrop-blur-md shadow-inner">
-                        {navLinks.map((link) => {
-                            const isActive = pathname === link.href || (pathname.startsWith(link.href) && link.href !== '/');
-                            return (
-                                <li key={link.name} itemProp="name">
-                                    <Link
-                                        href={link.href}
-                                        itemProp="url"
-                                        aria-current={isActive ? "page" : undefined}
-                                        className="relative px-5 py-2.5 text-sm font-medium transition-colors block rounded-full"
-                                    >
-                                        <span className={cn(
-                                            "relative z-10 transition-colors duration-300",
-                                            isActive ? "text-dark font-bold" : "text-white/70 hover:text-white"
-                                        )}>
-                                            {link.name}
-                                        </span>
-                                        {isActive && (
-                                            <div
-                                                className="absolute inset-0 bg-primary rounded-full shadow-[0_0_15px_rgba(255,215,0,0.4)] pointer-events-none"
-                                            />
-                                        )}
-                                    </Link>
-                                </li>
-                            );
-                        })}
-                    </ul>
-                </div>
-
-                {/* Desktop CTA */}
-                <div className="hidden md:flex items-center z-10">
-                    <Link
-                        href="/contact"
-                        className="group relative inline-flex items-center justify-center px-6 py-2.5 rounded-full font-bold text-sm transition-all bg-white text-dark hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_25px_rgba(255,255,255,0.2)] overflow-hidden"
-                    >
-                        <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-primary/80 via-white to-primary/80 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
-                        <span className="relative flex items-center gap-2">
-                            Hire Me
-                            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                        </span>
-                    </Link>
-                </div>
-
-                {/* Mobile Menu Button */}
-                <button
-                    className="md:hidden text-white hover:text-primary transition-colors p-2 z-50 relative bg-white/5 border border-white/10 rounded-full backdrop-blur-sm shadow-sm"
-                    onClick={() => setIsOpen(!isOpen)}
-                    aria-label="Toggle menu"
-                    aria-expanded={isOpen}
-                    aria-controls="mobile-menu"
+                {/* LOGO: SINAN MC */}
+                <Link
+                    href="/"
+                    className="group flex items-baseline gap-0.5 select-none"
+                    aria-label="Go to homepage"
                 >
-                    {isOpen ? <X size={20} aria-hidden="true" /> : <Menu size={20} aria-hidden="true" />}
-                </button>
-            </nav>
+                    <span className="text-xl font-black tracking-tight uppercase text-white transition-colors duration-300">
+                        SINAN
+                    </span>
+                    <span className="text-2xl font-black italic text-primary leading-none transition-all duration-300">
+                        MC
+                    </span>
+                    <span className="absolute -bottom-0.5 left-0 h-[2px] w-0 bg-gradient-to-r from-primary to-yellow-200 group-hover:w-full transition-all duration-500 ease-out z-10" />
+                </Link>
 
-            {/* Mobile Menu Overlay */}
-            <div
-                id="mobile-menu"
-                className={cn(
-                    "fixed inset-0 top-0 left-0 w-full h-[100dvh] bg-dark/90 z-40 md:hidden flex flex-col justify-center px-6 pt-20 transition-all duration-400 backdrop-blur-md",
-                    isOpen ? "opacity-100 visible pointer-events-auto" : "opacity-0 invisible pointer-events-none"
-                )}
-            >
-                <ul className={cn(
-                    "flex flex-col space-y-3 w-full max-w-sm mx-auto transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
-                    isOpen ? "translate-x-0" : "-translate-x-8"
-                )}>
+                {/* DESKTOP NAVIGATION */}
+                <ul role="menubar" className="hidden md:flex items-center gap-1">
                     {navLinks.map((link) => {
-                        const isActive = pathname === link.href || (pathname.startsWith(link.href) && link.href !== '/');
+                        // Only compute active state after mount to match server render
+                        const isActive =
+                            mounted &&
+                            (pathname === link.href ||
+                                (link.href !== "/" &&
+                                    pathname.startsWith(link.href)));
+
                         return (
-                            <li key={link.name} itemProp="name">
+                            <li key={link.href} role="none" className="relative">
                                 <Link
                                     href={link.href}
+                                    role="menuitem"
                                     itemProp="url"
-                                    onClick={() => setIsOpen(false)}
                                     aria-current={isActive ? "page" : undefined}
-                                    className={cn(
-                                        "flex items-center justify-between py-4 px-6 text-2xl font-bold rounded-2xl transition-all border",
+                                    className={clsx(
+                                        "relative z-10 px-4 py-2 text-sm font-medium transition-colors duration-300 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFD700] flex items-center group",
                                         isActive
-                                            ? "bg-primary text-dark border-primary shadow-[0_0_20px_rgba(255,215,0,0.3)]"
-                                            : "text-white/70 hover:bg-white/5 border-white/5 hover:text-white hover:border-white/10"
+                                            ? "text-black"
+                                            : "text-white/70 hover:text-white hover:bg-white/5"
                                     )}
                                 >
-                                    {link.name}
-                                    {isActive && <ArrowRight className="w-6 h-6" />}
+                                    {isActive && mounted && (
+                                        <motion.div
+                                            layoutId="nav-pill"
+                                            className="absolute inset-0 -z-10 bg-gradient-to-r from-[#FFD700] to-[#FDB931] rounded-full shadow-[0_0_20px_rgba(255,215,0,0.4)]"
+                                            transition={{
+                                                type: "spring",
+                                                bounce: 0.2,
+                                                duration: 0.6,
+                                            }}
+                                        />
+                                    )}
+                                    <span
+                                        className="relative z-10 flex items-center gap-1.5"
+                                        itemProp="name"
+                                    >
+                                        {link.name}
+                                        {link.isNew && (
+                                            <span className="px-1.5 py-0.5 text-[9px] font-extrabold tracking-wider bg-gradient-to-r from-[#FFD700] to-[#FDB931] text-black rounded-full shadow-[0_0_10px_rgba(255,215,0,0.4)]">
+                                                NEW
+                                            </span>
+                                        )}
+                                    </span>
                                 </Link>
                             </li>
                         );
                     })}
-
-                    <li className="pt-8">
-                        <Link
-                            href="/contact"
-                            onClick={() => setIsOpen(false)}
-                            className="flex w-full items-center justify-center gap-2 py-4 rounded-2xl bg-white text-dark text-xl font-black shadow-[0_0_30px_rgba(255,255,255,0.15)] hover:scale-[1.02] active:scale-[0.98] transition-transform"
-                        >
-                            Hire Me
-                            <ArrowRight className="w-6 h-6" />
-                        </Link>
-                    </li>
                 </ul>
-            </div>
+
+                {/* CALL TO ACTION */}
+                <div className="flex items-center gap-3 sm:gap-4">
+                    <Link
+                        href="/contact"
+                        aria-label="Contact and hire Sinan MC"
+                        className={clsx(
+                            "group hidden sm:flex items-center gap-2 px-6 py-2.5",
+                            "bg-gradient-to-tr from-[#FFD700] via-[#FDB931] to-[#FFD700] text-[#0a0a0a] text-sm font-bold rounded-xl",
+                            "shadow-[0_0_20px_rgba(255,215,0,0.3)]",
+                            "hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFD700] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]",
+                            "hover:shadow-[0_0_30px_rgba(255,215,0,0.5)] transition-all duration-300 ease-out overflow-hidden relative"
+                        )}
+                    >
+                        {/* Shimmer Effect */}
+                        <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12" />
+                        <span className="relative z-10">Hire Me</span>
+                        <ArrowUpRight className="relative z-10 w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    </Link>
+
+                    {/* MOBILE HAMBURGER — static aria-label to prevent hydration mismatch */}
+                    <button
+                        onClick={() => setIsOpen(!isOpen)}
+                        aria-label="Toggle navigation menu"
+                        aria-expanded={isOpen}
+                        className="flex md:hidden items-center justify-center w-10 h-10 rounded-xl bg-white/5 border border-white/10 text-white active:scale-95 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFD700] transition-all"
+                    >
+                        {/* Show icon only after mount to prevent server/client mismatch */}
+                        {mounted ? (
+                            isOpen ? (
+                                <X className="w-5 h-5" />
+                            ) : (
+                                <Menu className="w-5 h-5" />
+                            )
+                        ) : (
+                            <Menu className="w-5 h-5" />
+                        )}
+                    </button>
+                </div>
+            </nav>
+
+            {/* MOBILE FULLSCREEN MENU — only rendered client-side after mount */}
+            {mounted && (
+                <AnimatePresence>
+                    {isOpen && (
+                        <motion.div
+                            key="mobile-menu"
+                            initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
+                            animate={{ opacity: 1, backdropFilter: "blur(24px)" }}
+                            exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
+                            transition={{ duration: 0.4 }}
+                            className="fixed inset-0 z-[90] pointer-events-auto bg-gradient-to-b from-black/95 to-[#0a0a0a]/98 md:hidden overflow-hidden"
+                        >
+                            {/* Animated Background Orb */}
+                            <motion.div
+                                initial={{ scale: 0.8, opacity: 0 }}
+                                animate={{ scale: 1, opacity: 0.3 }}
+                                transition={{ duration: 1 }}
+                                className="absolute top-20 right-10 w-64 h-64 bg-[#FFD700] rounded-full mix-blend-screen filter blur-[100px]"
+                            />
+
+                            <div className="relative z-10 flex flex-col h-full mt-32 px-8">
+                                <nav
+                                    className="flex flex-col gap-6"
+                                    aria-label="Mobile navigation"
+                                >
+                                    {navLinks.map((link, idx) => {
+                                        const isActive =
+                                            pathname === link.href ||
+                                            (link.href !== "/" &&
+                                                pathname.startsWith(link.href));
+
+                                        return (
+                                            <motion.div
+                                                key={link.href}
+                                                initial={{ x: -40, opacity: 0 }}
+                                                animate={{ x: 0, opacity: 1 }}
+                                                transition={{
+                                                    delay: 0.15 + idx * 0.1,
+                                                    type: "spring",
+                                                    stiffness: 100,
+                                                }}
+                                            >
+                                                <Link
+                                                    href={link.href}
+                                                    itemProp="url"
+                                                    className={clsx(
+                                                        "text-4xl font-bold tracking-tight transition-all flex items-center w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFD700] rounded-xl px-4 py-2 -ml-4",
+                                                        isActive
+                                                            ? "text-[#FFD700]"
+                                                            : "text-white/60 hover:text-white"
+                                                    )}
+                                                >
+                                                    <span
+                                                        itemProp="name"
+                                                        className="flex items-center gap-3"
+                                                    >
+                                                        {link.name}
+                                                        {link.isNew && (
+                                                            <span className="px-2 py-0.5 text-[10px] font-extrabold tracking-wider bg-gradient-to-r from-[#FFD700] to-[#FDB931] text-black rounded-full shadow-[0_0_15px_rgba(255,215,0,0.4)]">
+                                                                NEW
+                                                            </span>
+                                                        )}
+                                                    </span>
+                                                    {isActive && (
+                                                        <motion.span
+                                                            layoutId="mobile-dot"
+                                                            className="inline-block ml-4 w-3 h-3 bg-[#FFD700] rounded-full shadow-[0_0_10px_rgba(255,215,0,0.8)]"
+                                                        />
+                                                    )}
+                                                </Link>
+                                            </motion.div>
+                                        );
+                                    })}
+                                </nav>
+
+                                <motion.div
+                                    className="mt-12 mb-10"
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{
+                                        delay: 0.2 + navLinks.length * 0.1 + 0.1,
+                                    }}
+                                >
+                                    <hr className="border-white/10 mb-8 w-1/3" />
+                                    <Link
+                                        href="/contact"
+                                        className="inline-flex items-center gap-2 text-2xl font-bold text-[#FFD700] group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFD700] rounded-xl px-4 py-2 -ml-4"
+                                        aria-label="Start a project with Sinan MC"
+                                    >
+                                        Start a Project
+                                        <ArrowUpRight className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                                    </Link>
+                                    <p className="mt-2 ml-4 text-white/40 text-lg">
+                                        Let&apos;s build something extraordinary together.
+                                    </p>
+                                </motion.div>
+                            </div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+            )}
         </header>
     );
 }

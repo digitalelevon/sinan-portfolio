@@ -72,7 +72,7 @@ export default function Hero() {
                                 in Malappuram, Kerala
                             </span>
                             <span className="block text-xl sm:text-3xl md:text-4xl mt-2 sm:mt-3 text-gray-200 font-semibold">
-                                – Sinan MC
+                                Sinan MC
                             </span>
                         </h1>
 

@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 export function ChooseWebDeveloperMalappuram() {
     return (
         <article className="text-gray-300 text-lg sm:text-lg leading-relaxed space-y-10">

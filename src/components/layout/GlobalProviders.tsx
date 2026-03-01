@@ -22,6 +22,7 @@ export default function GlobalProviders({ children }: { children: React.ReactNod
 
     return (
         <>
+            {/* Navbar/Footer always rendered — Navbar returns null before mount internally */}
             {!isAdminRoute && <Navbar />}
             {children}
             {!isAdminRoute && <Footer />}

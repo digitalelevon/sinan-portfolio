@@ -67,7 +67,6 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
 export default function Footer() {
     return (
         <footer className="relative bg-[#0A0A0A] border-t border-white/5 pt-16 md:pt-24 pb-8 md:pb-12 overflow-hidden">
-            {/* Inject LocalBusiness Schema */}
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

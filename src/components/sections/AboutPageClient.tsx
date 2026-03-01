@@ -11,7 +11,6 @@ import {
     Zap,
     CheckCircle2,
     Star,
-    Wrench,
     Users,
     TrendingUp,
     Search,

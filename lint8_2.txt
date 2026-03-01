@@ -1,0 +1,62 @@
+﻿
+> sinanmc-malappuram@0.1.0 lint
+> eslint
+
+
+C:\Users\user\Desktop\sinanmc-malappuram\src\components\layout\Navbar.tsx
+  42:5  warning  Unused eslint-disable directive (no problems were reported from 'react-hooks/set-state-in-effect')
+  44:9  error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\user\Desktop\sinanmc-malappuram\src\components\layout\Navbar.tsx:44:9
+  42 |     // eslint-disable-next-line react-hooks/set-state-in-effect
+  43 |     useEffect(() => {
+> 44 |         setMounted(true);
+     |         ^^^^^^^^^^ Avoid calling setState() directly within an effect
+  45 |     }, []);
+  46 |
+  47 |     // Scroll Logic: Hide on scroll down, Show on scroll up  react-hooks/set-state-in-effect
+  68:5  warning  Unused eslint-disable directive (no problems were reported from 'react-hooks/set-state-in-effect')
+  70:9  error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\user\Desktop\sinanmc-malappuram\src\components\layout\Navbar.tsx:70:9
+  68 |     // eslint-disable-next-line react-hooks/set-state-in-effect
+  69 |     useEffect(() => {
+> 70 |         setIsOpen(false);
+     |         ^^^^^^^^^ Avoid calling setState() directly within an effect
+  71 |     }, [pathname]);
+  72 |
+  73 |     return (                                          react-hooks/set-state-in-effect
+
+C:\Users\user\Desktop\sinanmc-malappuram\src\components\sections\Hero3D.tsx
+  175:9  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\user\Desktop\sinanmc-malappuram\src\components\sections\Hero3D.tsx:175:9
+  173 |     useEffect(() => {
+  174 |         const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+> 175 |         setReducedMotion(mq.matches);
+      |         ^^^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  176 |         const handler = (e: MediaQueryListEvent) => setReducedMotion(e.matches);
+  177 |         mq.addEventListener("change", handler);
+  178 |         return () => mq.removeEventListener("change", handler);  react-hooks/set-state-in-effect
+
+Γ£û 5 problems (3 errors, 2 warnings)
+  0 errors and 2 warnings potentially fixable with the `--fix` option.
+
