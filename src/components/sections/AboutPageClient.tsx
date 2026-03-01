@@ -276,7 +276,7 @@ export default function AboutPageClient() {
                                         alt="Sinan MC — digital marketing professional and web developer from Malappuram, Kerala"
                                         fill
                                         priority
-                                        sizes="(max-width: 1024px) 100vw, 50vw"
+                                        sizes="(max-width: 768px) 100vw, 420px"
                                         className="object-cover object-top transition-all duration-1000 group-hover:scale-110"
                                     />
 
