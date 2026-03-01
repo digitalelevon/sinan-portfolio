@@ -8,6 +8,5 @@ export default function robots(): MetadataRoute.Robots {
             disallow: ["/api/", "/admin/"],
         },
         sitemap: "https://sinanmcmalappuram.in/sitemap.xml",
-        host: "https://sinanmcmalappuram.in",
     };
 }
