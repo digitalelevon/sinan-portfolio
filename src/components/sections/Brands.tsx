@@ -54,8 +54,8 @@ export default function Brands() {
                                             <Image
                                                 src={brand.src}
                                                 alt={brand.name}
-                                                fill
-                                                className="object-contain opacity-40 hover:opacity-100 hover:scale-110 transition-all duration-500 brightness-0 invert cursor-pointer"
+                                                width={160} height={80}
+                                                className="w-full h-full object-contain opacity-40 hover:opacity-100 hover:scale-110 transition-all duration-500 brightness-0 invert cursor-pointer"
                                                 priority={setIndex === 0 && idx < 6}
                                                 sizes="(max-width: 768px) 80px, (max-width: 1280px) 128px, 160px"
                                             />

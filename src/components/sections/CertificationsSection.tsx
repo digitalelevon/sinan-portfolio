@@ -158,8 +158,8 @@ const CertificationsSection: React.FC = () => {
                                     <Image
                                         src={certificates[getIndex(-1)].image}
                                         alt={certificates[getIndex(-1)].alt}
-                                        fill
-                                        className="object-cover opacity-60"
+                                        width={800} height={600}
+                                        className="w-full h-full object-cover opacity-60"
                                         sizes="(max-width: 768px) 0px, 40vw"
                                         loading="lazy"
                                     />
@@ -185,8 +185,8 @@ const CertificationsSection: React.FC = () => {
                                     <Image
                                         src={certificates[getIndex(1)].image}
                                         alt={certificates[getIndex(1)].alt}
-                                        fill
-                                        className="object-cover opacity-60"
+                                        width={800} height={600}
+                                        className="w-full h-full object-cover opacity-60"
                                         sizes="(max-width: 768px) 0px, 40vw"
                                         loading="lazy"
                                     />
@@ -217,8 +217,8 @@ const CertificationsSection: React.FC = () => {
                                     <Image
                                         src={certificates[currentIndex].image}
                                         alt={certificates[currentIndex].alt}
-                                        fill
-                                        className="object-contain md:object-cover transition-transform duration-1000 ease-out group-hover/img:scale-110 group-hover/img:rotate-1"
+                                        width={800} height={600}
+                                        className="w-full h-full object-contain md:object-cover transition-transform duration-1000 ease-out group-hover/img:scale-110 group-hover/img:rotate-1"
                                         sizes="(max-width: 768px) 80vw, (max-width: 1200px) 50vw, 50vw"
                                         loading="lazy"
                                         quality={85}

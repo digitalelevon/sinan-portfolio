@@ -8,6 +8,11 @@
     "start": "next start",
     "lint": "eslint"
   },
+  "browserslist": [
+    "> 0.5%",
+    "last 2 versions",
+    "not dead"
+  ],
   "dependencies": {
     "@formspree/react": "^3.0.0",
     "@react-three/fiber": "^9.5.0",

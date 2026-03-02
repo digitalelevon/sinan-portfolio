@@ -117,7 +117,7 @@ export default function Navbar() {
                                         itemProp="url"
                                         aria-current={isActive ? "page" : undefined}
                                         className={clsx(
-                                            "relative z-10 px-4 py-2 text-sm font-medium transition-colors duration-300 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFD700] flex items-center group",
+                                            "relative z-10 px-4 py-2 text-sm font-medium duration-300 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFD700] flex items-center group",
                                             isActive
                                                 ? "text-black"
                                                 : "text-white/70 hover:text-white hover:bg-white/5"
