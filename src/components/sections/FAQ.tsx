@@ -5,61 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Minus, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import AnimatedLine from "@/components/ui/AnimatedLine";
-
-/* ─────────────────────────────────────────
-   FAQ Data
-───────────────────────────────────────── */
-const faqs = [
-    {
-        question:
-            "Why should I choose Sinan MC as my freelance web developer in Malappuram?",
-        answer:
-            "Sinan MC is recognized as the best freelance web developer in Malappuram because he creates modern, fast, and SEO-optimized websites designed to rank on Google and generate real business results. Every website is built with performance, user experience, and conversion in mind.",
-    },
-    {
-        question:
-            "What makes Sinan MC the best freelance SEO specialist in Malappuram?",
-        answer:
-            "Sinan MC is the Best SEO Specialist in Malappuram, providing result-driven SEO services including keyword research, on-page SEO, technical SEO, and local SEO. His strategies help businesses rank higher on Google, increase website traffic, and generate more customers.",
-    },
-    {
-        question:
-            "Do you provide both website development and SEO services together?",
-        answer:
-            "Yes. Sinan MC offers complete web development and SEO combo services. This ensures your website not only looks professional but also ranks on Google and grows your business online.",
-    },
-    {
-        question: "How long does it take to rank on Google?",
-        answer:
-            "SEO results usually take 1 to 3 months depending on your competition and industry. Sinan MC uses proven SEO strategies to achieve faster and long-term ranking improvements.",
-    },
-    {
-        question: "Do you work with local businesses in Malappuram?",
-        answer:
-            "Yes. Sinan MC specializes in helping local businesses in Malappuram rank higher on Google using powerful local SEO strategies.",
-    },
-    {
-        question: "Will my website be mobile-friendly and fast?",
-        answer:
-            "Yes. Every website built by Sinan MC is fully mobile responsive, fast loading, and optimized for performance and SEO.",
-    },
-];
-
-/* ─────────────────────────────────────────
-   FAQ Schema (JSON-LD)
-───────────────────────────────────────── */
-const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqs.map((faq) => ({
-        "@type": "Question",
-        name: faq.question,
-        acceptedAnswer: {
-            "@type": "Answer",
-            text: faq.answer,
-        },
-    })),
-};
+import { faqs } from "@/data/faqData";
 
 /* ─────────────────────────────────────────
    Component
@@ -72,17 +18,8 @@ export default function FAQ() {
 
     return (
         <>
-            {/* ── FAQ Schema Structured Data ── */}
-            <script
-                id="faq-schema"
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-            />
-
             <section
                 id="faq"
-                itemScope
-                itemType="https://schema.org/FAQPage"
                 aria-label="Frequently Asked Questions"
                 className="relative bg-[#0A0A0A] py-16 sm:py-20 md:py-24 lg:py-28 xl:py-32 overflow-hidden"
             >
@@ -146,9 +83,6 @@ export default function FAQ() {
                             return (
                                 <motion.div
                                     key={index}
-                                    itemScope
-                                    itemProp="mainEntity"
-                                    itemType="https://schema.org/Question"
                                     initial={{ opacity: 0, y: 18 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.42, delay: index * 0.065 }}
@@ -198,7 +132,6 @@ export default function FAQ() {
 
                                             {/* Question text */}
                                             <span
-                                                itemProp="name"
                                                 className={`flex-1 text-[0.82rem] sm:text-sm md:text-[0.95rem] lg:text-base font-semibold leading-snug transition-colors duration-300 pr-2 ${isOpen ? "text-[#FFD700]" : "text-white/90 group-hover/btn:text-[#FFD700]/75"}`}
                                             >
                                                 {faq.question}
@@ -252,9 +185,6 @@ export default function FAQ() {
                                                 id={answerId}
                                                 role="region"
                                                 aria-labelledby={questionId}
-                                                itemScope
-                                                itemProp="acceptedAnswer"
-                                                itemType="https://schema.org/Answer"
                                                 initial={{ height: 0, opacity: 0 }}
                                                 animate={{ height: "auto", opacity: 1 }}
                                                 exit={{ height: 0, opacity: 0 }}
@@ -264,7 +194,7 @@ export default function FAQ() {
                                                 {/* Indent matches badge width: 28/32px + gap 12/16px + left padding */}
                                                 <div className="px-4 pb-4 sm:px-5 sm:pb-5 lg:px-6 lg:pb-5 pt-0 pl-[3.25rem] sm:pl-[3.75rem]">
                                                     <div className="border-t border-[#FFD700]/12 pt-3 sm:pt-4">
-                                                        <p itemProp="text" className="text-gray-400 text-[0.8rem] sm:text-sm lg:text-[0.9rem] leading-relaxed font-light">
+                                                        <p className="text-gray-400 text-[0.8rem] sm:text-sm lg:text-[0.9rem] leading-relaxed font-light">
                                                             {faq.answer}
                                                         </p>
                                                     </div>

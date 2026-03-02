@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic";
 import Script from "next/script";
+import { faqs } from "@/data/faqData";
 
 import Hero from "@/components/sections/Hero";
 
@@ -37,6 +38,19 @@ const personSchema = {
     url: "https://sinanmcmalappuram.in",
 };
 
+const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: {
+            "@type": "Answer",
+            text: faq.answer,
+        },
+    })),
+};
+
 export default function Home() {
     return (
         <>
@@ -47,6 +61,10 @@ export default function Home() {
                 dangerouslySetInnerHTML={{
                     __html: JSON.stringify(personSchema),
                 }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
             />
 
             <main role="main">
