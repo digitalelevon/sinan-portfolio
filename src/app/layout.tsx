@@ -55,11 +55,6 @@ export const metadata: Metadata = {
     icons: {
         icon: [
             {
-                url: "/favicon.ico",
-                sizes: "48x48",
-                type: "image/x-icon",
-            },
-            {
                 url: "/android-chrome-192x192.png",
                 sizes: "192x192",
                 type: "image/png",
@@ -70,9 +65,6 @@ export const metadata: Metadata = {
                 type: "image/png",
             },
         ],
-
-        shortcut: "/favicon.ico",
-
         apple: {
             url: "/apple-touch-icon.png",
             sizes: "180x180",
@@ -138,17 +130,17 @@ export default function RootLayout({
             lang="en"
             className={`dark scroll-smooth ${inter.variable}`}
         >
+            <head>
+                <link
+                    rel="preload"
+                    href="/freelance-web-developer-SEO-specialist-Malappuram.webp"
+                    as="image"
+                    fetchPriority="high"
+                />
+            </head>
             <body
                 className={`${inter.className} antialiased bg-black text-white`}
             >
-                <head>
-                    <link
-                        rel="preload"
-                        href="/freelance-web-developer-SEO-specialist-Malappuram.webp"
-                        as="image"
-                        fetchPriority="high"
-                    />
-                </head>
                 <GlobalProviders>{children}</GlobalProviders>
             </body>
         </html>

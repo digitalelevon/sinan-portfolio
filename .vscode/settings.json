@@ -1,4 +1,11 @@
 {
     "css.lint.unknownAtRules": "ignore",
-    "clangd.checkUpdates": true
+    "clangd.checkUpdates": true,
+    "files.exclude": {
+        "**/.next": true
+    },
+    "search.exclude": {
+        "**/.next": true
+    },
+    "html.validate.scripts": false
 }
