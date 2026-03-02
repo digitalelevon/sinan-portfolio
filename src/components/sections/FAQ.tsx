@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { Plus, Minus, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import AnimatedLine from "@/components/ui/AnimatedLine";
@@ -42,7 +42,7 @@ export default function FAQ() {
                 <div className="max-w-[92%] sm:max-w-2xl md:max-w-3xl lg:max-w-4xl xl:max-w-5xl mx-auto">
 
                     {/* ── Section Header ── */}
-                    <motion.div
+                    <m.div
                         initial={{ opacity: 0, y: 28 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.7, ease: "easeOut" }}
@@ -71,7 +71,7 @@ export default function FAQ() {
                             Common questions about working with Sinan MC — a Malappuram-based freelance specialist
                             in web development and SEO, helping businesses build their online presence and rank on Google.
                         </p>
-                    </motion.div>
+                    </m.div>
 
                     {/* ── Accordion List ── */}
                     <div className="space-y-2.5 sm:space-y-3 md:space-y-3.5">
@@ -81,7 +81,7 @@ export default function FAQ() {
                             const answerId = `faq-answer-${index}`;
 
                             return (
-                                <motion.div
+                                <m.div
                                     key={index}
                                     initial={{ opacity: 0, y: 18 }}
                                     whileInView={{ opacity: 1, y: 0 }}
@@ -150,7 +150,7 @@ export default function FAQ() {
                                             >
                                                 <AnimatePresence mode="wait" initial={false}>
                                                     {isOpen ? (
-                                                        <motion.span
+                                                        <m.span
                                                             key="minus"
                                                             initial={{ rotate: -90, opacity: 0, scale: 0.7 }}
                                                             animate={{ rotate: 0, opacity: 1, scale: 1 }}
@@ -159,9 +159,9 @@ export default function FAQ() {
                                                             className="flex items-center justify-center"
                                                         >
                                                             <Minus className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#FFD700]" />
-                                                        </motion.span>
+                                                        </m.span>
                                                     ) : (
-                                                        <motion.span
+                                                        <m.span
                                                             key="plus"
                                                             initial={{ rotate: 90, opacity: 0, scale: 0.7 }}
                                                             animate={{ rotate: 0, opacity: 1, scale: 1 }}
@@ -170,7 +170,7 @@ export default function FAQ() {
                                                             className="flex items-center justify-center"
                                                         >
                                                             <Plus className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gray-400 group-hover/btn:text-[#FFD700]/65 transition-colors duration-300" />
-                                                        </motion.span>
+                                                        </m.span>
                                                     )}
                                                 </AnimatePresence>
                                             </span>
@@ -180,7 +180,7 @@ export default function FAQ() {
                                     {/* Answer panel */}
                                     <AnimatePresence initial={false}>
                                         {isOpen && (
-                                            <motion.div
+                                            <m.div
                                                 key="answer"
                                                 id={answerId}
                                                 role="region"
@@ -199,16 +199,16 @@ export default function FAQ() {
                                                         </p>
                                                     </div>
                                                 </div>
-                                            </motion.div>
+                                            </m.div>
                                         )}
                                     </AnimatePresence>
-                                </motion.div>
+                                </m.div>
                             );
                         })}
                     </div>
 
                     {/* ── CTA Below FAQ ── */}
-                    <motion.div
+                    <m.div
                         initial={{ opacity: 0, y: 32 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.7, delay: 0.15 }}
@@ -249,7 +249,7 @@ export default function FAQ() {
                                 <ArrowRight className="relative z-10 w-4 h-4 flex-shrink-0 group-hover/cta:translate-x-1 transition-transform duration-300" />
                             </Link>
                         </div>
-                    </motion.div>
+                    </m.div>
 
                 </div>
             </section>

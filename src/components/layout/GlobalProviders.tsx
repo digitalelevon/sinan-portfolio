@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import dynamic from "next/dynamic";
+import { LazyMotion, domAnimation } from "framer-motion";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
@@ -26,13 +27,13 @@ export default function GlobalProviders({ children }: { children: React.ReactNod
     }, []);
 
     return (
-        <>
+        <LazyMotion features={domAnimation}>
             {/* Navbar/Footer always rendered — Navbar returns null before mount internally */}
             {!isAdminRoute && <Navbar />}
             {!isAdminRoute && <MouseFollower />}
             {children}
             {!isAdminRoute && <Footer />}
             {loadChatbot && !isAdminRoute && <Chatbot />}
-        </>
+        </LazyMotion>
     );
 }

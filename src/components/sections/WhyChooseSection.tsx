@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { CheckCircle2, ArrowRight } from "lucide-react";
@@ -56,7 +56,7 @@ const WhyChooseSection = () => {
             <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
 
                 {/* ── 1. Heading Block ── */}
-                <motion.div
+                <m.div
                     initial={{ opacity: 0, y: 28 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
@@ -89,10 +89,10 @@ const WhyChooseSection = () => {
                         combination of high-performance web development and data-driven SEO strategies,
                         delivering real rankings, more traffic, and measurable growth.
                     </p>
-                </motion.div>
+                </m.div>
 
                 {/* ── 2. Image ── */}
-                <motion.div
+                <m.div
                     initial={{ opacity: 0, scale: 0.93, y: 20 }}
                     whileInView={{ opacity: 1, scale: 1, y: 0 }}
                     transition={{ duration: 0.95, ease: "easeOut" }}
@@ -136,12 +136,12 @@ const WhyChooseSection = () => {
                             </span>
                         </div>
                     </div>
-                </motion.div>
+                </m.div>
 
                 {/* ── 3. Feature Cards ── */}
                 <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
                     {features.map((feature, index) => (
-                        <motion.div
+                        <m.div
                             key={index}
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -173,12 +173,12 @@ const WhyChooseSection = () => {
                                     </p>
                                 </div>
                             </div>
-                        </motion.div>
+                        </m.div>
                     ))}
                 </div>
 
                 {/* ── 4. CTA Button ── */}
-                <motion.div
+                <m.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.65, delay: 0.25 }}
@@ -196,7 +196,7 @@ const WhyChooseSection = () => {
                         </span>
                         <ArrowRight className="relative z-10 w-4 h-4 flex-shrink-0 group-hover/btn:translate-x-1.5 transition-transform duration-300" />
                     </Link>
-                </motion.div>
+                </m.div>
 
             </div>
         </section>

@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import AnimatedLine from "@/components/ui/AnimatedLine";
 
@@ -140,7 +140,7 @@ const CertificationsSection: React.FC = () => {
                         <AnimatePresence mode="popLayout" custom={currentIndex}>
 
                             {/* Left Card (Hidden on Mobile) */}
-                            <motion.div
+                            <m.div
                                 key={`left-${getIndex(-1)}`}
                                 className="absolute left-[5%] md:left-[8%] lg:left-[10%] w-[60%] md:w-[45%] lg:w-[40%] aspect-[4/3] hidden md:flex items-center justify-center"
                                 initial={{ opacity: 0, x: -100, scale: 0.8 }}
@@ -164,10 +164,10 @@ const CertificationsSection: React.FC = () => {
                                         loading="lazy"
                                     />
                                 </div>
-                            </motion.div>
+                            </m.div>
 
                             {/* Right Card (Hidden on Mobile) */}
-                            <motion.div
+                            <m.div
                                 key={`right-${getIndex(1)}`}
                                 className="absolute right-[5%] md:right-[8%] lg:right-[10%] w-[60%] md:w-[45%] lg:w-[40%] aspect-[4/3] hidden md:flex items-center justify-center"
                                 initial={{ opacity: 0, x: 100, scale: 0.8 }}
@@ -191,10 +191,10 @@ const CertificationsSection: React.FC = () => {
                                         loading="lazy"
                                     />
                                 </div>
-                            </motion.div>
+                            </m.div>
 
                             {/* Center Card (Main) */}
-                            <motion.div
+                            <m.div
                                 key={`center-${currentIndex}`}
                                 className="absolute z-20 w-[80%] md:w-[60%] lg:w-[50%] aspect-[4/3] md:aspect-video lg:aspect-[4/3] max-w-[800px] bg-dark-100/60 backdrop-blur-xl rounded-xl md:rounded-2xl p-1 md:p-3 border border-primary/40 shadow-[0_10px_50px_rgba(255,215,0,0.25)] flex items-center justify-center transition-all duration-500 hover:border-primary/60 hover:shadow-[0_15px_60px_rgba(255,215,0,0.35)]"
                                 initial={{ opacity: 0, scale: 0.9 }}
@@ -227,7 +227,7 @@ const CertificationsSection: React.FC = () => {
                                     {/* Shine Overlay */}
                                     <div className="absolute inset-0 bg-gradient-to-tr from-white/10 via-transparent to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
                                 </div>
-                            </motion.div>
+                            </m.div>
 
                         </AnimatePresence>
                     </div>
@@ -236,7 +236,7 @@ const CertificationsSection: React.FC = () => {
                 {/* --- Text Info (Animated) --- */}
                 <div className="relative z-20 h-20 md:h-24 flex items-center justify-center px-4">
                     <AnimatePresence mode="wait">
-                        <motion.div
+                        <m.div
                             key={currentIndex}
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -250,7 +250,7 @@ const CertificationsSection: React.FC = () => {
                             <p className="text-primary text-xs md:text-sm tracking-[0.2em] font-semibold uppercase">
                                 {certificates[currentIndex].provider}
                             </p>
-                        </motion.div>
+                        </m.div>
                     </AnimatePresence>
                 </div>
 

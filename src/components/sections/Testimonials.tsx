@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Star, MessageSquareQuote } from "lucide-react";
 
 const testimonials = [
@@ -46,7 +46,7 @@ export default function Testimonials() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {testimonials.map((testimonial, index) => (
-                        <motion.div
+                        <m.div
                             key={index}
                             initial={{ opacity: 0, scale: 0.9 }}
                             whileInView={{ opacity: 1, scale: 1 }}
@@ -71,7 +71,7 @@ export default function Testimonials() {
                                 <h4 className="font-bold text-white group-hover:text-primary transition-colors duration-300">{testimonial.name}</h4>
                                 <p className="text-sm text-gray-500">{testimonial.role}</p>
                             </div>
-                        </motion.div>
+                        </m.div>
                     ))}
                 </div>
             </div>

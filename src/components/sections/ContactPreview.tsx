@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
@@ -14,7 +14,7 @@ export default function ContactPreview() {
             <div className="absolute inset-0 bg-[linear-gradient(rgba(255,215,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,215,0,0.03)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none -z-10" />
 
             <div className="container mx-auto px-6 text-center">
-                <motion.div
+                <m.div
                     initial={{ opacity: 0, scale: 0.95, y: 20 }}
                     whileInView={{ opacity: 1, scale: 1, y: 0 }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
@@ -39,7 +39,7 @@ export default function ContactPreview() {
                             </span>
                         </Button>
                     </Link>
-                </motion.div>
+                </m.div>
             </div>
         </section>
     );

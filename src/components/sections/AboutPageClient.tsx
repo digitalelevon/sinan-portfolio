@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -45,7 +45,7 @@ function Reveal({
 }) {
     const xVal = fromLeft ? -40 : fromRight ? 40 : 0;
     return (
-        <motion.div
+        <m.div
             className={className}
             initial={{ opacity: 0, x: xVal, y: xVal === 0 ? 30 : 0 }}
             whileInView={{ opacity: 1, x: 0, y: 0 }}
@@ -53,14 +53,14 @@ function Reveal({
             transition={{ ...T_DEFAULT, delay }}
         >
             {children}
-        </motion.div>
+        </m.div>
     );
 }
 
 /* ─── Staggered list ─── */
 function StaggerList({ children }: { children: React.ReactNode }) {
     return (
-        <motion.ul
+        <m.ul
             className="space-y-3"
             initial="hidden"
             whileInView="visible"
@@ -71,14 +71,14 @@ function StaggerList({ children }: { children: React.ReactNode }) {
             } as import("framer-motion").Variants}
         >
             {children}
-        </motion.ul>
+        </m.ul>
     );
 }
 
 /* ─── Animated list item ─── */
 function ListItem({ text }: { text: string }) {
     return (
-        <motion.li
+        <m.li
             variants={{
                 hidden: { opacity: 0, x: -16 },
                 visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
@@ -87,7 +87,7 @@ function ListItem({ text }: { text: string }) {
         >
             <CheckCircle2 className="shrink-0 w-4 h-4 text-primary" />
             {text}
-        </motion.li>
+        </m.li>
     );
 }
 
@@ -104,7 +104,7 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 function GoldLine() {
     return (
         <div className="relative h-[2px] w-20 my-4 overflow-hidden rounded-full bg-white/5">
-            <motion.div
+            <m.div
                 className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-primary via-accent to-secondary"
                 animate={{ x: ["-100%", "100%"] }}
                 transition={{ repeat: Infinity, duration: 2.4, ease: "easeInOut" }}
@@ -171,7 +171,7 @@ export default function AboutPageClient() {
                         <div className="w-full lg:w-[55%] flex flex-col space-y-6 sm:space-y-8 z-10 order-2 lg:order-1">
                             <div>
                                 {/* Overline */}
-                                <motion.div
+                                <m.div
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ ...T_DEFAULT, delay: 0.3 }}
@@ -179,10 +179,10 @@ export default function AboutPageClient() {
                                 >
                                     <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
                                     ABOUT SINAN MC
-                                </motion.div>
+                                </m.div>
 
                                 {/* H1 */}
-                                <motion.h1
+                                <m.h1
                                     initial={{ opacity: 0, y: 30 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ ...T_SLOW, delay: 0.4 }}
@@ -193,11 +193,11 @@ export default function AboutPageClient() {
                                         Web Developer & <br className="hidden sm:block" /> SEO Specialist
                                     </span>{" "}
                                     <span className="text-white block mt-2 sm:mt-3">in Malappuram</span>
-                                </motion.h1>
+                                </m.h1>
                             </div>
 
                             {/* Descriptions */}
-                            <motion.div
+                            <m.div
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ ...T_DEFAULT, delay: 0.52 }}
@@ -209,10 +209,10 @@ export default function AboutPageClient() {
                                 <p className="text-gray-400 text-base sm:text-lg leading-relaxed max-w-lg lg:max-w-xl">
                                     I am Sinan MC, recognized as the Best SEO Specialist in Malappuram. With a degree from IGNOU and certification from Oxdu, Kondotty, I build modern web platforms and help local teams rank #1.
                                 </p>
-                            </motion.div>
+                            </m.div>
 
                             {/* Stats row — E-E-A-T proof */}
-                            <motion.div
+                            <m.div
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ ...T_DEFAULT, delay: 0.65 }}
@@ -230,10 +230,10 @@ export default function AboutPageClient() {
                                         <span className="text-gray-500 text-[10px] sm:text-xs uppercase tracking-widest relative z-10 group-hover:text-gray-300 transition-colors duration-300">{label}</span>
                                     </div>
                                 ))}
-                            </motion.div>
+                            </m.div>
 
                             {/* Buttons */}
-                            <motion.div
+                            <m.div
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ ...T_DEFAULT, delay: 0.74 }}
@@ -252,11 +252,11 @@ export default function AboutPageClient() {
                                 >
                                     Contact Me
                                 </Link>
-                            </motion.div>
+                            </m.div>
                         </div>
 
                         {/* ── RIGHT: Framed Image panel ── */}
-                        <motion.div
+                        <m.div
                             initial={{ opacity: 0, scale: 0.95, y: 30 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             transition={{ duration: 1, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
@@ -294,7 +294,7 @@ export default function AboutPageClient() {
                                     </div>
                                 </div>
                             </div>
-                        </motion.div>
+                        </m.div>
                     </div>
                 </div>
             </section>
@@ -518,7 +518,7 @@ export default function AboutPageClient() {
                                     </span>
                                 </div>
                                 <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
-                                    <motion.div
+                                    <m.div
                                         className="h-full rounded-full bg-gradient-to-r from-primary to-accent"
                                         initial={{ width: 0 }}
                                         whileInView={{ width: `${item.level}%` }}

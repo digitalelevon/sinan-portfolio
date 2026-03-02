@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion, Variants } from "framer-motion";
+import { m, Variants } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
 import AnimatedLine from "@/components/ui/AnimatedLine";
 
@@ -38,7 +38,7 @@ export default function WebSeoComboSection() {
             <div className="max-w-7xl mx-auto px-6 space-y-16 md:space-y-24 lg:space-y-28 xl:space-y-32 relative z-10">
 
                 {/* Main Heading */}
-                <motion.div
+                <m.div
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, margin: "-100px" }}
@@ -49,10 +49,10 @@ export default function WebSeoComboSection() {
                         More About My <span className="bg-gradient-to-r from-primary via-yellow-200 to-secondary bg-clip-text text-transparent drop-shadow-sm">Web Development and SEO Combo</span> Services in Malappuram
                     </h2>
                     <AnimatedLine className="max-w-[150px] mx-auto mt-6 md:mt-8" />
-                </motion.div>
+                </m.div>
 
                 {/* BLOCK 1 — WEB DEVELOPMENT */}
-                <motion.div
+                <m.div
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, margin: "-100px" }}
@@ -60,7 +60,7 @@ export default function WebSeoComboSection() {
                     className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-12 lg:gap-16 xl:gap-24 items-center"
                 >
                     {/* Image Left */}
-                    <motion.div variants={fadeUpVariant} className="relative group order-first">
+                    <m.div variants={fadeUpVariant} className="relative group order-first">
                         <div className="absolute -inset-1 bg-gradient-to-tr from-primary/20 to-transparent rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                         <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-dark-100 aspect-[4/3]">
                             <div className="absolute inset-0 bg-gradient-to-t from-dark/80 via-transparent to-transparent z-10 mix-blend-multiply" />
@@ -78,10 +78,10 @@ export default function WebSeoComboSection() {
                         {/* Decorative Elements */}
                         <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-primary/10 rounded-full blur-2xl -z-10" />
                         <div className="absolute -top-6 -right-6 w-32 h-32 bg-secondary/10 rounded-full blur-3xl -z-10" />
-                    </motion.div>
+                    </m.div>
 
                     {/* Content Right */}
-                    <motion.div variants={fadeUpVariant} className="space-y-6 md:space-y-8 relative lg:max-w-xl">
+                    <m.div variants={fadeUpVariant} className="space-y-6 md:space-y-8 relative lg:max-w-xl">
                         {/* Glass Backing for Mobile/Tablet consistency */}
                         <div className="absolute -inset-4 md:-inset-6 bg-white/[0.03] border border-white/5 rounded-3xl blur-xl -z-10 lg:hidden" />
 
@@ -106,11 +106,11 @@ export default function WebSeoComboSection() {
                                 </li>
                             ))}
                         </ul>
-                    </motion.div>
-                </motion.div>
+                    </m.div>
+                </m.div>
 
                 {/* BLOCK 2 — SEO SERVICES */}
-                <motion.div
+                <m.div
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, margin: "-100px" }}
@@ -118,7 +118,7 @@ export default function WebSeoComboSection() {
                     className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-12 lg:gap-16 xl:gap-24 items-center"
                 >
                     {/* Content Left (Desktop) */}
-                    <motion.div variants={fadeUpVariant} className="space-y-6 md:space-y-8 relative order-2 lg:order-1 lg:max-w-xl">
+                    <m.div variants={fadeUpVariant} className="space-y-6 md:space-y-8 relative order-2 lg:order-1 lg:max-w-xl">
                         <div className="absolute -inset-4 md:-inset-6 bg-white/[0.03] border border-white/5 rounded-3xl blur-xl -z-10 lg:hidden" />
                         <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight text-balance">
                             SEO Services by the Best <span className="text-primary">Freelance SEO Specialist</span> in Malappuram
@@ -141,10 +141,10 @@ export default function WebSeoComboSection() {
                                 </li>
                             ))}
                         </ul>
-                    </motion.div>
+                    </m.div>
 
                     {/* Image Right (Desktop) */}
-                    <motion.div variants={fadeUpVariant} className="relative group order-1 lg:order-2">
+                    <m.div variants={fadeUpVariant} className="relative group order-1 lg:order-2">
                         <div className="absolute -inset-1 bg-gradient-to-tl from-primary/20 to-transparent rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                         <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-dark-100 aspect-[4/3]">
                             <div className="absolute inset-0 bg-gradient-to-t from-dark/80 via-transparent to-transparent z-10 mix-blend-multiply" />
@@ -161,11 +161,11 @@ export default function WebSeoComboSection() {
                         </div>
                         <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-primary/10 rounded-full blur-2xl -z-10" />
                         <div className="absolute -top-6 -left-6 w-32 h-32 bg-secondary/10 rounded-full blur-3xl -z-10" />
-                    </motion.div>
-                </motion.div>
+                    </m.div>
+                </m.div>
 
                 {/* BLOCK 3 — WEB + SEO COMBO */}
-                <motion.div
+                <m.div
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, margin: "-100px" }}
@@ -173,7 +173,7 @@ export default function WebSeoComboSection() {
                     className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-12 lg:gap-16 xl:gap-24 items-center"
                 >
                     {/* Image Left */}
-                    <motion.div variants={fadeUpVariant} className="relative group order-first">
+                    <m.div variants={fadeUpVariant} className="relative group order-first">
                         <div className="absolute -inset-1 bg-gradient-to-tr from-primary/20 to-transparent rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                         <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-dark-100 aspect-[4/3]">
                             <div className="absolute inset-0 bg-gradient-to-t from-dark/80 via-transparent to-transparent z-10 mix-blend-multiply" />
@@ -190,10 +190,10 @@ export default function WebSeoComboSection() {
                         </div>
                         <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-primary/10 rounded-full blur-2xl -z-10" />
                         <div className="absolute -top-6 -right-6 w-32 h-32 bg-secondary/10 rounded-full blur-3xl -z-10" />
-                    </motion.div>
+                    </m.div>
 
                     {/* Content Right */}
-                    <motion.div variants={fadeUpVariant} className="space-y-6 md:space-y-8 relative lg:max-w-xl">
+                    <m.div variants={fadeUpVariant} className="space-y-6 md:space-y-8 relative lg:max-w-xl">
                         <div className="absolute -inset-4 md:-inset-6 bg-[#0a0a0a]/50 backdrop-blur-xl border border-white/[0.08] shadow-[0_8px_30px_rgba(0,0,0,0.12)] rounded-3xl -z-10 lg:hidden" />
                         <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight text-balance group/heading cursor-default">
                             Complete <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-yellow-200 transition-all duration-500">Web Development and SEO Combo</span> Solution in Malappuram
@@ -216,8 +216,8 @@ export default function WebSeoComboSection() {
                                 </li>
                             ))}
                         </ul>
-                    </motion.div>
-                </motion.div>
+                    </m.div>
+                </m.div>
 
             </div>
         </section>

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Award } from "lucide-react";
 
 const certificates = [
@@ -39,7 +39,7 @@ export default function Certificate() {
 
                 <div className="max-w-4xl mx-auto space-y-6">
                     {certificates.map((cert, index) => (
-                        <motion.div
+                        <m.div
                             key={index}
                             initial={{ opacity: 0, x: -20 }}
                             whileInView={{ opacity: 1, x: 0 }}
@@ -59,7 +59,7 @@ export default function Certificate() {
                             <div className="text-sm font-bold text-gray-400 bg-white/5 border border-white/10 group-hover:border-primary/30 group-hover:text-primary py-1.5 px-4 rounded-full transition-all duration-300 relative z-10">
                                 {cert.date}
                             </div>
-                        </motion.div>
+                        </m.div>
                     ))}
                 </div>
             </div>

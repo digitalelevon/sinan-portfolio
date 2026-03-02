@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import Link from "next/link";
 import { Mail, ArrowRight, CheckCircle2, Clock, Star, Zap, MessageCircle } from "lucide-react";
 
@@ -40,7 +40,7 @@ export default function HomeContactCTA() {
             <div className="max-w-5xl mx-auto px-5 sm:px-8 relative z-10">
 
                 {/* ── Label ── */}
-                <motion.div {...fadeUp(0)} className="flex items-center justify-center gap-3 mb-5">
+                <m.div {...fadeUp(0)} className="flex items-center justify-center gap-3 mb-5">
                     <span className="block w-10 h-px bg-gradient-to-r from-transparent to-primary/60 rounded-full" />
                     <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20">
                         <Zap className="w-3 h-3 text-primary" />
@@ -49,10 +49,10 @@ export default function HomeContactCTA() {
                         </span>
                     </div>
                     <span className="block w-10 h-px bg-gradient-to-l from-transparent to-primary/60 rounded-full" />
-                </motion.div>
+                </m.div>
 
                 {/* ── Heading ── */}
-                <motion.h2
+                <m.h2
                     {...fadeUp(0.1)}
                     className="text-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.15] tracking-tight"
                 >
@@ -61,20 +61,20 @@ export default function HomeContactCTA() {
                     <br className="hidden sm:block" />
                     <span className="text-white"> Let&apos;s Build It </span>
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary">Together.</span>
-                </motion.h2>
+                </m.h2>
 
                 {/* ── Sub paragraph ── */}
-                <motion.p
+                <m.p
                     {...fadeUp(0.2)}
                     className="text-center text-gray-400 mt-5 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed"
                 >
                     I help businesses in Malappuram and across Kerala grow with modern websites,
                     SEO, and digital marketing. Let&apos;s discuss your project and create
                     something powerful.
-                </motion.p>
+                </m.p>
 
                 {/* ── Stats row ── */}
-                <motion.div
+                <m.div
                     {...fadeUp(0.28)}
                     className="mt-10 grid grid-cols-3 gap-3 sm:gap-5 max-w-xl mx-auto"
                 >
@@ -89,10 +89,10 @@ export default function HomeContactCTA() {
                             <span className="text-gray-500 text-[9px] sm:text-xs text-center leading-tight relative z-10 group-hover:text-gray-300 transition-colors duration-300">{label}</span>
                         </div>
                     ))}
-                </motion.div>
+                </m.div>
 
                 {/* ── CTA Card ── */}
-                <motion.div
+                <m.div
                     {...fadeUp(0.36)}
                     className="mt-8 sm:mt-10 rounded-3xl border border-white/[0.08] bg-white/[0.025] backdrop-blur-xl p-5 sm:p-8 md:p-10 xl:p-12 shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_20px_60px_rgba(0,0,0,0.3)] relative overflow-hidden"
                 >
@@ -133,14 +133,14 @@ export default function HomeContactCTA() {
                         <span className="inline-block w-2 h-2 rounded-full bg-green-400 animate-pulse shadow-[0_0_6px_rgba(74,222,128,0.5)]" />
                         Usually responds within 2 hours &mdash; No spam, just results.
                     </div>
-                </motion.div>
+                </m.div>
 
                 {/* ── Bottom decorative line ── */}
-                <motion.div {...fadeUp(0.44)} className="mt-12 flex items-center justify-center gap-3 opacity-30">
+                <m.div {...fadeUp(0.44)} className="mt-12 flex items-center justify-center gap-3 opacity-30">
                     <span className="block h-px w-16 bg-gradient-to-r from-transparent to-primary rounded-full" />
                     <span className="text-primary text-xs tracking-widest uppercase">Malappuram · Kerala · India</span>
                     <span className="block h-px w-16 bg-gradient-to-l from-transparent to-primary rounded-full" />
-                </motion.div>
+                </m.div>
 
             </div>
 

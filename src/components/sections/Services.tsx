@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, Variants } from "framer-motion";
+import { m, Variants } from "framer-motion";
 import { Globe, Search, Share2, Target, Cpu, Zap, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import AnimatedLine from "@/components/ui/AnimatedLine";
@@ -72,7 +72,7 @@ const services = [
 
 function ServiceCard({ service }: { service: typeof services[0] }) {
     return (
-        <motion.div
+        <m.div
             variants={fadeUpVariant}
             whileHover={{ y: -8, scale: 1.02 }}
             className="group relative p-6 md:p-8 xl:p-10 rounded-3xl xl:rounded-[2.5rem] bg-[#0a0a0a]/60 backdrop-blur-xl border border-white/[0.08] hover:border-primary/40 transition-all duration-500 flex flex-col h-full overflow-hidden shadow-[0_4px_30px_rgba(0,0,0,0.1)] hover:shadow-[0_8px_40px_rgba(255,215,0,0.12)]"
@@ -120,7 +120,7 @@ function ServiceCard({ service }: { service: typeof services[0] }) {
 
             {/* Animated Border Bottom */}
             <div className="absolute bottom-0 left-0 h-1 w-full scale-x-0 origin-left bg-gradient-to-r from-primary via-yellow-200 to-accent group-hover:scale-x-100 transition-transform duration-700 ease-out z-10" />
-        </motion.div>
+        </m.div>
     );
 }
 
@@ -142,7 +142,7 @@ export default function Services() {
             <div className="max-w-7xl mx-auto px-6 relative z-10">
                 {/* Section Header */}
                 <div className="text-center max-w-4xl mx-auto mb-16 md:mb-20 lg:mb-24">
-                    <motion.div
+                    <m.div
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true }}
@@ -158,11 +158,11 @@ export default function Services() {
                         <p className="text-gray-400 text-base md:text-lg lg:text-xl md:leading-relaxed max-w-3xl mx-auto text-balance font-light">
                             I&apos;m Sinan MC, recognized as the best Freelance Web Developer & SEO Specialist in Malappuram, Kerala. I use cutting-edge websites and tried-and-true SEO techniques to help businesses rank higher on Google, produce quality leads, and expand more quickly.
                         </p>
-                    </motion.div>
+                    </m.div>
                 </div>
 
                 {/* Services Grid */}
-                <motion.div
+                <m.div
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
@@ -172,10 +172,10 @@ export default function Services() {
                     {services.map((service, index) => (
                         <ServiceCard key={index} service={service} />
                     ))}
-                </motion.div>
+                </m.div>
 
                 {/* CTA Button */}
-                <motion.div
+                <m.div
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
@@ -190,7 +190,7 @@ export default function Services() {
                         <ArrowRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1.5 transition-transform duration-500 relative z-10" />
                         <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 pointer-events-none" />
                     </Link>
-                </motion.div>
+                </m.div>
             </div>
         </section>
     );

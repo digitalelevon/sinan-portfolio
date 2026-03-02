@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { CheckCircle2, ArrowRight } from "lucide-react";
@@ -29,7 +29,7 @@ export default function About() {
             <div className="container mx-auto px-5 sm:px-6 lg:px-8">
                 <div className="grid lg:grid-cols-2 gap-10 md:gap-14 lg:gap-20 items-center">
                     {/* Left Content */}
-                    <motion.div
+                    <m.div
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
@@ -89,7 +89,7 @@ export default function About() {
                         {/* Highlights */}
                         <ul className="grid sm:grid-cols-2 gap-3 mb-10">
                             {highlights.map((item, index) => (
-                                <motion.li
+                                <m.li
                                     key={index}
                                     initial={{ opacity: 0, x: -12 }}
                                     whileInView={{ opacity: 1, x: 0 }}
@@ -99,7 +99,7 @@ export default function About() {
                                 >
                                     <CheckCircle2 className="text-primary h-5 w-5 flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
                                     <span className="text-gray-300 text-sm font-medium group-hover:text-white transition-colors">{item}</span>
-                                </motion.li>
+                                </m.li>
                             ))}
                         </ul>
 
@@ -111,10 +111,10 @@ export default function About() {
                                 </Button>
                             </Link>
                         </div>
-                    </motion.div>
+                    </m.div>
 
                     {/* Right Content - Image */}
-                    <motion.div
+                    <m.div
                         initial={{ opacity: 0, scale: 0.93, y: 30 }}
                         whileInView={{ opacity: 1, scale: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -159,7 +159,7 @@ export default function About() {
                                 </div>
                             </div>
                         </div>
-                    </motion.div>
+                    </m.div>
                 </div>
             </div>
         </section>
