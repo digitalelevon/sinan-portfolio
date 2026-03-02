@@ -1,6 +1,6 @@
 "use client";
 
-import { m, LazyMotion, domAnimation } from "framer-motion";
+import { LazyMotion, domAnimation } from "framer-motion";
 import Image from "next/image";
 import { Building2, Users, Trophy, TrendingUp } from "lucide-react";
 

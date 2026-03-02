@@ -12,10 +12,13 @@ const jsonLd = {
     "description": "Best freelance web developer & SEO specialist in Malappuram, Kerala, helping businesses grow with modern websites, SEO, and AI automation solutions.",
     "telephone": "+917510477475",
     "email": "sinanmc46@gmail.com",
+    "priceRange": "₹₹",
     "address": {
         "@type": "PostalAddress",
+        "streetAddress": "Tirur",
         "addressLocality": "Malappuram",
         "addressRegion": "Kerala",
+        "postalCode": "676101",
         "addressCountry": "IN"
     },
     "url": "https://sinanmcmalappuram.in",

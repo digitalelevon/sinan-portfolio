@@ -27,8 +27,10 @@ export default function Schema() {
         description: "Providing the best freelance web development and SEO services in Malappuram, Kerala.",
         address: {
             "@type": "PostalAddress",
+            streetAddress: "Tirur",
             addressLocality: "Malappuram",
             addressRegion: "Kerala",
+            postalCode: "676101",
             addressCountry: "IN"
         },
         areaServed: {

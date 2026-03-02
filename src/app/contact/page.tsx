@@ -38,10 +38,13 @@ export default function ContactPage() {
         url: 'https://sinanmcmalappuram.in/contact',
         telephone: '+917510477475',
         image: 'https://sinanmcmalappuram.in/freelance-web-developer-SEO-specialist-Malappuram.webp',
+        priceRange: '₹₹',
         address: {
             '@type': 'PostalAddress',
+            streetAddress: 'Tirur',
             addressLocality: 'Malappuram',
             addressRegion: 'Kerala',
+            postalCode: '676101',
             addressCountry: 'IN',
         },
         sameAs: [

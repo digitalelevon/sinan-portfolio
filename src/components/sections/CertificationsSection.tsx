@@ -278,7 +278,8 @@ const CertificationsSection: React.FC = () => {
                                 "position": index + 1,
                                 "name": cert.title,
                                 "description": `Certificate from ${cert.provider}`,
-                                "image": cert.image
+                                "image": cert.image,
+                                "url": "https://sinanmcmalappuram.in/#certifications"
                             }))
                         })
                     }}

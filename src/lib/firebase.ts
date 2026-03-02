@@ -16,7 +16,7 @@ const db = getFirestore(app);
 let auth: Auth;
 try {
     auth = getAuth(app);
-} catch (error) {
+} catch (_error) {
     console.warn("Firebase auth initialization error, usually missing API key during build process.");
     auth = null as unknown as Auth;
 }
