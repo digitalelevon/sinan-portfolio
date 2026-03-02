@@ -24,12 +24,12 @@ export default function Brands() {
     return (
         <LazyMotion features={domAnimation}>
             <section
-                className="border-y border-white/[0.05] bg-gradient-to-b from-[#0A0A0A] to-[#141414] py-[60px] md:py-[100px] relative overflow-hidden"
+                className="border-y border-white/[0.05] bg-gradient-to-b from-[#0A0A0A] to-[#141414] py-12 md:py-[100px] relative overflow-hidden"
                 aria-label="Trusted by Brands and Businesses in Malappuram"
             >
                 <div className="container mx-auto px-5 sm:px-6 lg:px-8 max-w-7xl">
                     {/* Header */}
-                    <div className="text-center max-w-3xl mx-auto mb-16">
+                    <div className="text-center max-w-3xl mx-auto mb-10 md:mb-16">
                         <p className="text-sm md:text-base font-medium tracking-[0.2em] text-white/50 uppercase mb-4">
                             Trusted by industry leaders
                         </p>
@@ -42,13 +42,13 @@ export default function Brands() {
                     </div>
 
                     {/* Brands Container */}
-                    <div className="mb-20 overflow-hidden relative group w-full">
+                    <div className="mb-12 md:mb-20 overflow-hidden relative group w-full">
                         <div className="pointer-events-none absolute inset-y-0 left-0 w-16 md:w-32 bg-gradient-to-r from-[#0A0A0A] to-transparent z-10" />
                         <div className="pointer-events-none absolute inset-y-0 right-0 w-16 md:w-32 bg-gradient-to-l from-[#141414] to-transparent z-10" />
 
                         <div className="flex w-max animate-marquee hover:[animation-play-state:paused] items-center">
                             {[...Array(2)].map((_, setIndex) => (
-                                <div key={setIndex} className="flex gap-12 md:gap-24 px-6 md:px-12 items-center flex-nowrap">
+                                <div key={setIndex} className="flex gap-8 md:gap-24 px-6 md:px-12 items-center flex-nowrap">
                                     {[...brands, ...brands].map((brand, idx) => (
                                         <div key={`brand-${setIndex}-${idx}`} className="flex items-center justify-center shrink-0">
                                             <Image
@@ -67,11 +67,11 @@ export default function Brands() {
                     </div>
 
                     {/* Stats Row */}
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5 mt-16 lg:mt-24 border-t border-white/[0.05] pt-12 md:pt-16">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5 mt-12 md:mt-16 lg:mt-24 border-t border-white/[0.05] pt-8 md:pt-12 lg:pt-16">
                         {stats.map((stat) => (
                             <div
                                 key={stat.label}
-                                className="relative bg-[#0a0a0a]/50 backdrop-blur-xl p-5 sm:p-7 rounded-2xl border border-white/[0.06] hover:border-primary/40 transition-all duration-500 group text-center overflow-hidden cursor-default shadow-[0_8px_30px_rgba(0,0,0,0.12)] hover:shadow-[0_15px_40px_rgba(255,215,0,0.12)] hover:-translate-y-2 hover:scale-105"
+                                className="relative bg-[#0a0a0a]/50 backdrop-blur-xl p-4 sm:p-6 md:p-7 rounded-2xl border border-white/[0.06] hover:border-primary/40 transition-all duration-500 group text-center overflow-hidden cursor-default shadow-[0_8px_30px_rgba(0,0,0,0.12)] hover:shadow-[0_15px_40px_rgba(255,215,0,0.12)] hover:-translate-y-2 hover:scale-105"
                             >
                                 <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-2xl z-0" />
                                 <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-1 w-0 bg-gradient-to-r from-transparent via-primary to-transparent group-hover:w-3/4 transition-all duration-700 ease-out z-10" />
