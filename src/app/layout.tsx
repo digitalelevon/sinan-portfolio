@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import GlobalProviders from "@/components/layout/GlobalProviders";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({
     subsets: ["latin"],
@@ -142,6 +143,7 @@ export default function RootLayout({
                 className={`${inter.className} antialiased bg-black text-white`}
             >
                 <GlobalProviders>{children}</GlobalProviders>
+                <SpeedInsights />
             </body>
         </html>
     );
