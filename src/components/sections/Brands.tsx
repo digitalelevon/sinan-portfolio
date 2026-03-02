@@ -48,16 +48,16 @@ export default function Brands() {
 
                         <div className="flex w-max animate-marquee hover:[animation-play-state:paused] items-center">
                             {[...Array(2)].map((_, setIndex) => (
-                                <div key={setIndex} className="flex gap-8 md:gap-24 px-6 md:px-12 items-center flex-nowrap">
+                                <div key={setIndex} className="flex gap-6 md:gap-24 px-3 md:px-12 items-center flex-nowrap">
                                     {[...brands, ...brands].map((brand, idx) => (
-                                        <div key={`brand-${setIndex}-${idx}`} className="flex items-center justify-center shrink-0">
+                                        <div key={`brand-${setIndex}-${idx}`} className="flex items-center justify-center shrink-0 w-20 md:w-32 xl:w-40 h-10 md:h-16 xl:h-20 relative">
                                             <Image
                                                 src={brand.src}
                                                 alt={brand.name}
-                                                width={160}
-                                                height={70}
-                                                className="w-24 md:w-32 xl:w-40 object-contain opacity-40 hover:opacity-100 hover:scale-110 transition-all duration-500 brightness-0 invert cursor-pointer"
+                                                fill
+                                                className="object-contain opacity-40 hover:opacity-100 hover:scale-110 transition-all duration-500 brightness-0 invert cursor-pointer"
                                                 priority={setIndex === 0 && idx < 6}
+                                                sizes="(max-width: 768px) 80px, (max-width: 1280px) 128px, 160px"
                                             />
                                         </div>
                                     ))}
