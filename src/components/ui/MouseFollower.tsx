@@ -96,11 +96,6 @@ export default function MouseFollower() {
                 if (ringRef.current) {
                     ringRef.current.style.borderColor = hovering ? "rgba(255, 255, 255, 0.8)" : "rgba(255, 255, 255, 0.3)";
                     ringRef.current.style.backgroundColor = hovering ? "rgba(255, 255, 255, 0.05)" : "transparent";
-                    if (hovering) {
-                        ringRef.current.classList.add("mix-blend-difference");
-                    } else {
-                        ringRef.current.classList.remove("mix-blend-difference");
-                    }
                 }
                 if (glowRef.current) {
                     glowRef.current.style.opacity = hovering ? "0.6" : "0.3";
@@ -133,19 +128,19 @@ export default function MouseFollower() {
             {/* Soft Ambient Glow */}
             <div
                 ref={glowRef}
-                className="absolute left-0 top-0 h-[250px] w-[250px] rounded-full bg-white/10 blur-[80px] transition-opacity duration-300 will-change-transform"
+                className="absolute left-0 top-0 h-[250px] w-[250px] rounded-full bg-white/10 blur-[80px] will-change-transform"
                 style={{ transform: "translate(-50%, -50%)" }}
             />
             {/* Outer Ring */}
             <div
                 ref={ringRef}
-                className="absolute left-0 top-0 h-10 w-10 rounded-full border border-white/30 backdrop-blur-[2px] transition-colors duration-300 will-change-transform"
+                className="absolute left-0 top-0 h-10 w-10 rounded-full border border-white/30 backdrop-blur-[2px] will-change-transform"
                 style={{ transform: "translate(-50%, -50%)" }}
             />
             {/* Inner Dot - Hidden during hover */}
             <div
                 ref={dotRef}
-                className="absolute left-0 top-0 h-2 w-2 rounded-full bg-white transition-opacity duration-300 will-change-transform"
+                className="absolute left-0 top-0 h-2 w-2 rounded-full bg-white will-change-transform"
                 style={{
                     transform: "translate(-50%, -50%)",
                     boxShadow: "0 0 10px 2px rgba(255, 255, 255, 0.4)",

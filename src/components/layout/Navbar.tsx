@@ -4,10 +4,10 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
-    motion,
+    m,
+    LazyMotion,
+    domAnimation,
     AnimatePresence,
-    useScroll,
-    useMotionValueEvent,
 } from "framer-motion";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import clsx from "clsx";
@@ -35,31 +35,33 @@ export default function Navbar() {
     const pathname = usePathname();
     const [mounted, setMounted] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
-    const [hidden, setHidden] = useState(false);
-    const { scrollY } = useScroll();
-
-    // Defer all client-only logic until after hydration
+    // Scroll Logic: Vanilla JS to prevent React state updates on scroll (INP fix)
     useEffect(() => {
-        // eslint-disable-next-line react-hooks/set-state-in-effect
-        setMounted(true);
-    }, []);
+        if (!mounted) return;
+        let lastScrollY = window.scrollY;
+        const header = document.getElementById("main-header");
 
-    // Scroll Logic: Hide on scroll down, Show on scroll up
-    useMotionValueEvent(scrollY, "change", (latest) => {
-        if (isOpen) return;
-        const previous = scrollY.getPrevious() ?? 0;
-        if (latest > previous && latest > 150) {
-            setHidden(true);
-        } else {
-            setHidden(false);
-        }
-    });
+        const handleScroll = () => {
+            if (isOpen) return;
+            const currentScrollY = window.scrollY;
+            if (currentScrollY > lastScrollY && currentScrollY > 150) {
+                header?.classList.add("-translate-y-full");
+            } else {
+                header?.classList.remove("-translate-y-full");
+            }
+            lastScrollY = currentScrollY;
+        };
+
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, [mounted, isOpen]);
 
     // Body Lock for Mobile Menu
     useEffect(() => {
         if (!mounted) return;
         if (isOpen) {
             document.body.style.overflow = "hidden";
+            document.getElementById("main-header")?.classList.remove("-translate-y-full");
         } else {
             document.body.style.overflow = "unset";
         }
@@ -72,12 +74,12 @@ export default function Navbar() {
     }, [pathname]);
 
     return (
-        <>
+        <LazyMotion features={domAnimation}>
             <header
+                id="main-header"
                 className={clsx(
                     "fixed left-0 right-0 top-0 flex justify-center pt-4 px-4 pointer-events-none transition-transform duration-500",
-                    isOpen ? "z-[100]" : "z-50",
-                    hidden && !isOpen ? "-translate-y-full" : "translate-y-0"
+                    isOpen ? "z-[100] translate-y-0" : "z-50 translate-y-0"
                 )}
             >
                 <nav
@@ -124,7 +126,7 @@ export default function Navbar() {
                                         )}
                                     >
                                         {isActive && mounted && (
-                                            <motion.div
+                                            <m.div
                                                 layoutId="nav-pill"
                                                 className="absolute inset-0 -z-10 bg-gradient-to-r from-[#FFD700] to-[#FDB931] rounded-full shadow-[0_0_20px_rgba(255,215,0,0.4)]"
                                                 transition={{
@@ -196,7 +198,7 @@ export default function Navbar() {
             {mounted && (
                 <AnimatePresence>
                     {isOpen && (
-                        <motion.div
+                        <m.div
                             key="mobile-menu"
                             initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
                             animate={{ opacity: 1, backdropFilter: "blur(24px)" }}
@@ -205,7 +207,7 @@ export default function Navbar() {
                             className="fixed inset-0 z-[90] pointer-events-auto bg-gradient-to-b from-black/95 to-[#0a0a0a]/98 md:hidden overflow-hidden"
                         >
                             {/* Animated Background Orb */}
-                            <motion.div
+                            <m.div
                                 initial={{ scale: 0.8, opacity: 0 }}
                                 animate={{ scale: 1, opacity: 0.3 }}
                                 transition={{ duration: 1 }}
@@ -224,7 +226,7 @@ export default function Navbar() {
                                                 pathname.startsWith(link.href));
 
                                         return (
-                                            <motion.div
+                                            <m.div
                                                 key={link.href}
                                                 initial={{ x: -40, opacity: 0 }}
                                                 animate={{ x: 0, opacity: 1 }}
@@ -256,18 +258,18 @@ export default function Navbar() {
                                                         )}
                                                     </span>
                                                     {isActive && (
-                                                        <motion.span
+                                                        <m.span
                                                             layoutId="mobile-dot"
                                                             className="inline-block ml-4 w-3 h-3 bg-[#FFD700] rounded-full shadow-[0_0_10px_rgba(255,215,0,0.8)]"
                                                         />
                                                     )}
                                                 </Link>
-                                            </motion.div>
+                                            </m.div>
                                         );
                                     })}
                                 </nav>
 
-                                <motion.div
+                                <m.div
                                     className="mt-12 mb-10"
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
@@ -287,12 +289,12 @@ export default function Navbar() {
                                     <p className="mt-2 ml-4 text-white/40 text-lg">
                                         Let&apos;s build something extraordinary together.
                                     </p>
-                                </motion.div>
+                                </m.div>
                             </div>
-                        </motion.div>
+                        </m.div>
                     )}
                 </AnimatePresence>
             )}
-        </>
+        </LazyMotion>
     );
 }

@@ -13,7 +13,7 @@ export default function Hero3DClient() {
     useEffect(() => {
         // Only load the heavy 3D canvas on Desktop, and delay it slightly
         if (window.innerWidth >= 1024) {
-            const timer = setTimeout(() => setShouldLoad(true), 2500);
+            const timer = setTimeout(() => setShouldLoad(true), 4000);
             return () => clearTimeout(timer);
         }
     }, []);

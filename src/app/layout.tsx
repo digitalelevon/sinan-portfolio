@@ -132,12 +132,6 @@ export default function RootLayout({
             className={`dark scroll-smooth ${inter.variable}`}
         >
             <head>
-                <link
-                    rel="preload"
-                    href="/freelance-web-developer-SEO-specialist-Malappuram.webp"
-                    as="image"
-                    fetchPriority="high"
-                />
             </head>
             <body
                 className={`${inter.className} antialiased bg-black text-white`}

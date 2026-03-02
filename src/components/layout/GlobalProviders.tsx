@@ -21,7 +21,7 @@ export default function GlobalProviders({ children }: { children: React.ReactNod
     const [loadChatbot, setLoadChatbot] = useState(false);
 
     useEffect(() => {
-        const timer = setTimeout(() => setLoadChatbot(true), 3500);
+        const timer = setTimeout(() => setLoadChatbot(true), 5000);
         return () => clearTimeout(timer);
     }, []);
 
