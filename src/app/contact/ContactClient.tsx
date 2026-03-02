@@ -113,7 +113,7 @@ export default function ContactClient() {
                 <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] rounded-full bg-[#FFD700]/5 blur-[150px] mix-blend-screen" />
             </div>
 
-            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-28">
+            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-16 sm:pt-32 sm:pb-20 lg:pt-40 lg:pb-28">
                 {/* SECTION 1 - HERO & INFO */}
                 <div className="text-center max-w-3xl mx-auto mb-20">
                     <motion.div
