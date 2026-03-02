@@ -67,7 +67,9 @@ export default function WebSeoComboSection() {
                             <Image
                                 src="/web-development-seo-malappuram.webp"
                                 alt="Best Freelance Web Developer & SEO Specialist in Malappuram, Kerala"
-                                fill
+                                width={800}
+                                height={600}
+                                style={{ width: "100%", height: "100%" }}
                                 className="object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
                                 sizes="(max-width: 1024px) 100vw, 50vw"
                                 loading="lazy"
@@ -149,7 +151,9 @@ export default function WebSeoComboSection() {
                             <Image
                                 src="/seo-specialist-malappuram.webp"
                                 alt="Best Freelance Web Developer and SEO Specialist in Malappuram, Kerala"
-                                fill
+                                width={800}
+                                height={600}
+                                style={{ width: "100%", height: "100%" }}
                                 className="object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
                                 sizes="(max-width: 1024px) 100vw, 50vw"
                                 loading="lazy"
@@ -176,7 +180,9 @@ export default function WebSeoComboSection() {
                             <Image
                                 src="/web-seo-combo-malappuram.webp"
                                 alt="Best Freelance Web Developer and SEO Specialist in Malappuram"
-                                fill
+                                width={800}
+                                height={600}
+                                style={{ width: "100%", height: "100%" }}
                                 className="object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
                                 sizes="(max-width: 1024px) 100vw, 50vw"
                                 loading="lazy"

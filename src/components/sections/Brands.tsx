@@ -74,7 +74,7 @@ export default function Brands() {
                                 className="relative bg-[#0a0a0a]/50 backdrop-blur-xl p-4 sm:p-6 md:p-7 rounded-2xl border border-white/[0.06] hover:border-primary/40 transition-all duration-500 group text-center overflow-hidden cursor-default shadow-[0_8px_30px_rgba(0,0,0,0.12)] hover:shadow-[0_15px_40px_rgba(255,215,0,0.12)] hover:-translate-y-2 hover:scale-105"
                             >
                                 <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-2xl z-0" />
-                                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-1 w-0 bg-gradient-to-r from-transparent via-primary to-transparent group-hover:w-3/4 transition-all duration-700 ease-out z-10" />
+                                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-1 w-3/4 scale-x-0 bg-gradient-to-r from-transparent via-primary to-transparent group-hover:scale-x-100 transition-transform duration-700 ease-out z-10" />
 
                                 <div className="inline-flex p-3 sm:p-4 rounded-xl bg-primary/5 border border-primary/20 text-primary mb-4 sm:mb-5 group-hover:scale-110 group-hover:bg-primary/20 group-hover:border-primary/40 transition-all duration-500 relative z-10 group-hover:drop-shadow-[0_0_15px_rgba(255,215,0,0.6)]">
                                     <stat.icon size={24} className="group-hover:-rotate-6 transition-transform duration-500" />

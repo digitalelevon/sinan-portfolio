@@ -1,33 +1,33 @@
-import dynamic from "next/dynamic";
+import dynamicImport from "next/dynamic";
 import Script from "next/script";
 import { faqs } from "@/data/faqData";
 
 import Hero from "@/components/sections/Hero";
 
-const About = dynamic(() => import("@/components/sections/About"));
-const Brands = dynamic(() => import("@/components/sections/BrandsClient"));
+const About = dynamicImport(() => import("@/components/sections/About"));
+const Brands = dynamicImport(() => import("@/components/sections/BrandsClient"));
 
-const Services = dynamic(() => import("@/components/sections/Services"));
+const Services = dynamicImport(() => import("@/components/sections/Services"));
 
-const CertificationsSection = dynamic(
+const CertificationsSection = dynamicImport(
     () => import("@/components/sections/CertificationsSection")
 );
 
-const WhyChooseSection = dynamic(
+const WhyChooseSection = dynamicImport(
     () => import("@/components/sections/WhyChooseSection")
 );
 
-const WebSeoComboSection = dynamic(
+const WebSeoComboSection = dynamicImport(
     () => import("@/components/sections/WebSeoComboSection")
 );
 
-const TestimonialsSection = dynamic(
+const TestimonialsSection = dynamicImport(
     () => import("@/components/sections/TestimonialsSection")
 );
 
-const FAQ = dynamic(() => import("@/components/sections/FAQ"));
+const FAQ = dynamicImport(() => import("@/components/sections/FAQ"));
 
-const HomeContactCTA = dynamic(
+const HomeContactCTA = dynamicImport(
     () => import("@/components/sections/HomeContactCTA")
 );
 
@@ -50,6 +50,8 @@ const faqSchema = {
         },
     })),
 };
+
+export const dynamic = "force-static";
 
 export default function Home() {
     return (

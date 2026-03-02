@@ -157,7 +157,7 @@ export default function PortfolioClient() {
                                         {project.title}
                                     </h3>
 
-                                    <div className="w-12 h-1 bg-gradient-to-r from-primary to-transparent mb-4 rounded-full transition-all duration-300 group-hover:w-full opacity-50 group-hover:opacity-100" />
+                                    <div className="w-full h-1 scale-x-[0.15] origin-left bg-gradient-to-r from-primary to-transparent mb-4 rounded-full transition-[transform,opacity] duration-300 group-hover:scale-x-100 opacity-50 group-hover:opacity-100" />
 
                                     <p className="text-gray-400 text-sm mb-8 line-clamp-3 leading-relaxed flex-grow">
                                         {project.shortDescription}

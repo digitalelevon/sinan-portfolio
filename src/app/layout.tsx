@@ -141,6 +141,14 @@ export default function RootLayout({
             <body
                 className={`${inter.className} antialiased bg-black text-white`}
             >
+                <head>
+                    <link
+                        rel="preload"
+                        href="/freelance-web-developer-SEO-specialist-Malappuram.webp"
+                        as="image"
+                        fetchPriority="high"
+                    />
+                </head>
                 <GlobalProviders>{children}</GlobalProviders>
             </body>
         </html>

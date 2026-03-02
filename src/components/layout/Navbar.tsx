@@ -96,7 +96,7 @@ export default function Navbar() {
                         <span className="text-2xl font-black italic text-primary leading-none transition-all duration-300">
                             MC
                         </span>
-                        <span className="absolute -bottom-0.5 left-0 h-[2px] w-0 bg-gradient-to-r from-primary to-yellow-200 group-hover:w-full transition-all duration-500 ease-out z-10" />
+                        <span className="absolute -bottom-0.5 left-0 h-[2px] w-full scale-x-0 origin-left bg-gradient-to-r from-primary to-yellow-200 group-hover:scale-x-100 transition-transform duration-500 ease-out z-10" />
                     </Link>
 
                     {/* DESKTOP NAVIGATION */}

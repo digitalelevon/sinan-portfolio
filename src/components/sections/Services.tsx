@@ -119,7 +119,7 @@ function ServiceCard({ service }: { service: typeof services[0] }) {
             <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] to-transparent pointer-events-none z-0" />
 
             {/* Animated Border Bottom */}
-            <div className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-primary via-yellow-200 to-accent group-hover:w-full transition-all duration-700 ease-out z-10" />
+            <div className="absolute bottom-0 left-0 h-1 w-full scale-x-0 origin-left bg-gradient-to-r from-primary via-yellow-200 to-accent group-hover:scale-x-100 transition-transform duration-700 ease-out z-10" />
         </motion.div>
     );
 }

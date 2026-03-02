@@ -11,7 +11,8 @@ const MouseFollower = dynamic(() => import("@/components/ui/MouseFollower"), {
 });
 
 const Chatbot = dynamic(() => import("@/components/Chatbot"), {
-    ssr: false, // Optional: disables server-side rendering for the chatbot to save initial load time
+    ssr: false,
+    loading: () => null,
 });
 
 export default function GlobalProviders({ children }: { children: React.ReactNode }) {

@@ -137,7 +137,9 @@ export default function About() {
                                 <Image
                                     src="/freelance-web-developer-SEO-specialist-Malappuram.webp"
                                     alt="Sinan MC working on web development and SEO projects in Malappuram, Kerala"
-                                    fill
+                                    width={400}
+                                    height={500}
+                                    style={{ width: "100%", height: "100%" }}
                                     className="object-cover object-top transition-all duration-1000 group-hover:scale-110 group-hover:-rotate-1 will-change-transform z-0"
                                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 40vw"
                                     loading="lazy"

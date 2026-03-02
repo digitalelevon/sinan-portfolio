@@ -274,7 +274,9 @@ export default function AboutPageClient() {
                                     <Image
                                         src="/freelance-web-developer-SEO-specialist-Malappuram.webp"
                                         alt="Sinan MC — digital marketing professional and web developer from Malappuram, Kerala"
-                                        fill
+                                        width={420}
+                                        height={525}
+                                        style={{ width: "100%", height: "100%" }}
                                         priority
                                         sizes="(max-width: 768px) 100vw, 420px"
                                         className="object-cover object-top transition-all duration-1000 group-hover:scale-110"

@@ -113,7 +113,9 @@ const WhyChooseSection = () => {
                             <Image
                                 src="/SEO-Specialist-Malappuram-Kerala.webp"
                                 alt="Best Freelance Web Developer & SEO Specialist in Malappuram, Kerala"
-                                fill
+                                width={800}
+                                height={800}
+                                style={{ width: "100%", height: "100%" }}
                                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 70vw, 50vw"
                                 className="object-cover object-top group-hover:scale-[1.04] transition-transform duration-700 ease-out"
                                 loading="lazy"
@@ -151,7 +153,7 @@ const WhyChooseSection = () => {
                             {/* Hover glow background */}
                             <div className="absolute inset-0 bg-gradient-to-br from-primary/15 via-transparent to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 rounded-2xl z-0" />
                             {/* Bottom glow line */}
-                            <div className="absolute bottom-0 left-0 right-0 h-1 w-0 bg-gradient-to-r from-primary via-yellow-200 to-accent group-hover/card:w-full transition-all duration-700 ease-out z-10" />
+                            <div className="absolute bottom-0 left-0 right-0 h-1 w-full scale-x-0 origin-left bg-gradient-to-r from-primary via-yellow-200 to-accent group-hover/card:scale-x-100 transition-transform duration-700 ease-out z-10" />
 
                             {/* Corner dot */}
                             <div className="absolute top-4 right-4 w-2 h-2 rounded-full bg-primary/20 group-hover/card:bg-primary group-hover/card:shadow-[0_0_12px_rgba(255,215,0,0.8)] transition-all duration-500 z-10" />

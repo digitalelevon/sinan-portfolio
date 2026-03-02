@@ -124,10 +124,12 @@ export default function Hero() {
                             <Image
                                 src="/freelance-web-developer-SEO-specialist-Malappuram.webp"
                                 alt="Sinan MC Malappuram Freelance Web Developer"
-                                fill
+                                width={480}
+                                height={600}
                                 priority
                                 fetchPriority="high"
                                 sizes="(max-width: 640px) 300px, (max-width: 1024px) 420px, 480px"
+                                style={{ width: "100%", height: "auto" }}
                                 className="object-contain object-bottom drop-shadow-[0_30px_80px_rgba(0,0,0,0.7)]"
                             />
 
