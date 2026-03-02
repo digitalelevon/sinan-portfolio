@@ -36,9 +36,7 @@ export const metadata: Metadata = {
     ],
 
     category: "technology",
-
     creator: "Sinan MC",
-
     publisher: "Sinan MC",
 
     authors: [
@@ -50,6 +48,36 @@ export const metadata: Metadata = {
 
     alternates: {
         canonical: "/",
+    },
+
+    manifest: "/site.webmanifest",
+
+    icons: {
+        icon: [
+            {
+                url: "/favicon.ico",
+                sizes: "48x48",
+                type: "image/x-icon",
+            },
+            {
+                url: "/android-chrome-192x192.png",
+                sizes: "192x192",
+                type: "image/png",
+            },
+            {
+                url: "/android-chrome-512x512.png",
+                sizes: "512x512",
+                type: "image/png",
+            },
+        ],
+
+        shortcut: "/favicon.ico",
+
+        apple: {
+            url: "/apple-touch-icon.png",
+            sizes: "180x180",
+            type: "image/png",
+        },
     },
 
     robots: {
@@ -69,12 +97,9 @@ export const metadata: Metadata = {
         url: "/",
         title:
             "Best Freelance Web Developer & SEO Specialist in Malappuram",
-
         description:
             "Professional Web Development and SEO services in Malappuram, Kerala.",
-
         siteName: "Sinan MC",
-
         locale: "en_IN",
 
         images: [
