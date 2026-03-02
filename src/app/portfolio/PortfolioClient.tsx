@@ -205,15 +205,15 @@ export default function PortfolioClient() {
             {/* CTA Section */}
             <section className="mt-16 sm:mt-20 py-16 sm:py-24 px-4 sm:px-6 w-full relative z-10 bg-noise bg-dark-100 flex justify-center">
                 <div className="absolute inset-0 bg-gradient-to-b from-dark to-dark-100 -z-10" />
-                <div className="max-w-4xl w-full text-center glass-card p-8 sm:p-12 md:p-16 rounded-[2rem] sm:rounded-[3rem] relative overflow-hidden border border-primary/20 shadow-[0_0_50px_rgba(0,0,0,0.5)]">
+                <div className="max-w-4xl w-full text-center glass-card p-6 sm:p-12 md:p-16 rounded-[2rem] sm:rounded-[3rem] relative overflow-hidden border border-primary/20 shadow-[0_0_50px_rgba(0,0,0,0.5)] group">
                     {/* Decorative Blobs */}
-                    <div className="absolute top-0 right-0 w-64 sm:w-80 h-64 sm:h-80 bg-primary/10 rounded-full blur-3xl -mr-32 sm:-mr-40 -mt-32 sm:-mt-40 animate-pulse-slow pointer-events-none" />
-                    <div className="absolute bottom-0 left-0 w-64 sm:w-80 h-64 sm:h-80 bg-accent/10 rounded-full blur-3xl -ml-32 sm:-ml-40 -mb-32 sm:-mb-40 animate-pulse-slow pointer-events-none" />
+                    <div className="absolute top-0 right-0 w-64 sm:w-80 h-64 sm:h-80 bg-primary/10 rounded-full blur-3xl -mr-32 sm:-mr-40 -mt-32 sm:-mt-40 animate-pulse-slow pointer-events-none transition-opacity duration-700 group-hover:opacity-100 opacity-60" />
+                    <div className="absolute bottom-0 left-0 w-64 sm:w-80 h-64 sm:h-80 bg-accent/10 rounded-full blur-3xl -ml-32 sm:-ml-40 -mb-32 sm:-mb-40 animate-pulse-slow pointer-events-none transition-opacity duration-700 group-hover:opacity-100 opacity-60" />
 
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6 relative z-10 leading-tight">
+                    <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6 relative z-10 leading-tight">
                         Ready to Build <br className="hidden sm:block" /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Something Extraordinary?</span>
                     </h2>
-                    <p className="text-gray-400 text-lg mb-10 max-w-2xl mx-auto relative z-10">
+                    <p className="text-gray-400 text-sm sm:text-lg mb-8 sm:mb-10 max-w-2xl mx-auto relative z-10 px-2 sm:px-0">
                         Partner with the best Freelance Web Developer & SEO Specialist in Malappuram to transform your digital presence and dominate search rankings.
                     </p>
 
@@ -225,10 +225,10 @@ export default function PortfolioClient() {
                         <div className="absolute inset-0 bg-primary blur-xl opacity-40 rounded-full" />
                         <Link
                             href="/contact"
-                            className="relative px-10 py-5 bg-gradient-to-r from-primary via-accent to-secondary text-dark font-black rounded-full text-lg transition-all flex items-center gap-3 border border-white/20 hover:shadow-[0_0_40px_rgba(255,215,0,0.6)]"
+                            className="relative px-6 sm:px-10 py-3.5 sm:py-5 bg-gradient-to-r from-primary via-accent to-secondary text-dark font-black rounded-full text-sm sm:text-lg transition-all flex items-center gap-2 sm:gap-3 border border-white/20 shadow-[0_0_20px_rgba(255,215,0,0.3)] hover:shadow-[0_0_40px_rgba(255,215,0,0.6)]"
                         >
                             Start Your Project Now
-                            <svg className="w-6 h-6 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg className="w-5 h-5 sm:w-6 sm:h-6 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                             </svg>
                         </Link>
