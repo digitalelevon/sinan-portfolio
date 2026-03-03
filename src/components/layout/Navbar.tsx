@@ -35,6 +35,11 @@ export default function Navbar() {
     const pathname = usePathname();
     const [mounted, setMounted] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
+
+    useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        setMounted(true);
+    }, []);
     // Scroll Logic: Vanilla JS to prevent React state updates on scroll (INP fix)
     useEffect(() => {
         if (!mounted) return;

@@ -84,9 +84,9 @@ const CertificationsSection: React.FC = () => {
     }, [isPaused, handleNext]);
 
     // Helper to get relative index for circular display
-    const getIndex = (offset: number) => {
+    const getIndex = useCallback((offset: number) => {
         return (currentIndex + offset + certificates.length) % certificates.length;
-    };
+    }, [currentIndex]);
 
     return (
         <section
