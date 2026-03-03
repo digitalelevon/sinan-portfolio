@@ -59,8 +59,7 @@ export default function Hero() {
                         {/* Heading - SEO Optimized & Fully Responsive */}
                         <h1
                             aria-label="Best Freelance Web Developer and SEO Specialist in Malappuram, Kerala"
-                            className="text-[34px] sm:text-5xl md:text-6xl lg:text-5xl xl:text-[64px] font-bold leading-[1.15] sm:leading-tight lg:leading-[1.1] text-white mb-5 sm:mb-6 animate-fade-in-up"
-                            style={{ animationDelay: "0.1s" }}
+                            className="text-[34px] sm:text-5xl md:text-6xl lg:text-5xl xl:text-[64px] font-bold leading-[1.15] sm:leading-tight lg:leading-[1.1] text-white mb-5 sm:mb-6"
                         >
                             <span className="block text-lg sm:text-2xl md:text-3xl text-primary font-medium tracking-wide border-b border-primary/20 pb-2 sm:pb-3 w-fit mx-auto lg:mx-0 mb-3 sm:mb-4">
                                 Freelance Web Developer
@@ -78,16 +77,14 @@ export default function Hero() {
 
                         {/* Description */}
                         <h2
-                            className="text-base sm:text-lg md:text-xl text-gray-300 max-w-xl mb-7 sm:mb-10 leading-relaxed mx-auto lg:mx-0 font-medium animate-fade-in-up"
-                            style={{ animationDelay: "0.2s" }}
+                            className="text-base sm:text-lg md:text-xl text-gray-300 max-w-xl mb-7 sm:mb-10 leading-relaxed mx-auto lg:mx-0 font-medium"
                         >
                             <span className="text-white font-semibold">Sinan MC</span>, Oxdu-trained freelance web developer and SEO specialist in Malappuram. Specialized in building fast, SEO-friendly websites that rank on Google and convert visitors.
                         </h2>
 
                         {/* Buttons */}
                         <div
-                            className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto animate-fade-in-up"
-                            style={{ animationDelay: "0.3s" }}
+                            className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
                         >
                             <Link href="/contact" className="w-full sm:w-auto" title="Contact Sinan MC for Web Development & SEO">
                                 <Button className="w-full sm:w-auto rounded-full h-12 sm:h-14 px-7 sm:px-8 text-sm sm:text-base font-bold bg-gradient-to-r from-primary via-[#FFC107] to-accent text-black hover:opacity-90 transition-all hover:scale-105 shadow-[0_0_30px_rgba(255,215,0,0.4),0_4px_20px_rgba(0,0,0,0.4)] relative overflow-hidden group">
@@ -111,8 +108,7 @@ export default function Hero() {
 
                     {/* RIGHT SIDE — CSS animated */}
                     <div
-                        className="relative flex justify-center lg:justify-end order-last animate-fade-in-scale"
-                        style={{ animationDelay: "0.1s" }}
+                        className="relative flex justify-center lg:justify-end order-last"
                     >
                         <div className="relative w-full max-w-[300px] sm:max-w-[380px] md:max-w-[420px] lg:max-w-[480px] aspect-[4/5]">
 
@@ -136,7 +132,6 @@ export default function Hero() {
                             {/* Floating Card 1 — Trophy */}
                             <div
                                 className="absolute bottom-16 -left-2 sm:-left-6 hidden sm:block group animate-fade-in"
-                                style={{ animationDelay: "0.6s" }}
                             >
                                 <div className="bg-dark-100/70 backdrop-blur-2xl border border-primary/20 p-3 sm:p-4 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.05)] hover:border-primary/50 transition-all duration-300 hover:shadow-[0_8px_40px_rgba(255,215,0,0.15)]">
                                     <div className="flex items-center gap-2 sm:gap-3">
@@ -153,7 +148,6 @@ export default function Hero() {
                             {/* Floating Card 2 — Projects */}
                             <div
                                 className="absolute top-1/4 -right-2 sm:-right-6 hidden sm:block animate-fade-in"
-                                style={{ animationDelay: "0.7s" }}
                             >
                                 <div className="bg-dark-100/70 backdrop-blur-2xl border border-primary/20 p-3 sm:p-4 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.05)] hover:border-primary/50 transition-all duration-300 hover:shadow-[0_8px_40px_rgba(255,215,0,0.15)]">
                                     <div className="flex flex-col">

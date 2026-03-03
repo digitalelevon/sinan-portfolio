@@ -206,7 +206,7 @@ export default function Navbar() {
                         <m.div
                             key="mobile-menu"
                             initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
-                            animate={{ opacity: 1, backdropFilter: "blur(24px)" }}
+                            animate={{ opacity: 1, backdropFilter: "blur(8px)" }}
                             exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
                             transition={{ duration: 0.4 }}
                             className="fixed inset-0 z-[90] pointer-events-auto bg-gradient-to-b from-black/95 to-[#0a0a0a]/98 md:hidden overflow-hidden"
