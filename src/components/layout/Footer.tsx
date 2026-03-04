@@ -40,7 +40,7 @@ const quickLinks = [
 ];
 
 const services = [
-    { name: "Web Development", href: "/#services" },
+    { name: "Web Dev", href: "/#services" },
     { name: "SEO", href: "/#services" },
     { name: "SMM", href: "/#services" },
     { name: "SEM", href: "/#services" },
