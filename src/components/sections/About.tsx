@@ -19,7 +19,7 @@ export default function About() {
         <section
             id="about"
             aria-label="About Sinan MC - Freelance Web Developer and SEO Specialist Malappuram"
-            className="py-20 sm:py-24 md:py-28 bg-gradient-to-b from-dark to-dark-100 relative overflow-hidden border-t border-white/5"
+            className="py-16 sm:py-20 md:py-28 bg-gradient-to-b from-dark to-dark-100 relative overflow-hidden border-t border-white/5"
         >
             {/* ── Background Layers ── */}
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_60%_at_100%_0%,rgba(255,215,0,0.06),transparent)] pointer-events-none" />
@@ -44,7 +44,7 @@ export default function About() {
 
                         <AnimatedLine className="max-w-[120px] mb-7" />
 
-                        <h2 className="text-[34px] md:text-4xl lg:text-[40px] xl:text-[46px] font-bold mb-6 lg:mb-8 text-white leading-tight tracking-tight flex flex-col gap-3 lg:gap-4">
+                        <h2 className="text-3xl sm:text-[34px] md:text-4xl lg:text-[40px] xl:text-[46px] font-bold mb-6 lg:mb-8 text-white leading-tight tracking-tight flex flex-col gap-2 sm:gap-3 lg:gap-4">
                             <span className="flex flex-col lg:flex-row lg:flex-wrap lg:items-baseline gap-1 lg:gap-x-3">
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary">Your Digital Growth Partner</span>
                                 <span>in Malappuram, Kerala</span>
@@ -60,7 +60,7 @@ export default function About() {
                             </span>
                         </h2>
 
-                        <p className="text-gray-400 text-base sm:text-lg mb-5 leading-relaxed">
+                        <p className="text-gray-400 text-sm sm:text-base lg:text-lg mb-5 leading-relaxed">
                             I am Sinan MC, recognized as the{" "}
                             <Link href="/about" className="text-primary hover:text-primary/80 underline decoration-primary/30 underline-offset-2 transition-colors">
                                 best Freelance Web Developer in Malappuram
@@ -72,7 +72,7 @@ export default function About() {
                             , I specialise in building fast, modern websites and implementing powerful digital marketing strategies that help businesses across Malappuram, Calicut, and Kerala rank higher on Google and grow faster online.
                         </p>
 
-                        <p className="text-gray-400 text-base sm:text-lg mb-8 leading-relaxed">
+                        <p className="text-gray-400 text-sm sm:text-base lg:text-lg mb-8 leading-relaxed">
                             My focus goes beyond development. As the{" "}
                             <span className="text-white font-medium">Best SEO Specialist in Malappuram</span>
                             {", "}I create conversion-focused digital solutions that generate real business results. Whether you need a new{" "}
@@ -121,11 +121,11 @@ export default function About() {
                         transition={{ duration: 0.9, delay: 0.2 }}
                         className="relative order-1 lg:order-2"
                     >
-                        <div className="relative aspect-[4/5] w-full max-w-md mx-auto group perspective-1000">
+                        <div className="relative aspect-[4/5] w-full max-w-[280px] sm:max-w-md mx-auto group perspective-1000 mt-8 lg:mt-0">
                             {/* Multi-layer decorative borders */}
-                            <div className="absolute -top-3 -right-3 w-full h-full border-2 border-primary/20 rounded-2xl -z-10 transition-all duration-700 ease-out group-hover:translate-x-5 group-hover:-translate-y-5 group-hover:border-primary/40 group-hover:shadow-[0_0_30px_rgba(255,215,0,0.15)]" />
-                            <div className="absolute -top-6 -right-6 w-full h-full border border-primary/10 rounded-2xl -z-20 transition-all duration-700 ease-out group-hover:translate-x-3 group-hover:-translate-y-3 group-hover:border-primary/30" />
-                            <div className="absolute -bottom-3 -left-3 w-full h-full bg-dark-200/80 rounded-2xl -z-10 transition-all duration-700 ease-out group-hover:-translate-x-5 group-hover:translate-y-5 backdrop-blur-md shadow-[0_10px_40px_rgba(0,0,0,0.5)] border border-white/5 group-hover:border-primary/10" />
+                            <div className="absolute -top-2 -right-2 sm:-top-3 sm:-right-3 w-full h-full border-2 border-primary/20 rounded-2xl -z-10 transition-all duration-700 ease-out group-hover:translate-x-3 sm:group-hover:translate-x-5 group-hover:-translate-y-3 sm:group-hover:-translate-y-5 group-hover:border-primary/40 group-hover:shadow-[0_0_30px_rgba(255,215,0,0.15)]" />
+                            <div className="absolute -top-4 -right-4 sm:-top-6 sm:-right-6 w-full h-full border border-primary/10 rounded-2xl -z-20 transition-all duration-700 ease-out group-hover:translate-x-2 sm:group-hover:translate-x-3 group-hover:-translate-y-2 sm:group-hover:-translate-y-3 group-hover:border-primary/30" />
+                            <div className="absolute -bottom-2 -left-2 sm:-bottom-3 sm:-left-3 w-full h-full bg-dark-200/80 rounded-2xl -z-10 transition-all duration-700 ease-out group-hover:-translate-x-3 sm:group-hover:-translate-x-5 group-hover:translate-y-3 sm:group-hover:translate-y-5 backdrop-blur-md shadow-[0_10px_40px_rgba(0,0,0,0.5)] border border-white/5 group-hover:border-primary/10" />
 
                             {/* Glow */}
                             <div className="absolute -z-20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] bg-primary/10 rounded-full blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000 ease-in-out" />
@@ -146,7 +146,7 @@ export default function About() {
                                 />
 
                                 {/* Hover Badge */}
-                                <div className="absolute bottom-6 left-6 right-6 z-20 bg-dark/80 backdrop-blur-2xl border border-primary/30 p-5 rounded-xl transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-700 delay-150 shadow-[0_10px_30px_rgba(255,215,0,0.2)]">
+                                <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 z-20 bg-dark/80 backdrop-blur-2xl border border-primary/30 p-3 sm:p-5 rounded-xl transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-700 delay-150 shadow-[0_10px_30px_rgba(255,215,0,0.2)]">
                                     <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-transparent rounded-xl pointer-events-none" />
                                     <p className="text-white font-bold text-base tracking-wide flex items-center justify-between">
                                         Certified Expert

@@ -41,9 +41,9 @@ const quickLinks = [
 
 const services = [
     { name: "Web Development", href: "/#services" },
-    { name: "Search Engine Optimization", href: "/#services" },
-    { name: "Social Media Marketing", href: "/#services" },
-    { name: "Search Engine Marketing", href: "/#services" },
+    { name: "SEO", href: "/#services" },
+    { name: "SMM", href: "/#services" },
+    { name: "SEM", href: "/#services" },
     { name: "AI Automation", href: "/#services" },
     { name: "Branding", href: "/#services" },
 ];
@@ -81,11 +81,11 @@ export default function Footer() {
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#0A0A0A_100%)] pointer-events-none" />
 
             <div className="container mx-auto px-6 lg:px-12 relative z-10 w-full max-w-full overflow-hidden">
-                {/* Main 4-column layout: side-by-side links on mobile */}
-                <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10 md:gap-12 lg:gap-10 mb-12 md:mb-20">
+                {/* Main layout: side-by-side links on mobile, 4 columns on desktop */}
+                <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-12 gap-x-6 gap-y-10 md:gap-12 lg:gap-8 mb-12 md:mb-20">
 
-                    {/* Column 1: Brand Info (Full width on mobile) */}
-                    <div className="col-span-2 lg:col-span-1 flex flex-col gap-5 md:gap-6">
+                    {/* Column 1: Brand Info (Full width on mobile/tablet) */}
+                    <div className="col-span-2 lg:col-span-4 flex flex-col gap-5 md:gap-6">
                         <div>
                             <Link href="/" className="inline-block group focus:outline-none">
                                 <h2 className="text-3xl font-bold tracking-tighter text-white group-hover:drop-shadow-[0_0_15px_rgba(255,215,0,0.6)] transition-all duration-300 mb-2">
@@ -100,8 +100,8 @@ export default function Footer() {
                         </p>
                     </div>
 
-                    {/* Column 2: Quick Links (Half width on mobile) */}
-                    <div className="col-span-1 flex flex-col gap-4 md:gap-6">
+                    {/* Column 2: Quick Links (Half width on mobile, 2/12 on desktop) */}
+                    <div className="col-span-1 lg:col-span-2 flex flex-col gap-4 md:gap-6">
                         <h3 className="text-white font-semibold text-base md:text-lg border-b border-white/10 pb-2 w-max pr-4 md:pr-8">Quick Links</h3>
                         <ul className="flex flex-col gap-1 md:gap-2">
                             {quickLinks.map((link) => (
@@ -112,8 +112,8 @@ export default function Footer() {
                         </ul>
                     </div>
 
-                    {/* Column 3: Services (Half width on mobile) */}
-                    <div className="col-span-1 flex flex-col gap-4 md:gap-6">
+                    {/* Column 3: Services (Half width on mobile, 2/12 on desktop) */}
+                    <div className="col-span-1 lg:col-span-2 flex flex-col gap-4 md:gap-6">
                         <h3 className="text-white font-semibold text-base md:text-lg border-b border-white/10 pb-2 w-max pr-4 md:pr-8">Services</h3>
                         <ul className="flex flex-col gap-1 md:gap-2">
                             {services.map((service) => (
@@ -124,8 +124,8 @@ export default function Footer() {
                         </ul>
                     </div>
 
-                    {/* Column 4: Contact Info (Full width on mobile) */}
-                    <div className="col-span-2 lg:col-span-1 flex flex-col gap-5 md:gap-6 mt-2 md:mt-0">
+                    {/* Column 4: Contact Info (Full width on mobile, 4/12 on desktop) */}
+                    <div className="col-span-2 lg:col-span-4 flex flex-col gap-5 md:gap-6 mt-2 lg:mt-0">
                         <h3 className="text-white font-semibold text-lg md:text-xl border-b border-white/10 pb-2 w-max pr-8">Contact Info</h3>
                         <ul className="flex flex-col gap-3">
                             <li>
@@ -177,10 +177,10 @@ export default function Footer() {
                 </div>
 
                 {/* Social Media & Bottom Bar */}
-                <div className="border-t border-white/10 pt-8 mt-10 md:mt-16 flex flex-col items-center md:flex-row md:justify-between gap-8 md:gap-4 relative z-10 w-full overflow-hidden">
+                <div className="border-t border-white/10 pt-8 mt-10 md:mt-16 flex flex-col items-center lg:flex-row lg:justify-between gap-8 lg:gap-4 relative z-10 w-full overflow-hidden">
 
                     {/* Social Icons */}
-                    <div className="flex flex-wrap justify-center gap-4 order-1 md:order-none">
+                    <div className="flex flex-wrap justify-center gap-4 order-1 lg:order-none">
                         {socials.map(({ Icon, href, label }) => (
                             <a
                                 key={label}
@@ -196,18 +196,18 @@ export default function Footer() {
                     </div>
 
                     {/* Copyright */}
-                    <div className="text-center md:text-right flex flex-col gap-4 order-2 w-full md:w-auto mt-2 md:mt-0">
-                        <p className="text-[11px] md:text-xs text-gray-400/80 font-medium tracking-wide pb-3 border-b border-white/5 mx-auto md:ml-auto md:mr-0 inline-block w-full max-w-full text-balance leading-relaxed">
+                    <div className="text-center lg:text-right flex flex-col gap-4 order-2 w-full lg:w-auto mt-2 lg:mt-0">
+                        <p className="text-[11px] md:text-xs text-gray-400/80 font-medium tracking-wide pb-3 border-b border-white/5 mx-auto lg:ml-auto lg:mr-0 inline-block w-full max-w-full text-balance leading-relaxed">
                             Freelance Web Developer in Malappuram | SEO Specialist in Kerala | Website Designer in Malappuram
                         </p>
-                        <div className="flex flex-col gap-2 items-center md:items-end w-full">
-                            <div className="flex flex-wrap justify-center md:justify-end items-center gap-3 md:gap-4 text-[11px] md:text-xs font-medium text-gray-400 w-full">
+                        <div className="flex flex-col gap-2 items-center lg:items-end w-full">
+                            <div className="flex flex-wrap justify-center lg:justify-end items-center gap-3 md:gap-4 text-[11px] md:text-xs font-medium text-gray-400 w-full">
                                 <Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
                                 <span className="w-1 h-1 rounded-full bg-white/20"></span>
                                 <Link href="/terms-conditions" className="hover:text-white transition-colors">Terms &amp; Conditions</Link>
                             </div>
                             <p className="text-xs md:text-sm text-gray-400/80 mt-1">© {new Date().getFullYear()} Sinan MC Malappuram. All rights reserved.</p>
-                            <p className="text-[10px] md:text-xs font-medium tracking-wide bg-gradient-to-r from-[#FFD700] to-[#FF8C00] bg-clip-text text-transparent w-full leading-relaxed max-w-[90%] md:max-w-none mx-auto md:mx-0">
+                            <p className="text-[10px] md:text-xs font-medium tracking-wide bg-gradient-to-r from-[#FFD700] to-[#FF8C00] bg-clip-text text-transparent w-full leading-relaxed max-w-[90%] md:max-w-none mx-auto lg:mx-0">
                                 Best Freelance Web Developer &amp; SEO Specialist in Malappuram, Kerala
                             </p>
                         </div>

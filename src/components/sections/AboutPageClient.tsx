@@ -262,14 +262,14 @@ export default function AboutPageClient() {
                             transition={{ duration: 1, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
                             className="w-full lg:w-[45%] relative order-1 lg:order-2 flex justify-center"
                         >
-                            <div className="relative aspect-[4/5] w-full max-w-[420px] mx-auto group perspective-1000">
+                            <div className="relative aspect-[4/5] w-full max-w-[280px] sm:max-w-[420px] mx-auto group perspective-1000 mt-8 lg:mt-0">
                                 {/* Decor elements */}
-                                <div className="absolute -inset-3 bg-gradient-to-tr from-primary/20 to-transparent rounded-[2rem] blur-xl opacity-30 group-hover:opacity-60 transition-opacity duration-700 pointer-events-none" />
+                                <div className="absolute -inset-2 sm:-inset-3 bg-gradient-to-tr from-primary/20 to-transparent rounded-[1.5rem] sm:rounded-[2rem] blur-xl opacity-30 group-hover:opacity-60 transition-opacity duration-700 pointer-events-none" />
 
-                                <div className="absolute inset-0 border border-primary/20 rounded-[2rem] -rotate-3 transition-transform duration-700 group-hover:-rotate-6 pointer-events-none" />
-                                <div className="absolute inset-0 border border-primary/20 rounded-[2rem] rotate-3 transition-transform duration-700 group-hover:rotate-6 pointer-events-none" />
+                                <div className="absolute inset-0 border border-primary/20 rounded-[1.5rem] sm:rounded-[2rem] -rotate-3 transition-transform duration-700 group-hover:-rotate-6 pointer-events-none" />
+                                <div className="absolute inset-0 border border-primary/20 rounded-[1.5rem] sm:rounded-[2rem] rotate-3 transition-transform duration-700 group-hover:rotate-6 pointer-events-none" />
 
-                                <div className="relative w-full h-full rounded-[2rem] overflow-hidden border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.8)] bg-dark group-hover:border-primary/30 transition-all duration-700 block z-10">
+                                <div className="relative w-full h-full rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.8)] bg-dark group-hover:border-primary/30 transition-all duration-700 block z-10">
                                     <div className="absolute inset-0 bg-gradient-to-t from-dark/95 via-dark/20 to-transparent opacity-80 z-10 transition-opacity duration-500 group-hover:opacity-50 pointer-events-none" />
                                     <Image
                                         src="/freelance-web-developer-SEO-specialist-Malappuram.webp"
