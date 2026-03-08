@@ -95,7 +95,6 @@ export default function Navbar() {
                     <Link
                         href="/"
                         className="group flex items-baseline gap-0.5 select-none"
-                        aria-label="Go to homepage"
                     >
                         <span className="text-xl font-black tracking-tight uppercase text-white transition-colors duration-300">
                             SINAN
@@ -162,7 +161,6 @@ export default function Navbar() {
                     <div className="flex items-center gap-3 sm:gap-4">
                         <Link
                             href="/contact"
-                            aria-label="Contact and hire Sinan MC"
                             className={clsx(
                                 "group hidden sm:flex items-center gap-2 px-6 py-2.5",
                                 "bg-gradient-to-tr from-[#FFD700] via-[#FDB931] to-[#FFD700] text-[#0a0a0a] text-sm font-bold rounded-xl",

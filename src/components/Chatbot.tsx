@@ -138,7 +138,7 @@ export default function Chatbot() {
                 >
                     {/* Continuous subtle pulse for attention */}
                     <div className="absolute inset-0 rounded-full bg-yellow-500/20 animate-ping opacity-60 [animation-duration:3s]"></div>
-                    <Image src="/chatbot-icon.svg" alt="Chat" width={64} height={64} priority fetchPriority="high" className="w-full h-full relative z-10 group-hover:scale-110 transition-transform duration-300 drop-shadow-[0_0_8px_rgba(255,215,0,0.5)]" />
+                    <Image src="/chatbot-icon.svg" alt="Chat" width={64} height={64} className="w-full h-full relative z-10 group-hover:scale-110 transition-transform duration-300 drop-shadow-[0_0_8px_rgba(255,215,0,0.5)]" />
                 </button>
             )}
         </div>

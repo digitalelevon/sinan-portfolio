@@ -1,33 +1,33 @@
-import dynamicImport from "next/dynamic";
+import nextDynamic from "next/dynamic";
 import Script from "next/script";
 import { faqs } from "@/data/faqData";
 
 import Hero from "@/components/sections/Hero";
 
-const About = dynamicImport(() => import("@/components/sections/About"));
-const Brands = dynamicImport(() => import("@/components/sections/BrandsClient"));
+const About = nextDynamic(() => import("@/components/sections/About"));
+const Brands = nextDynamic(() => import("@/components/sections/BrandsClient"));
 
-const Services = dynamicImport(() => import("@/components/sections/Services"));
+const Services = nextDynamic(() => import("@/components/sections/Services"));
 
-const CertificationsSection = dynamicImport(
+const CertificationsSection = nextDynamic(
     () => import("@/components/sections/CertificationsSection")
 );
 
-const WhyChooseSection = dynamicImport(
+const WhyChooseSection = nextDynamic(
     () => import("@/components/sections/WhyChooseSection")
 );
 
-const WebSeoComboSection = dynamicImport(
+const WebSeoComboSection = nextDynamic(
     () => import("@/components/sections/WebSeoComboSection")
 );
 
-const TestimonialsSection = dynamicImport(
+const TestimonialsSection = nextDynamic(
     () => import("@/components/sections/TestimonialsSection")
 );
 
-const FAQ = dynamicImport(() => import("@/components/sections/FAQ"));
+const FAQ = nextDynamic(() => import("@/components/sections/FAQ"));
 
-const HomeContactCTA = dynamicImport(
+const HomeContactCTA = nextDynamic(
     () => import("@/components/sections/HomeContactCTA")
 );
 

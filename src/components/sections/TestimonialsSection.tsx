@@ -271,9 +271,9 @@ function TestimonialCard({
                 </div>
 
                 <div className="min-w-0">
-                    <h4 className="text-white font-bold text-sm sm:text-[0.925rem] truncate leading-snug">
+                    <h3 className="text-white font-bold text-sm sm:text-[0.925rem] truncate leading-snug">
                         {testimonial.name}
-                    </h4>
+                    </h3>
                     <p className="text-gray-500 text-[0.72rem] sm:text-xs truncate mt-0.5 leading-snug">
                         {testimonial.company}
                     </p>

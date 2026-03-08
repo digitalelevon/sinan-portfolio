@@ -58,7 +58,6 @@ export default function Hero() {
 
                         {/* Heading - SEO Optimized & Fully Responsive */}
                         <h1
-                            aria-label="Best Freelance Web Developer and SEO Specialist in Malappuram, Kerala"
                             className="text-[34px] sm:text-5xl md:text-6xl lg:text-5xl xl:text-[64px] font-bold leading-[1.15] sm:leading-tight lg:leading-[1.1] text-white mb-5 sm:mb-6"
                         >
                             <span className="block text-lg sm:text-2xl md:text-3xl text-primary font-medium tracking-wide border-b border-primary/20 pb-2 sm:pb-3 w-fit mx-auto lg:mx-0 mb-3 sm:mb-4">

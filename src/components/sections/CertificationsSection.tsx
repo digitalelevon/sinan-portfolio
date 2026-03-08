@@ -161,7 +161,7 @@ const CertificationsSection: React.FC = () => {
                                         width={800} height={600}
                                         className="w-full h-full object-cover opacity-60"
                                         sizes="(max-width: 768px) 0px, 40vw"
-                                        loading="lazy"
+                                        priority={false}
                                     />
                                 </div>
                             </m.div>
@@ -188,7 +188,7 @@ const CertificationsSection: React.FC = () => {
                                         width={800} height={600}
                                         className="w-full h-full object-cover opacity-60"
                                         sizes="(max-width: 768px) 0px, 40vw"
-                                        loading="lazy"
+                                        priority={false}
                                     />
                                 </div>
                             </m.div>
@@ -220,7 +220,7 @@ const CertificationsSection: React.FC = () => {
                                         width={800} height={600}
                                         className="w-full h-full object-contain md:object-cover transition-transform duration-1000 ease-out group-hover/img:scale-110 group-hover/img:rotate-1"
                                         sizes="(max-width: 768px) 80vw, (max-width: 1200px) 50vw, 50vw"
-                                        loading="lazy"
+                                        priority
                                         quality={85}
                                     />
 
@@ -262,7 +262,7 @@ const CertificationsSection: React.FC = () => {
                                 <h4>{cert.title}</h4>
                                 <p>Provider: {cert.provider}</p>
                                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                                <img src={cert.image} alt={cert.alt} />
+                                <img src={cert.image} alt={cert.alt} width="800" height="600" />
                             </li>
                         ))}
                     </ul>
