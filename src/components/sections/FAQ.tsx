@@ -234,8 +234,8 @@ export default function FAQ() {
 
                             {/* Heading */}
                             <h3 className="text-[1.2rem] leading-[1.25] sm:text-2xl md:text-3xl lg:text-[2rem] xl:text-[2.2rem] font-bold text-white tracking-tight mb-5 sm:mb-6 max-w-xs sm:max-w-md lg:max-w-2xl mx-auto relative z-10">
-                                Ready to Work with the{" "}
-                                <span className="text-[#FFD700]">Best Freelance Web Developer & SEO Specialist</span> in Malappuram?
+                                Ready to Work with a proven{" "}
+                                <span className="text-[#FFD700]">Freelance Web Developer & Digital Marketing Specialist</span> in Malappuram?
                             </h3>
 
                             {/* Button */}

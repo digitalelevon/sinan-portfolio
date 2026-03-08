@@ -22,42 +22,42 @@ const certificates: Certificate[] = [
         title: "HP LIFE MARKETING STRATEGY",
         provider: "HP FOUNDATION",
         image: "/sinanmc-hp-digital-business-certification.webp",
-        alt: "Best Freelance Web Developer and SEO Specialist in Malappuram - HP LIFE Marketing Strategy Certificate",
+        alt: "Freelance SEO Consultant in Malappuram - HP LIFE Marketing Strategy Certificate",
     },
     {
         id: 2,
         title: "SEMRUSH SEO TOOLKIT",
         provider: "SEMRUSH ACADEMY",
         image: "/sinanmc-semrush.webp",
-        alt: "Best Freelance Web Developer and SEO Specialist in Malappuram - Semrush SEO Toolkit Certificate",
+        alt: "Web Design Expert in Kerala - Semrush SEO Toolkit Certificate",
     },
     {
         id: 3,
         title: "DIGITAL MARKETING",
         provider: "HUBSPOT ACADEMY",
         image: "/sinanmc-digital-marketing-HubSpot.webp",
-        alt: "Best Freelance Web Developer and SEO Specialist in Malappuram - HubSpot Digital Marketing Certificate",
+        alt: "Digital Marketing Specialist - HubSpot Digital Marketing Certificate",
     },
     {
         id: 4,
         title: "SOCIAL MEDIA MARKETING",
         provider: "HUBSPOT ACADEMY",
         image: "/sinanmc-social-media-HubSpot.webp",
-        alt: "Best Freelance Web Developer and SEO Specialist in Malappuram - HubSpot Social Media Marketing Certificate",
+        alt: "Helping Local Businesses Rank on Google - HubSpot Social Media Marketing Certificate",
     },
     {
         id: 5,
         title: "WEB DEVELOPMENT BOOTCAMP",
         provider: "UDEMY",
         image: "/sinanmc-udemy.webp",
-        alt: "Best Freelance Web Developer and SEO Specialist in Malappuram - Udemy Web Development Bootcamp Certificate",
+        alt: "Custom Website Creator in Malappuram - Udemy Web Development Bootcamp Certificate",
     },
     {
         id: 6,
         title: "AI PROMPT ENGINEERING",
         provider: "DUBAI CERTIFICATION",
         image: "/sinan-mc-ai-prompt-engineering-certificate-dubai.webp",
-        alt: "Best Freelance Web Developer and SEO Specialist in Malappuram - AI Prompt Engineering Certificate Dubai",
+        alt: "Freelance Web Developer - AI Prompt Engineering Certificate Dubai",
     },
 ];
 
@@ -91,7 +91,7 @@ const CertificationsSection: React.FC = () => {
     return (
         <section
             id="certifications"
-            aria-label="Certifications of Sinan MC - Freelance Web Developer and SEO Specialist"
+            aria-label="Certifications of Sinan MC - Freelance SEO Consultant and Web Developer"
             className="relative w-full py-20 md:py-24 lg:py-28 xl:py-32 bg-dark overflow-hidden flex flex-col items-center justify-center"
         >
 

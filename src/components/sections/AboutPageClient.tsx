@@ -156,7 +156,7 @@ export default function AboutPageClient() {
             {/* ══════ SECTION 1 — HERO ABOUT ══════ */}
             <section
                 className="relative pt-32 pb-16 md:pt-40 md:pb-32 overflow-hidden"
-                aria-label="About Sinan MC – Best Freelance Web Developer and SEO Specialist in Malappuram"
+                aria-label="About Sinan MC – Freelance Web Developer and SEO Consultant in Malappuram"
             >
                 {/* Background effects */}
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_60%_at_50%_40%,rgba(255,215,0,0.05),transparent)] pointer-events-none" />
@@ -190,7 +190,7 @@ export default function AboutPageClient() {
                                 >
                                     <span className="text-white block mb-2 sm:mb-3">Expert Freelance</span>
                                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFD700] via-[#FFC107] to-[#B8860B] animate-gradient-x">
-                                        Web Developer & <br className="hidden sm:block" /> SEO Specialist
+                                        Web Developer & <br className="hidden sm:block" /> SEO Consultant
                                     </span>{" "}
                                     <span className="text-white block mt-2 sm:mt-3">in Malappuram</span>
                                 </m.h1>
@@ -207,7 +207,7 @@ export default function AboutPageClient() {
                                     B.Com Graduate & Certified Digital Marketing Expert, Kerala
                                 </p>
                                 <p className="text-gray-400 text-base sm:text-lg leading-relaxed max-w-lg lg:max-w-xl">
-                                    I am Sinan MC, recognized as the Best SEO Specialist in Malappuram. With a degree from IGNOU and certification from Oxdu, Kondotty, I build modern web platforms and help local teams rank #1.
+                                    I am Sinan MC, a freelance digital marketing specialist based in Malappuram. With a degree from IGNOU and certification from Oxdu, Kondotty, I build modern web platforms and help local teams rank #1.
                                 </p>
                             </m.div>
 
@@ -418,7 +418,7 @@ export default function AboutPageClient() {
                         </div>
 
                         <h3 className="text-xl sm:text-2xl font-bold text-white mb-1">
-                            Best Freelance Web Developer & SEO Specialist
+                            Trusted Freelance Web Developer & SEO Consultant
                         </h3>
                         <p className="text-primary text-sm font-medium mb-4">
                             Malappuram, Kerala
