@@ -183,10 +183,10 @@ export default function Services() {
                     className="mt-16 md:mt-28 text-center"
                 >
                     <Link
-                        href="/services"
+                        href="/contact"
                         className="inline-flex items-center gap-3 md:gap-4 bg-primary hover:bg-yellow-400 text-black font-extrabold px-8 py-4 md:px-12 md:py-6 rounded-full transition-all duration-500 hover:shadow-[0_20px_50px_rgba(255,215,0,0.3)] group relative overflow-hidden"
                     >
-                        <span className="relative z-10 text-sm md:text-base">Discover All Services</span>
+                        <span className="relative z-10 text-sm md:text-base">Contact for Web & SEO Services</span>
                         <ArrowRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1.5 transition-transform duration-500 relative z-10" />
                         <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 pointer-events-none" />
                     </Link>
