@@ -46,9 +46,8 @@ export default function GoogleAnalytics({ GA_ID }: { GA_ID: string }) {
         <>
             <Script
                 src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
-                strategy="afterInteractive"
             />
-            <Script id="google-analytics" strategy="afterInteractive">
+            <Script id="google-analytics">
                 {`
                     window.dataLayer = window.dataLayer || [];
                     function gtag(){dataLayer.push(arguments);}

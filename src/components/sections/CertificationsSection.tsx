@@ -259,10 +259,9 @@ const CertificationsSection: React.FC = () => {
                     <ul>
                         {certificates.map((cert) => (
                             <li key={`seo-${cert.id}`}>
-                                <h4>{cert.title}</h4>
+                                <h3>{cert.title}</h3>
                                 <p>Provider: {cert.provider}</p>
-                                {/* eslint-disable-next-line @next/next/no-img-element */}
-                                <img src={cert.image} alt={cert.alt} width="800" height="600" />
+                                <Image src={cert.image} alt={cert.alt} width={800} height={600} />
                             </li>
                         ))}
                     </ul>
