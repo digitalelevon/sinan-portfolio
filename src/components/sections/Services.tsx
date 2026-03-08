@@ -184,10 +184,10 @@ export default function Services() {
                 >
                     <Link
                         href="/contact"
-                        className="inline-flex items-center gap-3 md:gap-4 bg-primary hover:bg-yellow-400 text-black font-extrabold px-8 py-4 md:px-12 md:py-6 rounded-full transition-all duration-500 hover:shadow-[0_20px_50px_rgba(255,215,0,0.3)] group relative overflow-hidden"
+                        className="inline-flex items-center justify-center gap-2 sm:gap-3 md:gap-4 bg-primary hover:bg-yellow-400 text-black font-extrabold px-4 py-3 sm:px-8 sm:py-4 md:px-12 md:py-6 rounded-full transition-all duration-500 hover:shadow-[0_20px_50px_rgba(255,215,0,0.3)] group relative overflow-hidden w-full max-w-[320px] sm:max-w-none sm:w-auto mx-auto"
                     >
-                        <span className="relative z-10 text-sm md:text-base">Contact for Web & SEO Services</span>
-                        <ArrowRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1.5 transition-transform duration-500 relative z-10" />
+                        <span className="relative z-10 text-[13px] sm:text-sm md:text-base leading-tight text-center sm:text-left">Contact for Web & SEO Services</span>
+                        <ArrowRight className="w-4 h-4 md:w-5 md:h-5 shrink-0 group-hover:translate-x-1.5 transition-transform duration-500 relative z-10" />
                         <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 pointer-events-none" />
                     </Link>
                 </m.div>
