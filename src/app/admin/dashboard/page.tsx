@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { collection, getDocs, query, orderBy, Timestamp } from "firebase/firestore";
+import { collection, getDocs, query, orderBy, Timestamp, deleteDoc, doc } from "firebase/firestore";
 import { db } from "@/lib/firebase";
-import { Loader2, Users, MessageSquare, Calendar, Mail, Phone, Briefcase } from "lucide-react";
+import { Loader2, Users, MessageSquare, Calendar, Mail, Phone, Briefcase, Trash2 } from "lucide-react";
 
 // Types
 type Contact = {
@@ -34,6 +34,22 @@ export default function AdminDashboard() {
     const [chatLeads, setChatLeads] = useState<ChatLead[]>([]);
     const [loading, setLoading] = useState(true);
     const [activeTab, setActiveTab] = useState<"contacts" | "chat">("contacts");
+
+    const handleDelete = async (collectionName: "contacts" | "chat_leads", documentId: string) => {
+        if (window.confirm('Are you sure you want to delete this lead?')) {
+            try {
+                await deleteDoc(doc(db, collectionName, documentId));
+                if (collectionName === "contacts") {
+                    setContacts(prev => prev.filter(c => c.id !== documentId));
+                } else {
+                    setChatLeads(prev => prev.filter(c => c.id !== documentId));
+                }
+            } catch (error) {
+                console.error("Error deleting document:", error);
+                alert("Failed to delete lead. Please try again.");
+            }
+        }
+    };
 
     useEffect(() => {
         async function fetchData() {
@@ -149,6 +165,7 @@ export default function AdminDashboard() {
                                 {activeTab === "contacts" && <th className="px-6 py-4">Message</th>}
                                 <th className="px-6 py-4">Date</th>
                                 <th className="px-6 py-4">Status</th>
+                                <th className="px-6 py-4 text-right">Actions</th>
                             </tr>
                         </thead>
                         <tbody className="divide-y divide-dark-200">
@@ -183,11 +200,20 @@ export default function AdminDashboard() {
                                             {item.status || "new"}
                                         </span>
                                     </td>
+                                    <td className="px-6 py-4 text-right">
+                                        <button
+                                            onClick={() => handleDelete(activeTab === "contacts" ? "contacts" : "chat_leads", item.id)}
+                                            className="p-2 text-gray-400 hover:text-red-500 hover:bg-red-500/10 rounded-lg transition-colors"
+                                            title="Delete Lead"
+                                        >
+                                            <Trash2 className="w-4 h-4" />
+                                        </button>
+                                    </td>
                                 </tr>
                             ))}
                             {displayData.length === 0 && (
                                 <tr>
-                                    <td colSpan={6} className="px-6 py-12 text-center text-gray-400">
+                                    <td colSpan={7} className="px-6 py-12 text-center text-gray-400">
                                         No {activeTab === "contacts" ? "contact submissions" : "chatbot leads"} found.
                                     </td>
                                 </tr>
@@ -208,9 +234,18 @@ export default function AdminDashboard() {
                                         {formatDate(item.createdAt)}
                                     </div>
                                 </div>
-                                <span className="inline-flex px-2.5 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary capitalize flex-shrink-0">
-                                    {item.status || "new"}
-                                </span>
+                                <div className="flex items-center gap-2">
+                                    <span className="inline-flex px-2.5 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary capitalize flex-shrink-0">
+                                        {item.status || "new"}
+                                    </span>
+                                    <button
+                                        onClick={() => handleDelete(activeTab === "contacts" ? "contacts" : "chat_leads", item.id)}
+                                        className="p-1.5 text-gray-400 hover:text-red-500 hover:bg-red-500/10 rounded-lg transition-colors flex-shrink-0"
+                                        title="Delete Lead"
+                                    >
+                                        <Trash2 className="w-4 h-4" />
+                                    </button>
+                                </div>
                             </div>
 
                             <div className="space-y-1.5 pt-1">
