@@ -194,7 +194,6 @@ export default function WebSeoComboSection() {
 
                     {/* Content Right */}
                     <m.div variants={fadeUpVariant} className="space-y-6 md:space-y-8 relative lg:max-w-xl">
-                        <div className="absolute -inset-4 md:-inset-6 bg-[#0a0a0a]/50 backdrop-blur-xl border border-white/[0.08] shadow-[0_8px_30px_rgba(0,0,0,0.12)] rounded-3xl -z-10 lg:hidden" />
                         <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight text-balance group/heading cursor-default">
                             Complete <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-yellow-200 transition-all duration-500">Web Development and SEO Combo</span> Solution in Malappuram
                         </h3>
@@ -208,11 +207,11 @@ export default function WebSeoComboSection() {
                                 "Business Growth Oriented Strategy",
                                 "Long-Term SEO Success"
                             ].map((item, index) => (
-                                <li key={index} className="flex items-start gap-3 md:gap-4 text-gray-200 group/item cursor-default">
-                                    <div className="mt-1 p-1.5 rounded-xl bg-primary/10 border border-primary/20 group-hover/item:bg-primary/25 group-hover/item:border-primary/50 group-hover/item:scale-110 group-hover/item:rotate-3 transition-all duration-300 shadow-inner">
-                                        <CheckCircle2 className="w-5 h-5 text-primary group-hover/item:text-white transition-colors" />
+                                <li key={index} className="flex items-start gap-3 md:gap-4 text-gray-200 group/item">
+                                    <div className="mt-1 p-1 rounded-full bg-primary/10 group-hover/item:bg-primary/20 transition-colors">
+                                        <CheckCircle2 className="w-5 h-5 text-primary shrink-0" />
                                     </div>
-                                    <span className="text-base md:text-lg font-medium group-hover/item:text-primary transition-colors duration-300">{item}</span>
+                                    <span className="text-base md:text-lg">{item}</span>
                                 </li>
                             ))}
                         </ul>
