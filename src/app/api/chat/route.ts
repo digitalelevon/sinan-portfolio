@@ -1,393 +1,407 @@
-
-
 import { NextResponse } from "next/server";
 import { Groq } from "groq-sdk";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 
-const groq = new Groq({
-    apiKey: process.env.GROQ_API_KEY,
-});
+// ─── Groq client (used ONLY for post-lead-capture general conversation) ───────
+const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
-const systemPrompt = `
+// ─── Fixed lead-capture messages ─────────────────────────────────────────────
+const MSG_GREETING =
+  "Hi! I'm DigiBot, an AI assistant. How can I help you today? Are you looking for web development, SEO, or digital marketing services?";
+const MSG_ASK_NAME = "What is your name?";
+const MSG_ASK_PHONE = "Please provide your phone number.";
+const MSG_ASK_EMAIL = "Please provide your email address.";
+const MSG_ASK_SERVICE =
+  "Which service are you looking for? (Web Development, SEO, or Digital Marketing)";
+const MSG_INVALID_PHONE = "Please provide a valid phone number.";
+const MSG_INVALID_EMAIL = "Please provide a valid email address.";
+const MSG_INVALID_SERVICE =
+  "Please choose Web Development, SEO, or Digital Marketing.";
+const MSG_FALLBACK = "I'm sorry, something went wrong. Please try again.";
+
+// ─── Lead capture states ──────────────────────────────────────────────────────
+type LeadState =
+  | "WAITING_FOR_INITIAL_REPLY"
+  | "WAITING_FOR_NAME"
+  | "WAITING_FOR_PHONE"
+  | "WAITING_FOR_EMAIL"
+  | "WAITING_FOR_SERVICE"
+  | "LEAD_COMPLETED";
+
+// ─── Validators ───────────────────────────────────────────────────────────────
+function isValidPhone(value: string): boolean {
+  const digits = value.replace(/[\s\-().+]/g, "");
+  return /^\d{7,15}$/.test(digits);
+}
+
+function isValidEmail(value: string): boolean {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
+}
+
+function normalizeService(value: string): string | null {
+  const v = value.toLowerCase().trim();
+  if (/\b(web|website|web\s*dev(elopment)?)\b/.test(v)) return "Web Development";
+  if (/\b(seo|search\s*engine\s*optim(ization|isation)?)\b/.test(v)) return "SEO";
+  if (/\b(digital\s*marketing|marketing)\b/.test(v)) return "Digital Marketing";
+  return null;
+}
+
+// ─── State machine: infer current state from conversation history ─────────────
+type Message = { role: string; content: string };
+
+function inferLeadState(messages: Message[]) {
+  const userMessages = messages
+    .filter((msg) => msg.role === "user")
+    .map((msg) => String(msg.content ?? "").trim())
+    .filter(Boolean);
+
+  let state: LeadState = "WAITING_FOR_INITIAL_REPLY";
+  let name = "";
+  let phone = "";
+  let email = "";
+  let service = "";
+
+  let stateBeforeLast: LeadState = "WAITING_FOR_INITIAL_REPLY";
+
+  for (let i = 0; i < userMessages.length; i++) {
+    const value = userMessages[i];
+
+    // Save state before processing the last user message
+    if (i === userMessages.length - 1) {
+      stateBeforeLast = state;
+    }
+
+    if (state === "WAITING_FOR_INITIAL_REPLY") {
+      state = "WAITING_FOR_NAME";
+      continue;
+    }
+
+    if (state === "WAITING_FOR_NAME") {
+      name = value;
+      state = "WAITING_FOR_PHONE";
+      continue;
+    }
+
+    if (state === "WAITING_FOR_PHONE") {
+      if (isValidPhone(value)) {
+        phone = value;
+        state = "WAITING_FOR_EMAIL";
+      }
+      continue;
+    }
+
+    if (state === "WAITING_FOR_EMAIL") {
+      if (isValidEmail(value)) {
+        email = value;
+        state = "WAITING_FOR_SERVICE";
+      }
+      continue;
+    }
+
+    if (state === "WAITING_FOR_SERVICE") {
+      const normalized = normalizeService(value);
+      if (normalized) {
+        service = normalized;
+        state = "LEAD_COMPLETED";
+      }
+      continue;
+    }
+  }
+
+  // Also check if lead completed thank-you message is already in the history to avoid re-capturing
+  const alreadySaved = messages.some(
+    (m) =>
+      m.role === "assistant" &&
+      m.content.includes("Thank you") &&
+      m.content.includes("saved successfully")
+  );
+
+  if (alreadySaved) {
+    state = "LEAD_COMPLETED";
+  }
+
+  return {
+    state,
+    stateBeforeLast,
+    name,
+    phone,
+    email,
+    service,
+  };
+}
+
+// ─── System prompt for post-lead-capture general conversation ─────────────────
+const POST_LEAD_SYSTEM_PROMPT = `
 You are DigiBot, the professional AI assistant of Sinan MC Malappuram, Freelance Web Developer and SEO Specialist.
+
+The user's contact details have already been collected and saved. Do NOT ask for name, phone, email, or service again.
+Sinan MC will contact the user shortly to discuss details, including pricing.
+
+CRITICAL PRICING RULES (MUST STRICTLY FOLLOW):
+1. NEVER provide any price, price range, cost estimate, package price, or pricing table.
+2. NEVER mention prices in INR, USD, AED, or any other currency (e.g. do not output numbers with currency symbols like ₹20,000 or $500).
+3. If the user asks about website cost, SEO price, digital marketing price, package price, budget, or charges, explain that Sinan MC will discuss the pricing directly with them.
+4. Never invent a price or estimate the project cost.
+5. Never mention generic market prices or say things like "starting from", "typically costs", or "average cost".
+6. Never create packages or plans, or suggest discounts/offers.
+7. Always redirect pricing discussions directly to Sinan MC.
+8. Keep the response short, natural, and professional.
+
+Preferred response styles:
+- For website pricing: "The price depends on your website requirements and features. Sinan MC will contact you and discuss the pricing details directly."
+- For SEO pricing: "SEO pricing depends on your website and requirements. Sinan MC will discuss the pricing details with you directly."
+- For digital marketing pricing: "The pricing depends on your marketing requirements and campaign goals. Sinan MC will discuss the pricing details with you directly."
+- Generic: "The price depends on your requirements and project scope. Sinan MC will contact you and discuss the pricing details directly."
+
+Answer all non-pricing questions about web development, SEO, digital marketing, timelines, and portfolio topics professionally and helpfully.
 
 OUTPUT RULES — ABSOLUTE PRIORITY:
 1. NEVER reveal internal reasoning, chain of thought, planning steps, or analysis.
-2. NEVER output labels such as: "Plan:", "Reasoning:", "Analysis:", "Thought:", "Wait,", "Let's think", "I will...", "First,", "Step 1:", "Final Plan:", "The user is...", "Response structure:", or similar internal text.
-3. NEVER output <think> tags, <tool_call> tags, function JSON, or XML tool syntax.
-4. ALWAYS produce ONLY the final user-facing answer — nothing else.
+2. NEVER output labels such as: "Plan:", "Reasoning:", "Analysis:", "Thought:", "Thoughts:", "Thinking:", "Thinking process:", "Chain of thought:", "My reasoning:", "Wait,", "Let's think", "I will...", "I'll...", "First,", "Step 1:", "Step 2:", "Final Plan:", "The user is...", "Response structure:", "Here's a thinking process:", or ANY similar internal text.
+3. NEVER output <think>, </think>, <tool_call>, </tool_call>, function JSON, or XML tool syntax.
+4. NEVER output raw JSON in your reply.
+5. ALWAYS output ONLY the final user-facing conversational answer.
+`.trim();
 
-PRIMARY GOAL:
-Collect client contact details FIRST before any general conversation.
+// ─── Robust Response Sanitizer ────────────────────────────────────────────────
+const REASONING_BLOCK_STARTERS = [
+  /^(here['']?s (a |my |the )?(thinking|thought|reasoning|analysis|plan|response))/i,
+  /^thinking( process)?:/i,
+  /^chain of thought:/i,
+  /^my reasoning:/i,
+  /^(internal )?analysis:/i,
+  /^(internal )?reasoning:/i,
+  /^plan:/i,
+  /^final plan:/i,
+  /^response structure:/i,
+  /^thought:/i,
+  /^thoughts:/i,
+  /^wait[,.]?(\s|$)/i,
+  /^let['']?s think/i,
+  /^i will\b/i,
+  /^i['']ll\b/i,
+  /^first[,.](\s|$)/i,
+  /^step \d+[:.]/i,
+  /^the user (is |was |asked|wants|said|has |'s )/i,
+  /^internal note:/i,
+  /^note to self/i,
+  /^okay[,.]? (so |let|i |the )/i,
+  /^alright[,.]? (so |let|i |the )/i,
+];
 
-CRITICAL RULES:
+const INLINE_REASONING_PHRASES = [
+  /here['']?s a thinking process:?[^\n]*/gi,
+  /here['']?s my thinking[^\n]*/gi,
+  /thinking process:[^\n]*/gi,
+  /chain of thought:[^\n]*/gi,
+  /my reasoning:[^\n]*/gi,
+  /internal analysis:[^\n]*/gi,
+  /internal note:[^\n]*/gi,
+  /note to self[^\n]*/gi,
+];
 
-You MUST follow this exact order:
+function sanitizeResponse(raw: string): string {
+  let text = raw;
 
-STEP 1 — ALWAYS FIRST MESSAGE:
+  // Pass 1: Remove XML-style blocks
+  text = text.replace(/<think>[\s\S]*?<\/think>/gi, "");
+  text = text.replace(/<\/?think>/gi, "");
+  text = text.replace(/<tool_call>[\s\S]*?<\/tool_call>/gi, "");
+  text = text.replace(/<\/?tool_call>/gi, "");
+  text = text.replace(/<function[\s\S]*?<\/function>/gi, "");
+  text = text.replace(/<\/?function>/gi, "");
+  text = text.replace(/<parameter[\s\S]*?<\/parameter>/gi, "");
+  text = text.replace(/<\/?parameter>/gi, "");
 
-Ask EXACTLY:
+  // Pass 2: Remove JSON tool payloads
+  text = text.replace(/\{\s*"name"\s*:\s*"save_lead"[\s\S]*?\}/gi, "");
+  text = text.replace(/\{\s*"arguments"[\s\S]*?\}/gi, "");
+  text = text.replace(/\{\s*"(name|phone|email|service)"[\s\S]*?\}/gi, "");
 
-"Hi! I'm DigiBot, an AI assistant. How can I help you today? Are you looking for web development, SEO, or digital marketing services?"
+  // Pass 3: Remove inline reasoning phrases
+  for (const phrase of INLINE_REASONING_PHRASES) {
+    text = text.replace(phrase, "");
+  }
 
-Do NOT say anything else.
+  // Pass 4: Paragraph-level block discard
+  const paragraphs = text.split(/\n{2,}/);
+  let firstRealIndex = -1;
+  for (let i = 0; i < paragraphs.length; i++) {
+    const para = paragraphs[i].trim();
+    if (!para) continue;
+    const firstLine = para.split("\n")[0].trim();
+    const isReasoning = REASONING_BLOCK_STARTERS.some((p) => p.test(firstLine));
+    if (!isReasoning) {
+      firstRealIndex = i;
+      break;
+    }
+  }
 
-WAIT for user reply.
+  if (firstRealIndex === -1) {
+    // Pass 5: Line-by-line fallback
+    const lines = text.split("\n");
+    let firstRealLine = -1;
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i].trim();
+      if (!line) continue;
+      if (!REASONING_BLOCK_STARTERS.some((p) => p.test(line))) {
+        firstRealLine = i;
+        break;
+      }
+    }
+    if (firstRealLine === -1) return MSG_FALLBACK;
+    text = lines.slice(firstRealLine).join("\n");
+  } else {
+    text = paragraphs.slice(firstRealIndex).join("\n\n");
+  }
 
-STEP 2 — AFTER REPLY TO FIRST MESSAGE:
+  text = text.trim();
+  return text || MSG_FALLBACK;
+}
 
-Acknowledge their response briefly, then ask EXACTLY:
-
-"What is your name?"
-
-WAIT.
-
-STEP 3 — AFTER NAME:
-
-Accept ANY name without judgment.
-
-Reply EXACTLY:
-
-"Please provide your phone number."
-
-WAIT.
-
-STEP 4 — AFTER PHONE:
-
-Reply EXACTLY:
-
-"Please provide your email address."
-
-WAIT.
-
-STEP 5 — AFTER EMAIL:
-
-You MUST ask EXACTLY:
-
-"Which service are you looking for? (Web Development, SEO, or Digital Marketing)"
-
-WAIT for the user to reply with their chosen service.
-
-STEP 6 — AFTER SERVICE:
-
-Once the user replies with the service (and ONLY then), you MUST call the function \`save_lead\` with the collected details (name, phone, email, and the specific service they requested). DO NOT output any text response, just trigger the function call. The system will handle sending the thank you message.
-
-IMPORTANT RULES:
-
-1. DO NOT skip Steps 1 through 5. You MUST ask each question one by one and WAIT for the user's reply.
-2. DO NOT call the \`save_lead\` function until the user has explicitly answered the service question in Step 5. Do not guess or assume the service.
-3. DO NOT output function call syntax like 'save_lead(...)' as normal text. Only use the provided tool.
-4. If you have already collected the details and the user is asking general questions, DO NOT try to call save_lead again.
-5. DO NOT start normal conversation before collecting details.
-6. ALWAYS follow the step-by-step lead capture flow first.
-
-After lead capture is complete, you may answer general questions about web development, SEO, digital marketing, pricing, timelines, portfolio, and related topics.
-
-Always be professional and friendly.
-
-`;
-
+// ─── Route handler ────────────────────────────────────────────────────────────
 export async function POST(req: Request) {
-    try {
-        const body = await req.json();
+  try {
+    const body = await req.json();
+    const messages: Message[] = body.messages || [];
 
-        const messages: { role: string; content: string }[] = body.messages || [];
+    // ── Infer current state from conversation history ──
+    const { state, stateBeforeLast, name, phone, email, service } =
+      inferLeadState(messages);
 
-        // Check if the success message was already sent to avoid duplicate saves in the same session
-        const alreadySaved = messages.some(
-            (msg) => msg.role === "assistant" && msg.content && (
-                msg.content.includes("Thank you") && 
-                (msg.content.includes("saved") || msg.content.includes("contact"))
-            )
-        );
+    const userMessages = messages
+      .filter((msg) => msg.role === "user")
+      .map((msg) => String(msg.content ?? "").trim())
+      .filter(Boolean);
 
-        // Adjust the system prompt if the lead has already been captured during this session
-        const systemPromptWithMode = alreadySaved 
-            ? `${systemPrompt}\n\nLEAD CAPTURE COMPLETED:\nThe user's details have been successfully collected and saved. You must now act as a helpful conversational assistant. Do NOT ask for the user's contact details (name, phone, email, or service) again. Answer all follow-up questions normally using your professional knowledge.`
-            : systemPrompt;
+    // Temporary development logs for verification (will not go to client)
+    console.log("CHAT MESSAGE COUNT:", messages.length);
+    console.log("USER MESSAGES:", userMessages);
+    console.log("INFERRED LEAD STATE:", state);
+    console.log("STATE BEFORE LAST:", stateBeforeLast);
 
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const completionParams: any = {
-            model: "qwen/qwen3.6-27b",
-            messages: [
-                { role: "system", content: systemPromptWithMode },
-                ...messages,
-            ],
-        };
+    // ── Deterministic lead capture state machine ──────────────────────────────
+    // Each branch returns exactly ONE fixed question. Groq is never called here.
 
-        // Check if the AI has asked the service question in the recent messages
-        const hasAskedService = messages.some(
-            (msg) => msg.role === "assistant" && msg.content && (msg.content.includes("Which service are you looking for") || msg.content.includes("Web Development, SEO, or Digital Marketing"))
-        );
+    if (state === "WAITING_FOR_INITIAL_REPLY") {
+      return NextResponse.json({
+        message: { role: "assistant", content: MSG_GREETING },
+      });
+    }
 
-        if (!alreadySaved && hasAskedService) {
-            completionParams.tools = [
-                {
-                    type: "function",
-                    function: {
-                        name: "save_lead",
-                        description: "Save the user's contact details. ONLY call this when you have collected ALL 4 DETAILS: name, phone, email, and the service they are interested in.",
-                        parameters: {
-                            type: "object",
-                            properties: {
-                                name: { type: "string", description: "The user's name" },
-                                phone: { type: ["string", "number"], description: "The user's phone number" },
-                                email: { type: "string", description: "The user's email address" },
-                                service: { type: "string", description: "The requested service: Web Development, SEO, or Digital Marketing" }
-                            },
-                            required: ["name", "phone", "email", "service"]
-                        }
-                    }
-                }
-            ];
-            completionParams.tool_choice = "auto";
-        }
+    if (state === "WAITING_FOR_NAME") {
+      return NextResponse.json({
+        message: { role: "assistant", content: MSG_ASK_NAME },
+      });
+    }
 
-        let response;
+    if (state === "WAITING_FOR_PHONE") {
+      if (stateBeforeLast === "WAITING_FOR_PHONE") {
+        return NextResponse.json({
+          message: { role: "assistant", content: MSG_INVALID_PHONE },
+        });
+      }
+      return NextResponse.json({
+        message: { role: "assistant", content: MSG_ASK_PHONE },
+      });
+    }
+
+    if (state === "WAITING_FOR_EMAIL") {
+      if (stateBeforeLast === "WAITING_FOR_EMAIL") {
+        return NextResponse.json({
+          message: { role: "assistant", content: MSG_INVALID_EMAIL },
+        });
+      }
+      return NextResponse.json({
+        message: { role: "assistant", content: MSG_ASK_EMAIL },
+      });
+    }
+
+    if (state === "WAITING_FOR_SERVICE") {
+      if (stateBeforeLast === "WAITING_FOR_SERVICE") {
+        return NextResponse.json({
+          message: { role: "assistant", content: MSG_INVALID_SERVICE },
+        });
+      }
+      return NextResponse.json({
+        message: { role: "assistant", content: MSG_ASK_SERVICE },
+      });
+    }
+
+    if (state === "LEAD_COMPLETED") {
+      // If we JUST completed the lead now
+      if (stateBeforeLast === "WAITING_FOR_SERVICE") {
         try {
-            response = await groq.chat.completions.create(completionParams);
-        } catch (error) {
-            // Groq models sometimes return the raw function string which causes an API error.
-            // We can gracefully handle it by parsing the failed generation if available.
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            const err = error as any;
-            const failedGen = err?.error?.error?.failed_generation || err?.error?.failed_generation || err?.failed_generation;
-
-            if (failedGen && failedGen.includes("<function=save_lead>")) {
-                try {
-                    const extractParameter = (xml: string, paramName: string): string => {
-                        const regex = new RegExp(`<parameter=${paramName}>([\\s\\S]*?)<\\/parameter>`, "i");
-                        const match = xml.match(regex);
-                        return match ? match[1].trim() : "";
-                    };
-
-                    const name = String(extractParameter(failedGen, "name") || "Unknown");
-                    const phone = String(extractParameter(failedGen, "phone") || "Unknown");
-                    const email = String(extractParameter(failedGen, "email") || "Unknown");
-                    const service = String(extractParameter(failedGen, "service") || "Unknown");
-
-                    try {
-                        await addDoc(collection(db, "chat_leads"), {
-                            name,
-                            phone,
-                            email,
-                            service,
-                            status: "new",
-                            source: "chatbot_ai",
-                            createdAt: serverTimestamp()
-                        });
-                    } catch (dbError) {
-                        console.error("Firestore save failed in fallback tool call:", dbError);
-                        return NextResponse.json({
-                            message: "I'm sorry, I encountered an error while saving your details. Please try again later."
-                        });
-                    }
-
-                    return NextResponse.json({
-                        message: "Thank you! Your details have been saved successfully. Sinan MC Malappuram will contact you shortly."
-                    });
-                } catch (parseError) {
-                    console.error("Failed to parse XML-like fallback generation:", parseError);
-                }
-            }
-
-            // Continue the chat by retrying without tools instead of returning HTTP 500
-            console.warn("Groq API error, retrying without tools to continue chat:", error);
-            try {
-                const fallbackParams = { ...completionParams };
-                delete fallbackParams.tools;
-                delete fallbackParams.tool_choice;
-                response = await groq.chat.completions.create(fallbackParams);
-            } catch (fallbackError) {
-                console.error("Fallback API call failed:", fallbackError);
-                return NextResponse.json({
-                    message: {
-                        role: "assistant",
-                        content: "I'm sorry, I'm having trouble connecting right now. Can you please repeat that?"
-                    }
-                });
-            }
-        }
-
-        const choice = response.choices[0];
-        const message = choice.message;
-
-        let extractedLead: any = null;
-        let isToolCallDetected = false;
-
-        // 1. Detect native tool calls
-        if (message.tool_calls && message.tool_calls.length > 0) {
-            const toolCall = message.tool_calls[0];
-            if (toolCall.function.name === "save_lead") {
-                isToolCallDetected = true;
-                try {
-                    extractedLead = JSON.parse(toolCall.function.arguments || "{}");
-                } catch (parseError) {
-                    console.error("Failed to parse native tool call arguments:", parseError);
-                }
-            }
-        }
-
-        // 2. Detect text-based tool calls in message.content
-        const textContent = message.content || "";
-        const hasTextToolCall = textContent.includes("<tool_call>") || textContent.includes("<function=");
-
-        if (!isToolCallDetected && hasTextToolCall) {
-            isToolCallDetected = true;
-            
-            // Try to parse JSON from <tool_call>...</tool_call>
-            const jsonMatch = textContent.match(/<tool_call>([\s\S]*?)<\/tool_call>/i);
-            if (jsonMatch) {
-                try {
-                    const innerText = jsonMatch[1].trim();
-                    const parsed = JSON.parse(innerText);
-                    extractedLead = parsed.arguments || parsed;
-                } catch (e) {
-                    // Not JSON inside the tags
-                }
-            }
-
-            // Fallback to XML parameter tag extraction
-            if (!extractedLead) {
-                const extractParameter = (xml: string, paramName: string): string => {
-                    const regex = new RegExp(`<parameter=${paramName}>([\\s\\S]*?)<\\/parameter>`, "i");
-                    const match = xml.match(regex);
-                    return match ? match[1].trim() : "";
-                };
-
-                const parsedName = extractParameter(textContent, "name");
-                const parsedPhone = extractParameter(textContent, "phone");
-                const parsedEmail = extractParameter(textContent, "email");
-                const parsedService = extractParameter(textContent, "service");
-
-                if (parsedName || parsedPhone || parsedEmail || parsedService) {
-                    extractedLead = {
-                        name: parsedName,
-                        phone: parsedPhone,
-                        email: parsedEmail,
-                        service: parsedService
-                    };
-                }
-            }
-        }
-
-        if (isToolCallDetected) {
-            let serviceTerm = "SEO";
-            if (extractedLead) {
-                const name = String(extractedLead.name ?? "Unknown");
-                const phone = String(extractedLead.phone ?? "Unknown");
-                const email = String(extractedLead.email ?? "Unknown");
-                const service = String(extractedLead.service ?? "Unknown");
-                if (service && service !== "Unknown") {
-                    serviceTerm = service;
-                }
-
-                try {
-                    await addDoc(collection(db, "chat_leads"), {
-                        name,
-                        phone,
-                        email,
-                        service,
-                        status: "new",
-                        source: "chatbot_ai",
-                        createdAt: serverTimestamp()
-                    });
-                } catch (dbError) {
-                    console.error("Firestore save failed in tool call execution:", dbError);
-                    return NextResponse.json({
-                        message: "I'm sorry, I encountered an error while saving your details. Please try again later."
-                    });
-                }
-            }
-
-            return NextResponse.json({
-                message: "Thank you! Your details have been saved successfully. Sinan MC Malappuram will contact you shortly."
-            });
-        }
-
-        // Sanitizing output to prevent reasoning, chain-of-thought, planning, thoughts, or tool calls from being exposed to the user.
-        let cleanedContent = message.content || "";
-
-        // Remove <think>...</think> blocks and standalone tags
-        cleanedContent = cleanedContent.replace(/<think>[\s\S]*?<\/think>/gi, "");
-        cleanedContent = cleanedContent.replace(/<\/?think>/gi, "");
-
-        // Remove <tool_call>...</tool_call> blocks and standalone tags
-        cleanedContent = cleanedContent.replace(/<tool_call>[\s\S]*?<\/tool_call>/gi, "");
-        cleanedContent = cleanedContent.replace(/<\/?tool_call>/gi, "");
-
-        // Remove XML function tags <function=...>...</function>
-        cleanedContent = cleanedContent.replace(/<function[\s\S]*?<\/function>/gi, "");
-        cleanedContent = cleanedContent.replace(/<\/?function>/gi, "");
-        cleanedContent = cleanedContent.replace(/<parameter[\s\S]*?<\/parameter>/gi, "");
-        cleanedContent = cleanedContent.replace(/<\/?parameter>/gi, "");
-
-        // Remove loose JSON-like structures in tags or standalone
-        cleanedContent = cleanedContent.replace(/\{\s*"name"\s*:\s*"save_lead"[\s\S]*?\}/gi, "");
-        cleanedContent = cleanedContent.replace(/\{\s*"arguments"[\s\S]*?\}/gi, "");
-
-        // Remove chain-of-thought / planning prefix lines that should never appear in responses.
-        // These patterns are stripped line-by-line: any leading lines that match are removed before the final answer.
-        const reasoningLinePrefixes = [
-            /^(the user( is|'s| asked| wants| said| has|:))/i,
-            /^plan:/i,
-            /^reasoning:/i,
-            /^analysis:/i,
-            /^thought:/i,
-            /^thoughts:/i,
-            /^wait,/i,
-            /^let's think/i,
-            /^i will/i,
-            /^i'll/i,
-            /^first,/i,
-            /^step \d+:/i,
-            /^final plan:/i,
-            /^response structure:/i,
-            /^internal note:/i,
-            /^chain of thought:/i,
-            /^here's my plan/i,
-        ];
-
-        // Strip all leading paragraphs/lines that match reasoning patterns
-        const lines = cleanedContent.split("\n");
-        let firstUserFacingLine = 0;
-        for (let i = 0; i < lines.length; i++) {
-            const trimmedLine = lines[i].trim();
-            if (!trimmedLine) {
-                // Skip blank lines at the start
-                firstUserFacingLine = i + 1;
-                continue;
-            }
-            const isReasoning = reasoningLinePrefixes.some((pattern) => pattern.test(trimmedLine));
-            if (isReasoning) {
-                firstUserFacingLine = i + 1;
-            } else {
-                break;
-            }
-        }
-        cleanedContent = lines.slice(firstUserFacingLine).join("\n");
-
-        // Trim whitespace after cleaning
-        cleanedContent = cleanedContent.trim();
-
-        // If the cleaned response is empty, return a fallback message
-        if (!cleanedContent) {
-            cleanedContent = "I'm sorry, something went wrong. Please try again.";
+          await addDoc(collection(db, "chat_leads"), {
+            name,
+            phone,
+            email,
+            service,
+            status: "new",
+            source: "chatbot_ai",
+            createdAt: serverTimestamp(),
+          });
+        } catch (dbError) {
+          console.error("Firestore save failed:", dbError);
+          return NextResponse.json({
+            message: {
+              role: "assistant",
+              content:
+                "I'm sorry, I encountered an error while saving your details. Please try again later.",
+            },
+          });
         }
 
         return NextResponse.json({
-            message: {
-                role: "assistant",
-                content: cleanedContent
-            }
+          message: {
+            role: "assistant",
+            content: `Thank you! Your details have been saved successfully. Sinan MC Malappuram will contact you shortly regarding your ${service} requirements.`,
+          },
         });
+      }
 
-    } catch (error) {
-        console.error("Chat API Error:", error);
-        return NextResponse.json(
-            { error: "Internal server error" },
-            { status: 500 }
-        );
+      // Otherwise, it was already completed before this turn. Do normal Groq chat.
+      const conversationHistory = messages
+        .filter((m) => m.role === "user" || m.role === "assistant")
+        .map((m) => ({ role: m.role as "user" | "assistant", content: m.content }));
+
+      let groqResponse;
+      try {
+        groqResponse = await groq.chat.completions.create({
+          model: "openai/gpt-oss-120b",
+          messages: [
+            { role: "system", content: POST_LEAD_SYSTEM_PROMPT },
+            ...conversationHistory,
+          ],
+        });
+      } catch (groqError) {
+        console.error("Groq API error:", groqError);
+        return NextResponse.json({
+          message: {
+            role: "assistant",
+            content:
+              "I'm sorry, I'm having trouble connecting right now. Please try again.",
+          },
+        });
+      }
+
+      const rawContent = groqResponse.choices[0]?.message?.content ?? "";
+      const cleanedContent = sanitizeResponse(rawContent);
+
+      return NextResponse.json({
+        message: { role: "assistant", content: cleanedContent },
+      });
     }
+
+    return NextResponse.json({
+      message: { role: "assistant", content: MSG_FALLBACK },
+    });
+  } catch (error) {
+    console.error("Chat API Error:", error);
+    return NextResponse.json(
+      { error: "Internal server error" },
+      { status: 500 }
+    );
+  }
 }
