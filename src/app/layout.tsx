@@ -24,18 +24,21 @@ export const metadata: Metadata = {
 
     title: {
         default:
-            "Best Freelance Web Developer & SEO Specialist in Malappuram",
+            "Best Freelance Web Developer in Malappuram | Sinan MC",
         template: "%s | Sinan MC",
     },
 
     description:
-        "Looking for the best Freelance Web Developer & SEO Specialist in Malappuram, Kerala? Sinan MC delivers #1 Google rankings and high-converting websites.",
+        "Sinan MC is the best freelance web developer in Malappuram — building fast, SEO-optimised websites that rank on Google and convert visitors into customers. Serving Kerala businesses since 2024.",
 
     keywords: [
-        "Freelance Web Developer Malappuram",
-        "SEO Specialist Malappuram",
-        "Web Designer Kerala",
+        "Best Freelance Web Developer in Malappuram",
+        "SEO Specialist Kerala",
+        "Web Developer Malappuram",
         "Sinan MC",
+        "Local SEO Kerala",
+        "Technical SEO Consultant",
+        "Next.js Developer Kerala",
     ],
 
     category: "technology",
@@ -105,9 +108,9 @@ export const metadata: Metadata = {
         type: "website",
         url: "/",
         title:
-            "Best Freelance Web Developer & SEO Specialist in Malappuram",
+            "Best Freelance Web Developer in Malappuram | Sinan MC",
         description:
-            "Professional Web Development and SEO services in Malappuram, Kerala.",
+            "Sinan MC builds fast, SEO-optimised websites that rank on Google and generate real business results for Kerala businesses.",
         siteName: "Sinan MC",
         locale: "en_IN",
 
@@ -116,7 +119,7 @@ export const metadata: Metadata = {
                 url: "/freelance-web-developer-SEO-specialist-Malappuram.webp",
                 width: 1200,
                 height: 630,
-                alt: "Sinan MC Freelance Web Developer Malappuram",
+                alt: "Sinan MC — freelance web developer and SEO specialist based in Malappuram, Kerala",
             },
         ],
     },
@@ -124,12 +127,12 @@ export const metadata: Metadata = {
     twitter: {
         card: "summary_large_image",
         title:
-            "Best Freelance Web Developer & SEO Specialist in Malappuram",
+            "Best Freelance Web Developer in Malappuram | Sinan MC",
 
         description:
-            "Professional Web Development and SEO services in Kerala.",
+            "Sinan MC builds fast, SEO-optimised websites that rank on Google and generate real business results for Kerala businesses.",
 
-        creator: "@sinanmc",
+        creator: "@mc_sinan3229",
 
         images: [
             "/freelance-web-developer-SEO-specialist-Malappuram.webp",

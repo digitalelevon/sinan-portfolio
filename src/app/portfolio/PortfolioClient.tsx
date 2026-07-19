@@ -76,8 +76,8 @@ export default function PortfolioClient() {
                         </m.span>
 
                         <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold text-white mb-4 sm:mb-6 text-balance tracking-tight leading-[1.2] sm:leading-[1.1]">
-                            Portfolio of <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-secondary animate-gradient-x">Sinan MC Malappuram</span> <br />
-                            <span className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold text-gray-200 mt-2 block">Best Freelance Web Developer & SEO Specialist</span>
+                            Portfolio of <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-secondary animate-gradient-x">Sinan MC — Malappuram</span> <br />
+                            <span className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold text-gray-200 mt-2 block">Web Developer &amp; SEO Specialist</span>
                         </h1>
 
                         <p className="text-gray-400 text-base sm:text-lg md:text-xl max-w-2xl leading-relaxed mt-4 sm:mt-6 font-medium">
@@ -139,7 +139,7 @@ export default function PortfolioClient() {
                                         <div className="relative w-full h-full rounded-tr-[1.5rem] rounded-tl-[1.5rem] overflow-hidden">
                                             <Image
                                                 src={project.image}
-                                                alt={project.imageAlt || `${project.title} by Sinan MC Malappuram best Freelance Web Developer & SEO Specialist in Malappuram`}
+                                                alt={project.imageAlt || `Project showcase: ${project.title} by Sinan MC Malappuram`}
                                                 fill
                                                 className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                                                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -217,7 +217,7 @@ export default function PortfolioClient() {
                             Ready to Build <br className="hidden sm:block" /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Something Extraordinary?</span>
                         </h2>
                         <p className="text-gray-400 text-sm sm:text-lg mb-8 sm:mb-10 max-w-2xl mx-auto relative z-10 px-2 sm:px-0">
-                            Partner with the best Freelance Web Developer & SEO Specialist in Malappuram to transform your digital presence and dominate search rankings.
+                            Partner with a results-driven web developer and SEO specialist based in Malappuram to build your online presence and generate consistent business from Google.
                         </p>
 
                         <m.div

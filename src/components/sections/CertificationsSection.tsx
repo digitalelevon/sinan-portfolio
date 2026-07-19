@@ -22,42 +22,42 @@ const certificates: Certificate[] = [
         title: "HP LIFE MARKETING STRATEGY",
         provider: "HP FOUNDATION",
         image: "/sinanmc-hp-digital-business-certification.webp",
-        alt: "Freelance SEO Consultant in Malappuram - HP LIFE Marketing Strategy Certificate",
+        alt: "Sinan MC HP Life Marketing Strategy Certificate — issued by HP Foundation",
     },
     {
         id: 2,
         title: "SEMRUSH SEO TOOLKIT",
         provider: "SEMRUSH ACADEMY",
         image: "/sinanmc-semrush.webp",
-        alt: "Web Design Expert in Kerala - Semrush SEO Toolkit Certificate",
+        alt: "Sinan MC Semrush SEO Toolkit Certificate — issued by Semrush Academy",
     },
     {
         id: 3,
         title: "DIGITAL MARKETING",
         provider: "HUBSPOT ACADEMY",
         image: "/sinanmc-digital-marketing-HubSpot.webp",
-        alt: "Digital Marketing Specialist - HubSpot Digital Marketing Certificate",
+        alt: "Sinan MC Digital Marketing Certificate — issued by HubSpot Academy",
     },
     {
         id: 4,
         title: "SOCIAL MEDIA MARKETING",
         provider: "HUBSPOT ACADEMY",
         image: "/sinanmc-social-media-HubSpot.webp",
-        alt: "Helping Local Businesses Rank on Google - HubSpot Social Media Marketing Certificate",
+        alt: "Sinan MC Social Media Marketing Certificate — issued by HubSpot Academy",
     },
     {
         id: 5,
         title: "WEB DEVELOPMENT BOOTCAMP",
         provider: "UDEMY",
         image: "/sinanmc-udemy.webp",
-        alt: "Custom Website Creator in Malappuram - Udemy Web Development Bootcamp Certificate",
+        alt: "Sinan MC Web Development Bootcamp Certificate — issued by Udemy",
     },
     {
         id: 6,
         title: "AI PROMPT ENGINEERING",
         provider: "DUBAI CERTIFICATION",
         image: "/sinan-mc-ai-prompt-engineering-certificate-dubai.webp",
-        alt: "Freelance Web Developer - AI Prompt Engineering Certificate Dubai",
+        alt: "Sinan MC AI Prompt Engineering Certificate — issued in Dubai",
     },
 ];
 
@@ -91,7 +91,7 @@ const CertificationsSection: React.FC = () => {
     return (
         <section
             id="certifications"
-            aria-label="Certifications of Sinan MC - Freelance SEO Consultant and Web Developer"
+            aria-label="Professional certifications held by Sinan MC"
             className="relative w-full py-20 md:py-24 lg:py-28 xl:py-32 bg-dark overflow-hidden flex flex-col items-center justify-center"
         >
 

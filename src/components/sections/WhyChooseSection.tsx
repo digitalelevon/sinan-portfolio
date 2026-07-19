@@ -37,6 +37,7 @@ const WhyChooseSection = () => {
     return (
         <section
             id="why-choose"
+            aria-label="Why choose Sinan MC for web development and SEO in Malappuram"
             className="bg-dark py-16 sm:py-20 md:py-24 lg:py-32 overflow-hidden relative"
         >
             {/* ── Background Layers ── */}
@@ -112,7 +113,7 @@ const WhyChooseSection = () => {
                         <div className="relative w-full h-[280px] xs:h-[340px] sm:h-[420px] md:h-[480px]">
                             <Image
                                 src="/SEO-Specialist-Malappuram-Kerala.webp"
-                                alt="Best Freelance Web Developer & SEO Specialist in Malappuram, Kerala"
+                                alt="Sinan MC reviewing SEO analytics and web performance metrics for a Kerala client"
                                 width={800}
                                 height={800}
                                 style={{ width: "100%", height: "100%" }}

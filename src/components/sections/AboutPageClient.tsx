@@ -207,7 +207,7 @@ export default function AboutPageClient() {
                                     B.Com Graduate & Certified Digital Marketing Expert, Kerala
                                 </p>
                                 <p className="text-gray-400 text-base sm:text-lg leading-relaxed max-w-lg lg:max-w-xl">
-                                    I am Sinan MC, a freelance digital marketing specialist based in Malappuram. With a degree from IGNOU and certification from Oxdu, Kondotty, I build modern web platforms and help local teams rank #1.
+                                    I am Sinan MC — a freelance web developer and SEO consultant based in Malappuram. With a B.Com from IGNOU and a professional digital marketing certification from Oxdu, Kondotty, I build high-performance websites using Next.js and React, optimised for Core Web Vitals, Google rankings, and real business results.
                                 </p>
                             </m.div>
 

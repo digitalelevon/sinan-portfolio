@@ -28,8 +28,9 @@ const staggerContainer: Variants = {
 export default function WebSeoComboSection() {
     return (
         <section
+            id="web-seo-combo"
             className="relative bg-dark text-white py-16 md:py-24 lg:py-28 xl:py-32 overflow-hidden"
-            aria-label="Web Development and SEO Combo Services by Sinan MC Malappuram"
+            aria-label="Web development and SEO services by Sinan MC"
         >
             {/* Background Elements */}
             <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_left,rgba(255,215,0,0.05),transparent_40%)] pointer-events-none" />
@@ -46,7 +47,7 @@ export default function WebSeoComboSection() {
                     className="text-center max-w-4xl mx-auto"
                 >
                     <h2 className="text-3xl md:text-5xl xl:text-6xl font-bold text-white leading-tight text-balance">
-                        More About My <span className="bg-gradient-to-r from-primary via-yellow-200 to-secondary bg-clip-text text-transparent drop-shadow-sm">Web Development and SEO Combo</span> Services in Malappuram
+                        More About My <span className="bg-gradient-to-r from-primary via-yellow-200 to-secondary bg-clip-text text-transparent drop-shadow-sm">Web Development and SEO</span> Services in Malappuram
                     </h2>
                     <AnimatedLine className="max-w-[150px] mx-auto mt-6 md:mt-8" />
                 </m.div>
@@ -66,7 +67,7 @@ export default function WebSeoComboSection() {
                             <div className="absolute inset-0 bg-gradient-to-t from-dark/80 via-transparent to-transparent z-10 mix-blend-multiply" />
                             <Image
                                 src="/web-development-seo-malappuram.webp"
-                                alt="Best Freelance Web Developer & SEO Specialist in Malappuram, Kerala"
+                                alt="Custom website development project for a Kerala business — modern, fast-loading, and SEO-optimised"
                                 width={800}
                                 height={600}
                                 style={{ width: "100%", height: "100%" }}
@@ -86,10 +87,10 @@ export default function WebSeoComboSection() {
                         <div className="absolute -inset-4 md:-inset-6 bg-white/[0.03] border border-white/5 rounded-3xl blur-xl -z-10 lg:hidden" />
 
                         <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight text-balance">
-                            Web Development by the Best <span className="text-primary">Freelance Web Developer</span> in Malappuram
+                            Responsive <span className="text-primary">Website Development</span> for Kerala Businesses
                         </h3>
                         <p className="text-gray-300 leading-relaxed text-base md:text-lg text-balance">
-                            I provide professional web development services as the best Freelance Web Developer & SEO Specialist in Malappuram, creating modern, fast-loading, mobile-responsive, and SEO-optimized websites designed to rank on Google and convert visitors into customers.
+                            I build modern, mobile-first websites using Next.js and React — each one architected for speed, Core Web Vitals compliance, and organic search visibility. Every project is designed to rank on Google and turn visitors into customers.
                         </p>
                         <ul className="space-y-3 md:space-y-4 pt-2 md:pt-4">
                             {[
@@ -121,10 +122,10 @@ export default function WebSeoComboSection() {
                     <m.div variants={fadeUpVariant} className="space-y-6 md:space-y-8 relative order-2 lg:order-1 lg:max-w-xl">
                         <div className="absolute -inset-4 md:-inset-6 bg-white/[0.03] border border-white/5 rounded-3xl blur-xl -z-10 lg:hidden" />
                         <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight text-balance">
-                            SEO Services by the Best <span className="text-primary">Freelance SEO Specialist</span> in Malappuram
+                            Technical & Local <span className="text-primary">SEO Services</span> for Google Rankings
                         </h3>
                         <p className="text-gray-300 leading-relaxed text-base md:text-lg text-balance">
-                            As the best freelance SEO specialist in Malappuram, I help businesses rank higher on Google using proven search engine optimization strategies including keyword research, on-page SEO, technical SEO, and local SEO.
+                            I help businesses rank higher on Google through proven search engine optimisation strategies — technical SEO audits, local SEO for Malappuram and Kerala, keyword research, on-page optimisation, and link building that delivers lasting results.
                         </p>
                         <ul className="space-y-3 md:space-y-4 pt-2 md:pt-4">
                             {[
@@ -150,7 +151,7 @@ export default function WebSeoComboSection() {
                             <div className="absolute inset-0 bg-gradient-to-t from-dark/80 via-transparent to-transparent z-10 mix-blend-multiply" />
                             <Image
                                 src="/seo-specialist-malappuram.webp"
-                                alt="Best Freelance Web Developer and SEO Specialist in Malappuram, Kerala"
+                                alt="SEO analytics dashboard showing Google ranking improvements for a Malappuram business"
                                 width={800}
                                 height={600}
                                 style={{ width: "100%", height: "100%" }}
@@ -179,7 +180,7 @@ export default function WebSeoComboSection() {
                             <div className="absolute inset-0 bg-gradient-to-t from-dark/80 via-transparent to-transparent z-10 mix-blend-multiply" />
                             <Image
                                 src="/web-seo-combo-malappuram.webp"
-                                alt="Best Freelance Web Developer and SEO Specialist in Malappuram"
+                                alt="Sinan MC delivering a complete web development and SEO combo package for a Kerala business"
                                 width={800}
                                 height={600}
                                 style={{ width: "100%", height: "100%" }}
@@ -195,10 +196,10 @@ export default function WebSeoComboSection() {
                     {/* Content Right */}
                     <m.div variants={fadeUpVariant} className="space-y-6 md:space-y-8 relative lg:max-w-xl">
                         <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight text-balance group/heading cursor-default">
-                            Complete <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-yellow-200 transition-all duration-500">Web Development and SEO Combo</span> Solution in Malappuram
+                            Complete <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-yellow-200 transition-all duration-500">Web + SEO Package</span> — Built to Rank and Convert
                         </h3>
                         <p className="text-gray-300 leading-relaxed text-base md:text-lg text-balance">
-                            I offer a complete web development and SEO combo service combining professional website creation with powerful search engine optimization. This ensures your website not only looks modern but also ranks on Google.
+                            When you combine a well-built Next.js website with a robust SEO strategy, the results compound. I offer an integrated web development and SEO service so your site not only looks professional — it gets found on Google and generates real business enquiries.
                         </p>
                         <ul className="space-y-3 md:space-y-4 pt-2 md:pt-4">
                             {[

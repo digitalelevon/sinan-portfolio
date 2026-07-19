@@ -29,16 +29,16 @@ const services = [
     {
         id: "01",
         title: "Web Development",
-        description: "Custom, fast-loading, mobile-responsive, and SEO-optimized websites designed by the best freelance web developer in Malappuram to rank higher and convert visitors into customers.",
+        description: "Custom, fast-loading, mobile-first websites built with Next.js and React — architected for Core Web Vitals, search engine visibility, and conversion optimisation from day one.",
         icon: <Globe className="w-8 h-8 md:w-10 md:h-10" />,
-        keywords: ["Custom", "Fast-loading", "Responsive"]
+        keywords: ["Next.js", "Mobile-First", "Core Web Vitals"]
     },
     {
         id: "02",
         title: "Search Engine Optimization (SEO)",
-        description: "Advanced SEO services by the best freelance SEO specialist in Malappuram including keyword research, on-page SEO, technical SEO, and Google ranking optimization.",
+        description: "Advanced organic SEO covering keyword research, on-page optimisation, technical audits, Core Web Vitals, and local SEO for Kerala businesses — delivered with measurable ranking results.",
         icon: <Search className="w-8 h-8 md:w-10 md:h-10" />,
-        keywords: ["On-page", "Technical", "Ranking"]
+        keywords: ["Technical SEO", "Local SEO", "Google Rankings"]
     },
     {
         id: "03",
@@ -156,7 +156,7 @@ export default function Services() {
                             Expert <span className="bg-gradient-to-r from-primary via-yellow-200 to-secondary bg-clip-text text-transparent">Web Development & SEO</span> Services in Malappuram, Kerala
                         </h2>
                         <p className="text-gray-400 text-base md:text-lg lg:text-xl md:leading-relaxed max-w-3xl mx-auto text-balance font-light">
-                            I&apos;m Sinan MC, recognized as the best Freelance Web Developer & SEO Specialist in Malappuram, Kerala. I use cutting-edge websites and tried-and-true SEO techniques to help businesses rank higher on Google, produce quality leads, and expand more quickly.
+                            From responsive website development to technical SEO and Google Ads — I help businesses across Malappuram and Kerala build a strong online presence, rank higher on Google, and generate consistent leads.
                         </p>
                     </m.div>
                 </div>

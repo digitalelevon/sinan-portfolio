@@ -61,25 +61,24 @@ export default function About() {
                         </h2>
 
                         <p className="text-gray-400 text-sm sm:text-base lg:text-lg mb-5 leading-relaxed">
-                            I am Sinan MC, recognized as the{" "}
+                            I&apos;m Sinan MC, a{" "}
                             <Link href="/about" className="text-primary hover:text-primary/80 underline decoration-primary/30 underline-offset-2 transition-colors">
-                                web design expert in Kerala
-                            </Link>
-                            , professionally trained at{" "}
+                                web developer and SEO specialist
+                            </Link>{" "}
+                            based in Malappuram, professionally trained at{" "}
                             <a href="https://oxdu.in" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80 underline decoration-primary/30 underline-offset-2 transition-colors">
                                 Oxdu Training Institute, Kondotty
                             </a>
-                            , I specialise in building fast, modern websites and implementing powerful digital marketing strategies that help businesses across Malappuram, Calicut, and Kerala rank higher on Google and grow faster online.
+                            . I build fast, modern websites and pair them with practical digital marketing strategies — helping businesses across Malappuram, Calicut, and Kerala rank higher on Google and grow online.
                         </p>
 
                         <p className="text-gray-400 text-sm sm:text-base lg:text-lg mb-8 leading-relaxed">
-                            My focus goes beyond development. As the{" "}
-                            <span className="text-white font-medium">freelance SEO consultant</span>
-                            {", "}I create conversion-focused digital solutions that generate real business results. Whether you need a new{" "}
+                            My work doesn&apos;t stop at development. As a{" "}
+                            <span className="text-white font-medium">freelance SEO consultant</span>, I focus on conversion-ready solutions that bring real results, not just a good-looking site. Whether you need a new{" "}
                             <Link href="/portfolio" className="text-primary hover:text-primary/80 underline decoration-primary/30 underline-offset-2 transition-colors">
                                 professional website
-                            </Link>
-                            {" "}or want to improve your Google rankings,{" "}
+                            </Link>{" "}
+                            or want to boost your Google rankings,{" "}
                             <Link href="/contact" className="text-primary hover:text-primary/80 underline decoration-primary/30 underline-offset-2 transition-colors">
                                 let&apos;s talk
                             </Link>

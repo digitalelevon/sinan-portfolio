@@ -3,21 +3,21 @@
 import Image from "next/image";
 
 const keywords = [
-    "Best Web Developer in Malappuram",
-    "SEO Expert Kerala",
-    "Modern UI/UX Design",
-    "High Speed Performance",
-    "Google Ranking Specialist",
-    "Custom Web Solutions",
-    "Freelance Developer Malappuram",
-    "E-commerce Specialist",
+    "Next.js Web Development",
+    "Technical SEO Specialist",
+    "Mobile-First Design",
+    "Google Rankings Expert",
+    "Core Web Vitals Optimisation",
+    "Local SEO Kerala",
+    "AI Automation",
+    "E-commerce Solutions",
 ];
 
 export const KeywordMarquee = () => {
     return (
         <section
             className="relative w-full h-20 sm:h-24 bg-dark/50 border-y border-accent/10 overflow-hidden group flex items-center backdrop-blur-sm"
-            aria-label="Service Highlights Marquee"
+            aria-label="Services highlight marquee"
         >
             {/* Premium Gradient Overlays for smooth fade */}
             <div className="absolute inset-y-0 left-0 w-24 sm:w-48 bg-gradient-to-r from-dark to-transparent z-10 pointer-events-none" />
@@ -51,8 +51,7 @@ export const KeywordMarquee = () => {
 
             {/* Hidden SEO Text for crawlers */}
             <div className="sr-only">
-                <h2>Expert Web Development and SEO Services in Malappuram, Kerala</h2>
-                <p>Providing high-performance web development, SEO optimization, and UI/UX design services to help businesses grow locally and globally.</p>
+                <p>Expert web development, technical SEO, and digital marketing services in Malappuram, Kerala — helping businesses grow online.</p>
                 <ul>
                     {keywords.map((k, i) => <li key={i}>{k}</li>)}
                 </ul>

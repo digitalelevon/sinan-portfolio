@@ -11,7 +11,7 @@ export default function Hero() {
     return (
         <section
             className="relative bg-dark overflow-hidden"
-            aria-label="Hero - Best Freelance Web Developer and SEO Specialist in Malappuram"
+            aria-label="Hero section — Sinan MC, web developer and SEO specialist in Malappuram, Kerala"
         >
             {/* ── 3D Canvas Background (decorative, aria-hidden, mobile-disabled) ── */}
             <Hero3DClient />
@@ -74,18 +74,17 @@ export default function Hero() {
                             </span>
                         </h1>
 
-                        {/* Description */}
-                        <h2
+                        <p
                             className="text-base sm:text-lg md:text-xl text-gray-300 max-w-xl mb-7 sm:mb-10 leading-relaxed mx-auto lg:mx-0 font-medium"
                         >
-                            <span className="text-white font-semibold">Sinan MC</span>, Oxdu-trained freelance web developer and SEO specialist in Malappuram. Specialized in building fast, SEO-friendly websites that rank on Google and convert visitors.
-                        </h2>
+                            I design and build websites that not only look good, but also load quickly, rank highly, and turn visitors into customers. I am based in Malappuram, trained at Oxdu, and I focus on achieving real results for local businesses.
+                        </p>
 
                         {/* Buttons */}
                         <div
                             className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
                         >
-                            <Link href="/contact" className="w-full sm:w-auto" title="Contact Sinan MC for Web Development & SEO">
+                            <Link href="/contact" className="w-full sm:w-auto" aria-label="Contact Sinan MC to start your web project">
                                 <Button className="w-full sm:w-auto rounded-full h-12 sm:h-14 px-7 sm:px-8 text-sm sm:text-base font-bold bg-gradient-to-r from-primary via-[#FFC107] to-accent text-black hover:opacity-90 transition-all hover:scale-105 shadow-[0_0_30px_rgba(255,215,0,0.4),0_4px_20px_rgba(0,0,0,0.4)] relative overflow-hidden group">
                                     <span className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                                     Start Your Project
@@ -93,7 +92,7 @@ export default function Hero() {
                                 </Button>
                             </Link>
 
-                            <Link href="/portfolio" className="w-full sm:w-auto" title="View Portfolio of Freelance Web Developer in Kerala">
+                            <Link href="/portfolio" className="w-full sm:w-auto" aria-label="View Sinan MC portfolio of web and SEO projects">
                                 <Button
                                     variant="outline"
                                     className="w-full sm:w-auto rounded-full h-12 sm:h-14 px-7 sm:px-8 text-sm sm:text-base font-semibold border-white/10 bg-white/[0.03] text-white hover:bg-primary/10 hover:border-primary/40 backdrop-blur-xl transition-all hover:scale-105 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]"
@@ -118,7 +117,7 @@ export default function Hero() {
                             {/* Image */}
                             <Image
                                 src="/freelance-web-developer-SEO-specialist-Malappuram.webp"
-                                alt="Sinan MC Malappuram Freelance Web Developer"
+                                alt="Sinan MC — freelance web developer and SEO specialist based in Malappuram, Kerala"
                                 width={480}
                                 height={600}
                                 priority

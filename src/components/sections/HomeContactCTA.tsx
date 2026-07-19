@@ -21,7 +21,7 @@ export default function HomeContactCTA() {
     return (
         <section
             id="contact-cta"
-            aria-label="Contact Sinan MC - Best Freelance Web Developer & SEO Specialist in Malappuram"
+            aria-label="Contact Sinan MC — start your web development or SEO project"
             className="relative bg-dark py-16 sm:py-20 md:py-28 lg:py-32 overflow-hidden"
         >
             {/* ── Background Layers ── */}

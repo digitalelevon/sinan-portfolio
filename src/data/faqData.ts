@@ -3,33 +3,33 @@ export const faqs = [
         question:
             "Why should I choose Sinan MC as my freelance web developer in Malappuram?",
         answer:
-            "Sinan MC is a trusted freelance web developer in Malappuram who creates modern, fast, and SEO-optimized websites designed to rank on Google and generate real business results. Every website is built with performance, user experience, and conversion in mind.",
+            "Sinan MC is the best freelance web developer in Malappuram for businesses that need fast results. Every website is built with Next.js for speed, passes Core Web Vitals, and is architected for Google rankings from day one. With 50+ completed projects and certifications from HubSpot, Semrush, and HP Foundation, you get proven expertise — not guesswork.",
     },
     {
         question:
-            "What makes Sinan MC a reliable freelance SEO consultant in Kerala?",
+            "What makes Sinan MC a reliable SEO consultant in Kerala?",
         answer:
-            "As a dedicated digital marketing specialist in Malappuram, Sinan MC provides result-driven SEO services including keyword research, on-page SEO, technical SEO, and local SEO. His advanced strategies help businesses rank higher on Google, increase website traffic, and generate more customers.",
+            "As a certified SEO consultant, Sinan MC delivers result-driven organic SEO services covering technical audits, keyword research, on-page optimisation, local SEO, and Core Web Vitals improvements. His data-first approach has helped Kerala businesses consistently rank on Google Page 1 and grow their organic traffic month over month.",
     },
     {
         question:
             "Do you provide both website development and SEO services together?",
         answer:
-            "Yes. Sinan MC offers complete web development and SEO combo services. This ensures your website not only looks professional but also ranks on Google and grows your business online, leveraging expertise as a custom website creator and SEO consultant.",
+            "Yes. Sinan MC offers an integrated web development and SEO package — so your website is not only fast and professional-looking, but also optimised to rank on Google from launch. This approach eliminates the common problem of having a great site that no one can find.",
     },
     {
         question: "How long does it take to rank on Google?",
         answer:
-            "SEO results usually take 1 to 3 months depending on your competition and industry. Sinan MC uses proven SEO strategies to achieve faster and long-term ranking improvements for local and global businesses.",
+            "SEO timelines depend on your industry competitiveness and starting point, but most clients see meaningful ranking improvements within 2–4 months. Sinan MC focuses on sustainable, white-hat strategies — combining technical SEO, topical authority, and local SEO signals — rather than shortcuts that risk penalties.",
     },
     {
-        question: "Do you work with local businesses in Malappuram?",
+        question: "Do you work with local businesses in Malappuram and Kerala?",
         answer:
-            "Yes. Sinan MC specializes in helping local businesses in Malappuram rank higher on Google using powerful local SEO strategies tailored for the Kerala market.",
+            "Yes. Sinan MC specialises in local SEO for Kerala businesses across industries including retail, services, healthcare, education, e-commerce, and hospitality. He optimises Google Business Profiles, builds local citations, and targets geo-specific keywords to help your business rank for searches in Malappuram, Calicut, Thrissur, and the broader Kerala market.",
     },
     {
         question: "Will my website be mobile-friendly and fast?",
         answer:
-            "Yes. Every website built by Sinan MC is fully mobile responsive, fast loading, and optimized for performance and SEO, ensuring you get the best results.",
+            "Absolutely. Every website Sinan MC builds is fully mobile-responsive, optimised for Core Web Vitals (LCP, CLS, INP), and scores 90+ on Google PageSpeed Insights. Mobile-first design and performance are not optional extras — they are built into the foundation of every project.",
     },
 ];

@@ -8,32 +8,32 @@ const testimonials = [
     {
         name: "Ahmed Luthu",
         company: "AI First Kannur",
-        text: "Sinan MC is a highly skilled web design expert and SEO consultant in Malappuram, Kerala. He built a fast, modern website and implemented powerful SEO strategies. Within months, our website ranked on Google and started generating consistent business enquiries.",
+        text: "Sinan MC is a highly skilled web developer and SEO consultant. He built a fast, modern website and implemented powerful SEO strategies. Within months, our website ranked on Google and started generating consistent business enquiries.",
     },
     {
         name: "Qland Team",
         company: "Qland Shirt Manufacturer, Malappuram",
-        text: "We highly recommend Sinan MC for any business looking for a custom website creator in Malappuram. Our new website looks professional, loads fast, and ranks well on Google. Our sales and online visibility improved significantly.",
+        text: "We highly recommend Sinan MC for any business looking for a custom website in Malappuram. Our new website looks professional, loads fast, and ranks well on Google. Our sales and online visibility improved significantly.",
     },
     {
         name: "Sinan VK",
         company: "Digisinans Digital Marketing Agency",
-        text: "Sinan MC has exceptional technical knowledge and SEO expertise. He is a truly leading digital marketing specialist in Malappuram. His SEO strategies helped improve rankings, traffic, and overall business growth.",
+        text: "Sinan MC has exceptional technical knowledge and SEO expertise. He is a truly leading digital marketing specialist in Kerala. His organic SEO strategies helped improve rankings, traffic, and overall business growth.",
     },
     {
         name: "Rashid P",
         company: "Ecommerce Business Owner",
-        text: "Our ecommerce website was completely transformed by Sinan MC. His web development and SEO work helped us rank higher and increase our online sales. He is a top-tier freelance SEO consultant and web developer in Malappuram, Kerala.",
+        text: "Our ecommerce website was completely transformed by Sinan MC. His web development and SEO work helped us rank higher and increase our online sales. He is a top-tier search engine optimisation specialist and web developer in Malappuram, Kerala.",
     },
     {
         name: "Nihal K",
         company: "Startup Founder",
-        text: "If you want real results, Sinan MC is a proven web design expert in Kerala. He created a powerful website and optimized everything for Google ranking and performance.",
+        text: "If you want real results, Sinan MC is a proven web development expert in Kerala. He created a powerful website and optimized everything for Google ranking and performance.",
     },
     {
         name: "Faisal Rahman",
         company: "Local Service Business",
-        text: "After working with Sinan MC, our business started getting more website traffic and leads. He is without doubt a dedicated search engine optimization expert in Malappuram.",
+        text: "After working with Sinan MC, our business started getting more website traffic and leads. He is without doubt a dedicated technical SEO expert based in Malappuram.",
     },
 ];
 
@@ -65,7 +65,7 @@ export default function TestimonialsSection() {
     return (
         <section
             id="testimonials"
-            aria-label="Client Testimonials - Sinan MC Freelance Web Developer SEO Consultant Malappuram"
+            aria-label="Client testimonials for Sinan MC — web developer and SEO consultant in Malappuram"
             className="bg-dark py-16 sm:py-24 lg:py-32 overflow-hidden relative isolate"
         >
             {/* ── Decorative Background ── */}
@@ -101,11 +101,11 @@ export default function TestimonialsSection() {
 
                     {/* Main H2 */}
                     <h2 className="text-[1.75rem] sm:text-4xl md:text-5xl lg:text-[3.1rem] font-extrabold text-white leading-[1.18] tracking-tight mt-1">
-                        What Clients Say About the{" "}
+                        What Clients Say About Working With a{" "}
                         <span className="bg-gradient-to-r from-primary via-yellow-400 to-amber-500 bg-clip-text text-transparent">
                             Freelance Web Developer
                         </span>{" "}
-                        and SEO Consultant in{" "}
+                        and SEO Consultant Based in{" "}
                         <span className="bg-gradient-to-r from-amber-400 to-primary bg-clip-text text-transparent">
                             Malappuram, Kerala
                         </span>
@@ -113,18 +113,9 @@ export default function TestimonialsSection() {
 
                     {/* Supporting paragraph */}
                     <p className="text-gray-400 mt-5 sm:mt-6 max-w-2xl mx-auto text-sm sm:text-base lg:text-lg leading-relaxed">
-                        Real client success stories and feedback from businesses
-                        that worked with Sinan MC. These testimonials prove why
-                        he is recognized as a{" "}
-                        <strong className="text-gray-300 font-medium">
-                            leading freelance web developer in Malappuram
-                        </strong>{" "}
-                        and a{" "}
-                        <strong className="text-gray-300 font-medium">
-                            trusted SEO consultant
-                        </strong>{" "}
-                        delivering real ranking results, traffic growth, and
-                        business success.
+                        Real success stories from businesses across Kerala that partnered with Sinan MC for
+                        website development, SEO campaigns, and digital marketing — and experienced measurable
+                        growth in Google rankings, organic traffic, and enquiries.
                     </p>
                 </div>
             </div>
